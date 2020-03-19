@@ -1,13 +1,18 @@
 
+
+
+
+
 <h3> Chat du cours de {{course.name}} </h3>
 
-<ul class="pure-menu-list">
-    <span class="pure-menu-heading">Messages:</span>
-  <li class="pure-menu-item" *ngFor="let message of messages" >
-    <span><a href="#" class="pure-menu-link label-text"  ><h4>{{message.author}}</h4> <div class="email-content" > {{message.content}} </div> <div class="email-content-subtitle"> {{message.timestamp}} </div> </a>  </span> 
-    
-  </li>
-</ul>
+
+
+ <div class="container" *ngFor="let message of messages">
+  <img src="" alt="{{message.author}}">
+  <p>{{message.content}}</p>
+  <span class="time-right">{{message.timestamp}}</span>
+</div>
+
 
 
 <form class="pure-form fixed-to-bottom" >
