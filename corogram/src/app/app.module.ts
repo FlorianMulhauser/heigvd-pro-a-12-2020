@@ -9,6 +9,7 @@ import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { ChatComponent } from './chat/chat.component';
 import { ForumComponent } from './forum/forum.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,7 @@ import { ForumComponent } from './forum/forum.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

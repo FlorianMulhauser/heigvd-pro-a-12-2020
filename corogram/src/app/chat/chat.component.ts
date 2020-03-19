@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { Course } from '../course';
 import { ChatService } from '../chat.service';
 import { ChatMessage } from '../chat.message';
+
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -9,9 +11,10 @@ import { ChatMessage } from '../chat.message';
 })
 export class ChatComponent implements OnInit {
 @Input() course: Course;
+name : String;
   messages: ChatMessage[];
 
-  constructor(private chatService: ChatService) { 
+  constructor(private chatService: ChatService, ) { 
   }
 
   ngOnInit(): void {
@@ -19,6 +22,19 @@ export class ChatComponent implements OnInit {
   }
   ngOnChanges(changes: SimpleChanges) {
   	this.messages = this.chatService.getMessages(this.course.name);
+  }
+
+  sendMessage(message: String) {
+  	
+
+  this.chatService.sendMessage({
+  	id: 0,
+	author: "jean mich",
+	content: message,
+	timestamp: "0000",
+	tag: this.course.name
+  });
+ 
   }
 
 }
