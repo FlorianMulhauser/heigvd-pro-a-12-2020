@@ -1,8 +1,16 @@
+
 <h3> Chat du cours de {{course.name}} </h3>
+
 <ul class="pure-menu-list">
     <span class="pure-menu-heading">Messages:</span>
   <li class="pure-menu-item" *ngFor="let message of messages" >
-    <span><a href="#" class="pure-menu-link label-text"  >{{message.author}} : {{message.content}} : {{message.timestamp}}</a>  </span> 
+    <span><a href="#" class="pure-menu-link label-text"  ><h4>{{message.author}}</h4> <div class="email-content" > {{message.content}} </div> <div class="email-content-subtitle"> {{message.timestamp}} </div> </a>  </span> 
     
   </li>
 </ul>
+
+
+<form class="pure-form fixed-to-bottom" >
+    <input type="text" class="pure-input-rounded" style="width:85%">
+    <button type="submit" class="pure-button-rounded" style="width:15%">Send</button>
+</form>
