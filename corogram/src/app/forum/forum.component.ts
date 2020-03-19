@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges ,SimpleChanges} from '@angular/core';
 import { Course } from '../course';
+import { ForumService } from '../forum.service';
+import { ForumMessage } from '../forum.message';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -7,9 +9,15 @@ import { Course } from '../course';
 })
 export class ForumComponent implements OnInit {
 @Input() course: Course;
-  constructor() { }
-
+messages: ForumMessage[];
+  constructor(private forumService: ForumService) { 
+  
+  }
   ngOnInit(): void {
+  this.messages = this.forumService.getMessages(this.course.name);
   }
 
+   ngOnChanges(changes: SimpleChanges) {
+   this.messages = this.forumService.getMessages(this.course.name);
+   }
 }

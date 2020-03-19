@@ -1,5 +1,8 @@
-
-                <p>
-                    Le forum de cours de {{course.name}}
-                </p>
-                
+<h3> Forum du cours de {{course.name}} </h3>
+<ul class="pure-menu-list">
+    <span class="pure-menu-heading">Post:</span>
+  <li class="pure-menu-item" *ngFor="let message of messages" >
+    <span><a href="#" class="pure-menu-link label-text"  >{{message.author}} : {{message.content}} : {{message.timestamp}} : vote : {{message.vote}}</a>  </span> 
+    
+  </li>
+</ul>

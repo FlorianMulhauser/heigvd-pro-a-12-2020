@@ -18,8 +18,8 @@
   <div *ngIf="selectedCourse" >
  <app-course-detail  [course]=selectedCourse ></app-course-detail>
 </div>
- <div *ngIf="selectedCourse" >
- <app-forum  [course]=selectedCourse ></app-forum>
+             <div *ngIf="selectedCourse" >
+ <app-chat [course]=selectedCourse ></app-chat>
 </div>
   
 </div>
@@ -27,9 +27,11 @@
  <div id="main" class="pure-u-1">
  <div class="email-content-body">
             
-             <div *ngIf="selectedCourse" >
- <app-chat [course]=selectedCourse ></app-chat>
+
+<div *ngIf="selectedCourse" >
+ <app-forum  [course]=selectedCourse ></app-forum>
 </div>
+
 </div>
 
 <script src="https://yui-s.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
