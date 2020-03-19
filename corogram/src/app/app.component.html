@@ -8,19 +8,27 @@
   <div id="nav" class="pure-u">
    
      <div class="nav-inner">
-      <app-courses></app-courses>
+      <app-courses (selectedCourseChanged)="selectCourse($event)"></app-courses>
+
     </div>
   </div>
 
 
 <div id="list" class="pure-u-1">
-  <app-chat></app-chat>
+  <div *ngIf="selectedCourse" >
+ <app-course-detail  [course]=selectedCourse ></app-course-detail>
+</div>
+ <div *ngIf="selectedCourse" >
+ <app-forum  [course]=selectedCourse ></app-forum>
+</div>
+  
 </div>
 
  <div id="main" class="pure-u-1">
  <div class="email-content-body">
-  
-             <app-forum></app-forum>
+            
+             <div *ngIf="selectedCourse" >
+ <app-chat [course]=selectedCourse ></app-chat>
 </div>
 </div>
 

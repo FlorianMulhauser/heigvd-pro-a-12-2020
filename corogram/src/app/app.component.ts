@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Course } from './course';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'corogram';
+  selectedCourse: Course;
+  selectCourse(course: Course) {
+  	this.selectedCourse = course;
+  }
 }

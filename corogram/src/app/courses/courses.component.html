@@ -5,16 +5,17 @@
     /* Or set the width explicitly: */
     /* width: 10em; */
 }
-</style>
 
+
+
+</style>
 <div class="pure-menu custom-restricted-width">
 <ul class="pure-menu-list">
 	<span class="pure-menu-heading">COURSES</span>
   <li class="pure-menu-item" *ngFor="let course of courses" (click)="selectCourse(course)">
-    <span><a href="#" class="pure-menu-link"  >{{course.name}}</a></span> 
+    <span><a href="#" class="pure-menu-link label-text"  >{{course.name}}</a>  </span> 
+    
   </li>
 </ul>
 </div>
-<div id="list" class="pure-u-1">
-  <app-course-detail [course]=selectedCourse ></app-course-detail>
-</div>
+
