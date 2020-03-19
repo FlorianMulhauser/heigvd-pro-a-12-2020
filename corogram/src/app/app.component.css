@@ -245,7 +245,7 @@ a {
         bottom: 0;
         left: 150px;
         overflow: auto;
-        width: auto; /* so that it's not 100% */
+        width: 100%; /* so that it's not 100% */
     }
 
 }

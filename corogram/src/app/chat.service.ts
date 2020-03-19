@@ -31,7 +31,7 @@ export class ChatService {
     currentUser.fetchMultipartMessages({
   roomId: currentUser.rooms[0].id,
   direction: 'older',
-  limit: 10,
+  limit: 100,
 })
   .then(messages => {
 
@@ -75,7 +75,7 @@ export class ChatService {
 this.currentUser.sendSimpleMessage({
   text: message.content,
   roomId: this.currentUser.rooms[0].id
-  
+
 });
 
   }
