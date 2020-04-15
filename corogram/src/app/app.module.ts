@@ -8,6 +8,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { ChatComponent } from './chat/chat.component';
 import { ForumComponent } from './forum/forum.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { ForumComponent } from './forum/forum.component';
     CoursesComponent,
     CourseDetailComponent,
     ChatComponent,
-    ForumComponent
+    ForumComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
