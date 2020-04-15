@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Erreur connues 
+* ng serve give this error : "Cannot find module '@angular-devkit/build-angular/package.json" -> https://stackoverflow.com/questions/50333003/could-not-find-module-angular-devkit-build-angular
