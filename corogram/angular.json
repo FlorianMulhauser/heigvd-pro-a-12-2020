@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "corogram": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "corogram"
+    }
+  },
+  "defaultProject": "corogram",
+  "cli": {
+    "analytics": "d7c1bac8-34ed-4024-a93a-367ff25a92e2"
+  }
 }

@@ -1,56 +1,20 @@
-<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+<div *ngIf="logged; else elseTemplate">
+<app-home></app-home>
+</div>
 
-
-<!-- test pure  -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<div id="layout" class="content pure-g">
-  <div id="nav" class="pure-u">
-   
-     <div class="nav-inner">
-      <app-courses (selectedCourseChanged)="selectCourse($event)"></app-courses>
-
-    </div>
+<ng-template #elseTemplate>
+  <div>
+    <app-login></app-login>
   </div>
+</ng-template>
 
 
-<div id="list" class="pure-u-1">
-  <div *ngIf="selectedCourse" >
- <app-course-detail  [course]=selectedCourse ></app-course-detail>
-</div>
-             <div *ngIf="selectedCourse" >
- <app-chat [course]=selectedCourse ></app-chat>
-</div>
-  
-</div>
 
- <div id="main" class="pure-u-1">
- <div class="email-content-body">
-            
 
-<div *ngIf="selectedCourse" >
- <app-forum  [course]=selectedCourse ></app-forum>
-</div>
 
-</div>
 
-<script src="https://yui-s.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
-<script>
-    YUI().use('node-base', 'node-event-delegate', function (Y) {
 
-        var menuButton = Y.one('.nav-menu-button'),
-            nav        = Y.one('#nav');
 
-        // Setting the active class name expands the menu vertically on small screens.
-        menuButton.on('click', function (e) {
-            nav.toggleClass('active');
-        });
-
-        // Your application code goes here...
-
-    });
-</script>
-<router-outlet></router-outlet>
 
 
 

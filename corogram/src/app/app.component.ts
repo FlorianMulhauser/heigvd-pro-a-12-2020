@@ -7,8 +7,11 @@ import { Course } from './course';
 })
 export class AppComponent {
   title = 'corogram';
-  selectedCourse: Course;
-  selectCourse(course: Course) {
-  	this.selectedCourse = course;
+
+  public logged:boolean;
+
+  constructor() {
+    this.logged = false;
   }
+  ngOnInit() {}
 }
