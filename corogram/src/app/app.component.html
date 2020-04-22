@@ -1,9 +1,11 @@
 <div *ngIf="logged; else elseTemplate">
 <app-home></app-home>
+
 </div>
 
 <ng-template #elseTemplate>
   <div>
+  	<button (click)="setLog()">bypassLogin</button>
     <app-login></app-login>
   </div>
 </ng-template>

@@ -10,8 +10,19 @@ export class AppComponent {
 
   public logged:boolean;
 
+
+
+
   constructor() {
     this.logged = false;
   }
+
+
+
+  setLog() {
+    this.logged = true;
+
+  }
+
   ngOnInit() {}
 }

@@ -1,4 +1,4 @@
-<form action="action_page.php" method="post">
+<form action="logged" method="post">
 
   <div class="container">
     <label for="uname"><b>Username</b></label>
@@ -9,7 +9,7 @@
 
     <button type="submit">Login</button>
     <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
+      <input type="checkbox" checked="checked" name="remember" (click)="setLog()"> Remember me
     </label>
   </div>
 

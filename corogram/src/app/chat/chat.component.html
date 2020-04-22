@@ -10,7 +10,7 @@
  <div class="container" *ngFor="let message of messages">
   <b>{{message.author}}</b>
   <p>{{message.content}}</p>
-  <span class="time-right">{{message.timestamp}}</span>
+  <span class="time-right">{{message.timestamp}} {{message.tag}}</span>
 </div>
 <div>
 <form class="pure-form fixed-to-bottom" >

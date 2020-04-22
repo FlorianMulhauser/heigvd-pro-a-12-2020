@@ -2,9 +2,10 @@
 
 <h3> Forum du cours de {{course.name}} </h3>
 
+<div *ngIf="messages.length > 0 ; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
 
-
- <div class="container" *ngFor="let message of messages">
+<div class="container" *ngFor="let message of messages">
     <span class="message-title"> {{message.title}} </span>
   par <b>{{message.author}}</b>
   <p>{{message.content}}</p>
@@ -12,6 +13,6 @@
   <span class="time-left"> {{message.vote}} </span>
 </div>
 
+</ng-template>
 
-
-
+<ng-template #elseBlock>Hmm... looks like there's nothing here. Yet</ng-template>
