@@ -10,6 +10,7 @@ import { ChatComponent } from './chat/chat.component';
 import { ForumComponent } from './forum/forum.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -23,6 +24,7 @@ import { HomeComponent } from './home/home.component';
     ForumComponent,
     LoginComponent,
     HomeComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

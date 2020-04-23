@@ -26,7 +26,7 @@ name : String;
 
   sendMessage(message: String) {
   	
-  console.log(this.course.name);
+
   this.chatService.sendMessage({
   	id: 0,
 	author: "jean mich",

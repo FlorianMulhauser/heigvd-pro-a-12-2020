@@ -1,22 +1,5 @@
-<div *ngIf="logged; else elseTemplate">
-<app-home></app-home>
-
-</div>
-
-<ng-template #elseTemplate>
-  <div>
-  	<button (click)="setLog()">bypassLogin</button>
-    <app-login></app-login>
-  </div>
-</ng-template>
-
-
-
-
-
-
-
-
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
 
 
 

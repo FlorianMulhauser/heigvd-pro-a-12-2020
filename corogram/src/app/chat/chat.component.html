@@ -7,7 +7,7 @@
 
 
 
- <div class="container" *ngFor="let message of messages">
+ <div  #scrollable class="container" *ngFor="let message of messages">
   <b>{{message.author}}</b>
   <p>{{message.content}}</p>
   <span class="time-right">{{message.timestamp}} {{message.tag}}</span>
