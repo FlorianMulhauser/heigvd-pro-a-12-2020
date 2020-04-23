@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 // pour les animations 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ForgotComponent } from './forgot/forgot.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     HomeComponent,
     PageNotFoundComponent,
+    ForgotComponent,
   ],
   imports: [
     BrowserModule,
