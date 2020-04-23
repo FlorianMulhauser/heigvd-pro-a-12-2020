@@ -57,3 +57,8 @@
         width: 100%;
 
     }
+
+    .centered {
+  width: 95%;
+  margin: 0 auto;
+}

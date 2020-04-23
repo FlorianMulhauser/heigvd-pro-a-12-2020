@@ -6,7 +6,10 @@ body {
   color: #333;
 }
 
-
+.centered {
+  width: 95%;
+  margin: 0 auto;
+}
 
 a {
   text-decoration: none;
