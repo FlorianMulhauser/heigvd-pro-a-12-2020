@@ -1,3 +1,5 @@
+
+
 <div class="centered">
   <h1> Bienvenue sur Corogram ! </h1>
 <form class="pure-form pure-form-aligned">
@@ -24,9 +26,13 @@
                 <input id="cb" type="checkbox"> Remember me
             </label>
 
-            <button  (click)="login()" type="button" class="pure-button pure-button-primary"  >Login</button>
+            <button [@animationButton]="animation ? 's1' : 's2' " (click)="login()"  type="button" class="pure-button pure-button-primary"  >Login</button>
             <span class="pure-form-message-inline">Forgot <a class="pure-form-link" href="/forgot"> Password </a>?</span>
         </div>
     </fieldset>
 </form>
+<div class = "centered">
+<div [@animationLoadingBar]="animation ? 's1' : 's2'" class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </div>
+</div>
+
