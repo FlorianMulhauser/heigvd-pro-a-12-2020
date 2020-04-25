@@ -11,7 +11,7 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
 
 * `ChatMessage`: Object JSON sous forme 
 
-  ```json
+  ```typescript
   {
   	id: number; # id unique du ChatMessage
   	author: String; # id unique de l'auteur du message
@@ -25,7 +25,7 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
 
 * `ForumMessage`: 
 
-  ```json
+  ```typescript
   {
   	id: number; # id unique du ForumMessage
   	author: String; #id unique de l'auteur du message
@@ -43,7 +43,7 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
 
   Sert à recevoir et échanger des information sur les cours auquel l’utilisateur est inscrit. 
 
-  ```json
+  ```typescript
   {
       id: number; # id unique qui permet d'identifier la classe (du cours donné)
       name: String; # le nom complet p.ex "Programmation Concurrente 2020"
@@ -55,7 +55,7 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
 
   Sert à définir le statut d’un utilisateur afin de déterminer ses droits. 
 
-  ```json
+  ```typescript
   {
   	id: number; #id unique de l'utilisateur
       name: String; # nom complet de l'utilisateur
