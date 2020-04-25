@@ -73,11 +73,7 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
 
   #### Partie Authentification
 
-  A definir: 
-
-  [Bon lien sur un systeme d’authentification avec angular et JWT]: https://blog.angular-university.io/angular-jwt-authentication/
-
-  ​	
+  A definir: [bon lien sur l'authentification avec angular et JWT ](https://blog.angular-university.io/angular-jwt-authentication/)
 
 ### TODO : Definir comment le backend et la GUI interagissent (http etc.. )
 
