@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Course } from '../course';
-import { ChatService } from '../chat.service';
-import { ChatMessage } from '../chat.message';
+import { Course } from '../courses/course';
+import { ChatService } from './chat.service';
+import { ChatMessage } from './chat.message';
 
 
 @Component({

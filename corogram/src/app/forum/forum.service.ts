@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ForumMessage } from './forum.message';
-import { FORUM_MESSAGES } from './mock-forum';
+import { FORUM_MESSAGES } from '../mock-forum';
 
 @Injectable({
   providedIn: 'root'

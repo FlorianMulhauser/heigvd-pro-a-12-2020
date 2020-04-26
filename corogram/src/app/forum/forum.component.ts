@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges ,SimpleChanges} from '@angular/core';
-import { Course } from '../course';
-import { ForumService } from '../forum.service';
-import { ForumMessage } from '../forum.message';
+import { Course } from '../courses/course';
+import { ForumService } from './forum.service';
+import { ForumMessage } from './forum.message';
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
