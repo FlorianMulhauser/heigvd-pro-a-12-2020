@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ChatMessage } from './chat.message';
-import {CHAT_MESSAGES} from './mock-chat';
+import {CHAT_MESSAGES} from '../mock-chat';
 
 
 import { ChatManager, TokenProvider, User } from '@pusher/chatkit-client'

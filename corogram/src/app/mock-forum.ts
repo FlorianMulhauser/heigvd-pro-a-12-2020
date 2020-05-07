@@ -1,4 +1,4 @@
-import { ForumMessage } from './forum.message';
+import { ForumMessage } from './forum/forum.message';
 
 export const FORUM_MESSAGES: ForumMessage[] = [
   { id: 1,

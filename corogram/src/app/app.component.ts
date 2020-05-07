@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Course } from './course';
+import { Course } from './courses/course';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

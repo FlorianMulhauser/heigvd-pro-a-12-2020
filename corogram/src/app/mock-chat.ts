@@ -1,4 +1,4 @@
-import { ChatMessage } from './chat.message';
+import { ChatMessage } from './chat/chat.message';
 
 export const CHAT_MESSAGES: ChatMessage[] = [
   { id: 1,
