@@ -5,7 +5,8 @@ import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {LoginGuardGuard}  from './auth/login-guard.guard';
-import {ForgotComponent} from './forgot/forgot.component'
+import {ForgotComponent} from './forgot/forgot.component';
+import {CourseManagementComponent} from './admin/course-management/course-management.component';
 
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [LoginGuardGuard],},
   { path: 'forgot', component: ForgotComponent},
+  {path: 'management', component: CourseManagementComponent },
   { path: '**', component: LoginComponent  }, // wildcard componant 
   
 

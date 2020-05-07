@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotComponent } from './forgot/forgot.component';
+import { CourseManagementComponent } from './admin/course-management/course-management.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ForgotComponent } from './forgot/forgot.component';
     HomeComponent,
     PageNotFoundComponent,
     ForgotComponent,
+    CourseManagementComponent,
   ],
   imports: [
     BrowserModule,
