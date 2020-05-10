@@ -32,7 +32,8 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
   	title: String; #titre du ForumMessage
   	content: String;# contenu du post
   	timestamp: String;# heure exacte du message au format __ A DEFINIR __  
-  	vote: number; # nombre de vote (positif ou negatif)
+  	upVote: number; # nombre de votes positifs
+    downVote: number; # nombre de votes négatifs
   	course_id: String; # Permet d'identifier a quel cours ce message appartient
   }
   ```
