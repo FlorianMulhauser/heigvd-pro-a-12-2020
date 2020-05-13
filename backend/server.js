@@ -1,45 +1,47 @@
-// server.js
-console.log('May Node be with you')
+var express = require('express'),
+  app = express(),
+  port = process.env.PORT || 3000,
+  mongoose = require('mongoose'),
+  bodyParser = require('body-parser');
+  Course = require('./api/models/courseModel') // load model here
+// suivi tutoriel : https://www.codementor.io/@olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
 
-const express = require('express');
-const app = express();
-const bodyParser= require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }))
+// mongoose instance connection url connection
+mongoose.Promise = global.Promise;
 
-
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://test_node_js:R9Zspp9anLGBk9Ik@progroupa12-f3mld.gcp.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-client.connect(err => {
-  const collection = client.db("pro").collection("pro");
-  
-
-
-  app.post('/quotes', (req, res) => {
- 	console.log(req.body)
- 	collection.insertOne(req.body).then(result => {
-      res.redirect('/');
-    })
-    .catch(error => console.error(error))
-})
-
-  app.listen(3000, function() {
-  console.log('listening on 3000')
-})
+//to handle exception
+mongoose.set('useNewUrlParser', true); // remove deprecated warning of url string to connect
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 
 
+const uri = "mongodb+srv://test_node_js:mZFhIBjco2JR7xqX@progroupa12-f3mld.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const connectDB = async () => {
+  await mongoose.connect(uri, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  });
+  console.log('Database connected');
+};
 
+connectDB();
 
-app.get('/', (req, res) => {
-  collection.find().toArray()
-    .then(results => {
-      console.log(results)
-    })
-    .catch(error => console.error(error))
-})
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 
-  //client.close();
+var routes = require('./api/routes/courseRoutes'); //importing route
+routes(app); //register the route
+
+
+app.listen(port);
+
+
+console.log('todo list RESTful API server started on: ' + port);
+
+// if wrong route entered 
+app.use(function(req, res) {
+  res.status(404).send({url: req.originalUrl + ' not found'})
 });
