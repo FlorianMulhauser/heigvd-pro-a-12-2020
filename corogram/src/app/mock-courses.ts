@@ -8,4 +8,5 @@ export const COURSES: Course[] = [
   { id: 15, name: 'CRY' ,  description:'cours de crypto 2020'},
   { id: 16, name: 'BDR' , description:'cours de base de donnée relationnelle 2020'},
   { id: 17, name: 'ANA',  description:'cours de analyse 2020' },
+  { id: 18, name: 'MDR',  description:'cours de test' },
 ];

@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgotComponent } from './forgot/forgot.component';
 import { CourseManagementComponent } from './admin/course-management/course-management.component';
 
+// pour les requetes http 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,13 @@ import { CourseManagementComponent } from './admin/course-management/course-mana
     PageNotFoundComponent,
     ForgotComponent,
     CourseManagementComponent,
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

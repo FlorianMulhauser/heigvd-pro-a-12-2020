@@ -7,11 +7,11 @@ var CourseShema = new Schema({
       type: Number,
       required: 'Course ID required'
     },
-    name: {
+    description: {
       type:String, 
       required: 'Course name required'
     },
-    shortName: {
+    name: {
       type:String, 
       required: 'Course shortName required'
     },

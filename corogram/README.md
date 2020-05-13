@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
+
+
+## Pour la communication avec le backend dans les différents services 
+
+Suivre ce tuto : https://angular.io/guide/http
+
+## Pour run Corogram : 
+
+`ng serve --proxy-config proxy.conf.json` 
+
+Ce fichier `proxy.conf.json` permet de rediriger les requetes vers `/api/` vers `localhost:3000`  ou le serveur node tourne. Ainsi si on déploie vraiment on peut adapter cela vers une “vraie” addresse.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

@@ -78,3 +78,6 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
 
 ### TODO : Definir comment le backend et la GUI interagissent (http etc.. )
 
+Lien utile : 
+
+Sur JWT mangodb et angular : https://developer.okta.com/blog/2019/09/11/angular-mongodb
