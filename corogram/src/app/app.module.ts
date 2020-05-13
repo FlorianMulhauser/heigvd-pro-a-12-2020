@@ -21,6 +21,10 @@ import { CourseManagementComponent } from './admin/course-management/course-mana
 // pour les requetes http 
 import { HttpClientModule } from '@angular/common/http';
 
+
+// pour les formulaire reactif..formulaire
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
