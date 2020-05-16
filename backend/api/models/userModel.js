@@ -20,6 +20,14 @@ var UserSchema = new Schema({
     password_hash: {
       type: String,
       required: 'an user need a password'
+    },
+    password_salt: {
+      type: String,
+      required: 'salt is important !'
+    },
+    password_hashing_alg: {
+      type: String,
+      required: 'in case we change alg'
     }
     
 });
