@@ -43,8 +43,6 @@ exports.update_a_course = function(req, res) {
 
 
 exports.delete_a_course = function(req, res) {
-
-
   Course.remove({
     _id: req.params.courseId
   }, function(err, course) {
