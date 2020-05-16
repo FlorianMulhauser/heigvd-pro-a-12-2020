@@ -8,7 +8,8 @@
 <div class="container" *ngFor="let message of messages">
     <span class="message-title"> {{message.title}} </span>
   par <b>{{message.author}}</b>
-  <p>{{message.content}}</p>
+  <p>{{message.content}} <button class="delete" title="delete hero"
+      (click)="deleteMessage(message)">X</button></p>
   <span class="time-right">{{message.timestamp}}</span>
   <span class="time-left"> {{message.vote}} </span>
 </div>
@@ -16,3 +17,38 @@
 </ng-template>
 
 <ng-template #elseBlock>Hmm... looks like there's nothing here. Yet</ng-template>
+	
+
+
+<div class="card #fafafa grey lighten-5">
+  <div class="row">
+  	
+    <form class="col s12" [formGroup]="form" (ngSubmit)="submitForm()">
+
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="icon_prefix2" class="materialize-textarea" formControlName="title"></textarea>
+          <label for="icon_prefix2">Subject</label>
+        </div>
+      </div>
+
+       <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="icon_prefix2" class="materialize-textarea" formControlName="content"></textarea>
+          <label for="icon_prefix2">Content</label>
+        </div>
+      </div>
+      <div class="row">
+         <div class="input-field col s3">
+        <button class="btn waves-effect waves-light"  name="action">Send
+    <i class="material-icons right">send</i>
+  </button>
+</div>
+</div>
+    </form>
+</div>
+
+ 
+</div>

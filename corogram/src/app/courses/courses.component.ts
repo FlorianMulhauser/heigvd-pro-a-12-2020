@@ -11,11 +11,9 @@ export class CoursesComponent implements OnInit {
   selectedCourse: Course;
   @Output() selectedCourseChanged = new EventEmitter<Course>();
   constructor(private courseService: CourseService) { 
-  this.courseService.getCourses().subscribe((data: Course[]) => this.courses = data);
-  
   }
   ngOnInit(): void {
-  
+  this.courseService.getCourses().subscribe((data: Course[]) => this.courses = data);
   }
   selectCourse(course: Course) { this.selectedCourse = course;
   this.selectedCourseChanged.emit(course);

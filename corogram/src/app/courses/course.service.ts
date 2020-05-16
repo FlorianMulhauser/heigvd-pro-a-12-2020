@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'; // requete
 import { Observable, throwError, of } from 'rxjs'; // observable 
 import { catchError, retry } from 'rxjs/operators'; // gerer les probleme http
 
-//header pour gerer les tokens plus tard
+//header pour gerer les tokens plus tard todo a mettre dans request interceptor
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -41,7 +41,7 @@ export class CourseService {
     return this.http.delete(this.courseUrl+"/"+course._id).pipe(catchError(this.handleError('deleteCourse', course)));
   }
 
-
+//todo export in different service /class (duplicate code)
   private handleError<T>(operation = 'operation', result?: T) {
   return (error: any): Observable<T> => {
 

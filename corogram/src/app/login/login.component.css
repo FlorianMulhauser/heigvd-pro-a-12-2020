@@ -1,6 +1,6 @@
 .centered {
-	height: 35%;
-	width: 50%;
+	height: 50%;
+	width: 80%;
   margin: 0 auto;
   z-index: 5;
   display: block;
@@ -62,4 +62,5 @@
     transform: rotate(360deg);
   }
 }
+
 

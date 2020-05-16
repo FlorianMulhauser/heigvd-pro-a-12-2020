@@ -3,10 +3,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var CourseShema = new Schema({
-    id: {
-      type: Number,
-      required: 'Course ID required'
-    },
     description: {
       type:String, 
       required: 'Course name required'

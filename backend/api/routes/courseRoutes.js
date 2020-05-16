@@ -12,4 +12,5 @@ module.exports = function(app) {
     .get(course.read_a_course)
     .put(course.update_a_course)
     .delete(course.delete_a_course);
+
 };

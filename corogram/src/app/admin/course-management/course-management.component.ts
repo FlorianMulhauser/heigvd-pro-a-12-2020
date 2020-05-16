@@ -15,7 +15,6 @@ courses: Course[];
   	this.form = this.fb.group({
       name: [''],
       description: [''],
-      id: []
     })
 
     this.courseService.getCourses().subscribe((data: Course[]) => this.courses = data);
@@ -27,7 +26,10 @@ courses: Course[];
   }
   submitForm() {
   	console.log(this.form.value);
-    this.courseService.addCourse(this.form.value).subscribe((data) => this.courses.push(data));
+    this.courseService.addCourse(this.form.value).subscribe((data) =>  {
+     if(data._id != null)
+     this.courses.push(data)
+    } );
   }
 
    deleteCourse(course: Course) { 

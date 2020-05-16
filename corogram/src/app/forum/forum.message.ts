@@ -1,9 +1,10 @@
 export interface ForumMessage {
-	id: number;
+	_id: String;
 	author: String;
 	title: String;
 	content: String;
 	timestamp: String; 
-	vote: number;
+	upVote: number;
+	downVote: number;
 	tag: String;
 }

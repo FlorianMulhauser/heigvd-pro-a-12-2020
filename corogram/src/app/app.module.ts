@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 // pour les formulaire reactif..formulaire
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]
