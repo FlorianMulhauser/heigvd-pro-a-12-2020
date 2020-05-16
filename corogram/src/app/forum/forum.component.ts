@@ -17,11 +17,14 @@ form: FormGroup;
       title: [''],
       content: [''],
       course_id: [''],
-      author: ['']
+      author: [''],
+      upVote: 0,
+      downVote: 0,
     });
   }
   ngOnInit(): void {
   this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = data);
+
   }
 
    ngOnChanges(changes: SimpleChanges) {
@@ -30,6 +33,7 @@ form: FormGroup;
 
 
    submitForm() {
+     console.log(this.messages);
     this.form.patchValue({course_id:this.course._id});
     this.form.patchValue({author:"to change"});
     this.forumService.addMessage(this.form.value).subscribe((data) =>  {
@@ -45,5 +49,13 @@ form: FormGroup;
       this.messages = this.messages.filter(c => c !== forumMessage) 
     });
 
+  }
+  upVote(forumMessage: ForumMessage) {
+    forumMessage.upVote++;
+   // this.forumService.upVote(forumMessage);
+  }
+   downVote(forumMessage: ForumMessage) {
+     forumMessage.downVote++;
+   //  this.forumService.downVote(forumMessage);
   }
 }

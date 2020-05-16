@@ -5,15 +5,34 @@
 <div *ngIf="messages.length > 0 ; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>
 
-<div class="container" *ngFor="let message of messages">
-    <span class="message-title"> {{message.title}} </span>
-  par <b>{{message.author}}</b>
-  <p>{{message.content}} <button class="delete" title="delete hero"
-      (click)="deleteMessage(message)">X</button></p>
-  <span class="time-right">{{message.timestamp}}</span>
-  <span class="time-left"> {{message.vote}} </span>
+<div class="row">
+
+<div class="card #ffcc80 orange lighten-3" *ngFor="let message of messages">
+  <div class="card-content"> 
+    <div class="card-title "> {{message.title}} 
+  par <b>{{message.author}}</b></div>
+   <p> {{message.content}}</p>
+   
+   <div class="score">
+  <b class="scorepositive">{{message.upVote}} </b><b class="scorenegative">{{message.downVote}} </b>
 </div>
 
+
+
+  <div class="card-action">
+  <span class="time-right">{{message.timestamp}}</span>
+  <span class="time-left "> </span>
+   <span class="time-left "></span>
+   <div class="command"> 
+    <i class="small material-icons mybutton" (click)="deleteMessage(message)">close</i>
+    <i class="small material-icons mybutton" (click)="upVote(message)">expand_less</i>
+    <i class="small material-icons mybutton" (click)="downVote(message)">expand_more</i>
+   </div>
+   
+</div>
+</div>
+</div>
+</div>
 </ng-template>
 
 <ng-template #elseBlock>Hmm... looks like there's nothing here. Yet</ng-template>

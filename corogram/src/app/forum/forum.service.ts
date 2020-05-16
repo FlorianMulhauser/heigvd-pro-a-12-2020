@@ -34,6 +34,7 @@ export class ForumService {
     
     return this.http.delete(this.forumUrl+"/"+msg._id).pipe(catchError(this.handleError('deleteMsg', msg)));
   }
+  
 // todo export in different sevice /class (duplicate code)
  private handleError<T>(operation = 'operation', result?: T) {
   return (error: any): Observable<T> => {
