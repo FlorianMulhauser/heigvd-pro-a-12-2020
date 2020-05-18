@@ -20,8 +20,8 @@ helper = new JwtHelperService();
   login(userId:String, password: String)  {
     
     return this.http.post<any>('/api/login',{userId,password}).pipe(map(user => {
-      localStorage.setItem('currentUser',JSON.stringify(this.helper.decodeToken(user)));
-       console.log(this.helper.getTokenExpirationDate(user));
+      localStorage.setItem('currentUser',user);
+       
       return user;
     }));
     

@@ -1,6 +1,22 @@
 # PRO_2020
 Projet de semestre Alves, Cuénoud, Dupont, Mülhauser, Simonet
 
+
+
+## Comment lancer le projet 
+
+Dans `corogram` lancer la commande : `ng serve --proxy-config proxy.conf.json` 
+
+(sans le fichier proxy les requêtes ne sont pas fait au backend)
+
+Dans `backend` lancer `npm start` 
+
+Ensuite aller sur `http://localhost:4200/` 
+
+Pour l’instant il faut utiliser les credentials `admin` et`admin` 
+
+
+
 ## API 
 
 #### Format des contenus échangé entre les différents services.
@@ -71,10 +87,24 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
   * TODO : Définir comment un `User` peut déterminer si il est admin/prof d’un cours.
 
     Par exemple un champs : `courseGiven: number[]`qui contiendrait les id des cours auxquels l’user est admin. 
+  
+    
 
   #### Partie Authentification
-
+  
   A definir: [bon lien sur l'authentification avec angular et JWT ](https://blog.angular-university.io/angular-jwt-authentication/)
+  
+  `api/login` `POST`  
+  
+  ```json
+  { userId, passWord }
+  ```
+  
+  Renvoie un token JWT si sucessfull
+  
+  Sinon renvoie `Unauthorized` (HTML erreur 401).
+  
+  
 
 ### TODO : Definir comment le backend et la GUI interagissent (http etc.. )
 
