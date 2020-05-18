@@ -60,28 +60,35 @@ import {
   ]
 })
 export class LoginComponent{
-	 constructor(public authService: AuthService, public router: Router) {
-   this.animation = false;
-	  if (this.authService.isLoggedIn) { 
-            this.router.navigate(['/home']);
-        }
+  form: FormGroup;
+  error = '';
+  private redirectUrl = '/home';
+	 constructor(private authService: AuthService, private router: Router,private fb:FormBuilder) {
+   this.form = this.fb.group({
+     userId: ['',Validators.required],
+     password: ['',Validators.required]
+   });
+	  
 
 	 }
    animation = false;
     login() {
+      const val = this.form.value;
     this.animation = true;
-
-   this.authService.login().subscribe(() => {
-     
-      if (this.authService.isLoggedIn) {
-        const redirectUrl = '/home';
-
-        // Redirect the user
-        this.router.navigate([redirectUrl]);
+    if (val.userId && val.password) {
+   this.authService.login(val.userId,val.password).subscribe((data) => {
+ 
+        this.router.navigate([this.redirectUrl]);
+      },
+      error => {
+        this.error = error; // to be displayed on template
+        console.log(error);
+        this.animation = false;
       }
-    });
+    );
   
 	}
+}
 
 
 }

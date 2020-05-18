@@ -35,7 +35,7 @@ form: FormGroup;
    submitForm() {
      console.log(this.messages);
     this.form.patchValue({course_id:this.course._id});
-    this.form.patchValue({author:"to change"});
+    this.form.patchValue({author:JSON.parse(localStorage.getItem('currentUser')).sub});
     this.forumService.addMessage(this.form.value).subscribe((data) =>  {
       console.log(data);
      if(data._id != null)

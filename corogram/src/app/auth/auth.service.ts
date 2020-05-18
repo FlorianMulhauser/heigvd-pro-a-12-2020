@@ -1,27 +1,40 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http'; // requete
+import { Observable, of , } from 'rxjs';
+import { tap, delay, shareReplay, map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders ,HttpClientModule } from '@angular/common/http'; // requete
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  isLoggedIn = false;
-
+  
+helper = new JwtHelperService();
   // store the URL so we can redirect after logging in
   redirectUrl: string;
-
-
-  login(): Observable<boolean> {
-    return of(true).pipe(
-      delay(50),
-      tap(val => this.isLoggedIn = true)
-    );
-  }
+  constructor(private http: HttpClient) {
  
-  logout(): void {
-    this.isLoggedIn = false;
   }
+
+  login(userId:String, password: String)  {
+    
+    return this.http.post<any>('/api/login',{userId,password}).pipe(map(user => {
+      localStorage.setItem('currentUser',JSON.stringify(this.helper.decodeToken(user)));
+       console.log(this.helper.getTokenExpirationDate(user));
+      return user;
+    }));
+    
+     //share replay here
+    ;
+    // here we need to add .shareReplay or so to  prevent 
+    // user from making mutliple request
+  }
+   
+ logout() {
+   localStorage.removeItem('currentUser');
+ }
+
+    
+  
 }

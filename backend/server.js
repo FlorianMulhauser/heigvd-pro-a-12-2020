@@ -6,6 +6,7 @@ var express = require('express'),
   Course = require('./api/models/courseModel') // load model here
   ForumMessage = require('./api/models/forumMessageModel')
   User = require('./api/models/userModel')
+
 // suivi tutoriel : https://www.codementor.io/@olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
 
 // mongoose instance connection url connection
@@ -37,10 +38,12 @@ app.use(bodyParser.json());
 var routes_course = require('./api/routes/courseRoutes'); //importing route
 var routes_forumMessage = require('./api/routes/forumMessageRoutes');
 var routes_user = require('./api/routes/userRoutes');
-
+var routes_login = require('./api/routes/loginRoutes');
 routes_course(app); //register the route
 routes_forumMessage(app);
 routes_user(app);
+routes_login(app);
+
 app.listen(port);
 
 
