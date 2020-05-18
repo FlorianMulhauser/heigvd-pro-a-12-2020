@@ -3,6 +3,7 @@ import { Course } from '../courses/course';
 import { ForumService } from './forum.service';
 import { ForumMessage } from './forum.message';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { JwtHelperService } from "@auth0/angular-jwt";
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
@@ -12,6 +13,7 @@ export class ForumComponent implements OnInit {
 @Input() course: Course;
 messages: ForumMessage[];
 form: FormGroup;
+helper = new JwtHelperService();
   constructor(public fb: FormBuilder,private forumService: ForumService) { 
     this.form = this.fb.group({
       title: [''],
@@ -35,7 +37,7 @@ form: FormGroup;
    submitForm() {
      console.log(this.messages);
     this.form.patchValue({course_id:this.course._id});
-    this.form.patchValue({author:JSON.parse(localStorage.getItem('currentUser')).sub});
+    this.form.patchValue({author:"to be changed serverside"});
     this.forumService.addMessage(this.form.value).subscribe((data) =>  {
       console.log(data);
      if(data._id != null)

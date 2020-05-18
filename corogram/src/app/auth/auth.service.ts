@@ -35,6 +35,12 @@ helper = new JwtHelperService();
    localStorage.removeItem('currentUser');
  }
 
-    
+ islogged() {
+   var token = localStorage.getItem('currentUser');
+   return this.helper.isTokenExpired(token);
+ }
+ getToken() {
+   return localStorage.getItem('currentUser');
+ }   
   
 }

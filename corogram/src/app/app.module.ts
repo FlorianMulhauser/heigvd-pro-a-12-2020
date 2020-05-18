@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CourseListComponent } from './course-list/course-list.component';
@@ -11,7 +11,7 @@ import { ForumComponent } from './forum/forum.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { AuthInterceptor } from './auth/auth.interceptor';
 // pour les animations 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -49,7 +49,12 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule, 
   ],
-  providers: [],
+  providers: [
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
