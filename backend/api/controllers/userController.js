@@ -1,5 +1,5 @@
 'use strict';
-
+var crypto = require('crypto'); 
 var mongoose = require('mongoose'),
 User = mongoose.model('User'); // pour les user
 
@@ -15,10 +15,12 @@ exports.list_all_user = function(req, res) {
 
 
 exports.create_a_user = function(req, res) {
+  hashPassword(req);
   var new_user = new User(req.body);
   new_user.save(function(err, user) {
     if (err)
       res.send(err);
+   
     res.json(user);
   });
 };
@@ -51,3 +53,11 @@ exports.delete_a_user = function(req, res) {
     res.json({ message: 'User successfully deleted' });
   });
 };
+
+function hashPassword(req) {
+  req.body.password_salt = 0;
+  //req.body.password_salt = crypto.randomBytes(16);
+  //req.body.password_hash = crypto.pbkdf2Sync(req.body.password_hash,req.body.password_salt,100000,64,'sha512').toString('hex');
+  req.body.password_hash = crypto.pbkdf2Sync(req.body.password_hash,'',100000,64,'sha512').toString('hex');
+ // req.body.password_salt = new Buffer.from(req.body.password_salt,'utf8').toString('base64');
+}

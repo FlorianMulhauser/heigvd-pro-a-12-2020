@@ -23,11 +23,11 @@ var UserSchema = new Schema({
     },
     password_salt: {
       type: String,
-      required: 'salt is important !'
+      
     },
     password_hashing_alg: {
       type: String,
-      required: 'in case we change alg'
+      
     }
     
 });
