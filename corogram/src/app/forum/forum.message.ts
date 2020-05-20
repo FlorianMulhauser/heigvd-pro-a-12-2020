@@ -7,4 +7,5 @@ export interface ForumMessage {
 	upVote: number;
 	downVote: number;
 	tag: String;
+	color: String;
 }
