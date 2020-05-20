@@ -7,7 +7,7 @@
 
 <div class="row">
 
-<div class="card #ffcc80 orange lighten-3" *ngFor="let message of messages">
+<div class="card {{message.color}}" *ngFor="let message of messages">
   <div class="card-content"> 
     <div class="card-title "> {{message.title}} 
   par <b>{{message.author}}</b></div>
