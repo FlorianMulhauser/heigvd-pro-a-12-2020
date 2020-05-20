@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 // pour les formulaire reactif..formulaire
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     PageNotFoundComponent,
     ForgotComponent,
     CourseManagementComponent,
+    ModalComponent,
 
   ],
   imports: [
