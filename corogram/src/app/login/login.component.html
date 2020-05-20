@@ -2,6 +2,7 @@
 <div class="centered">
 
 
+
   <div class="centered">
    <div class="container">
     <div  class="z-depth-3 y-depth-3 x-depth-3 grey green-text lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px; margin-top: 100px; solid #EEE;">
@@ -12,7 +13,7 @@
       <div class="section"><div class="row"> <h3> Bienvenue sur Corogram ! </h3></div></div>
 
       <div class="section"><i class="mdi-alert-error red-text"></i>  </div>
-      
+
       <form [formGroup]="form">
 
       <div class='row'>
@@ -26,6 +27,7 @@
           <input class='validate' type='password'  id='password' formControlName="password" />
           <label for='password'>Password</label>
         </div>
+
         <label style='float: right;'>
 
           <a href="/forgot"><b>Forgot Password?</b></a>
@@ -35,10 +37,15 @@
       <br/>
       <div class="centered">
         <div class='row'>
-
           <button [@animationButton]="animation ? 's1' : 's2' " (click)="login()" style="margin-left:65px;"  type='button' name='btn_login' class='col  s6 btn btn-small white black-text  waves-effect z-depth-1 y-depth-1'>Login</button>
         </div>
       </div>
+
+      <app-jw-modal id="modal-errorLogin">
+        <h1>Erreur !</h1>
+        <p>type : <input type="text" [(ngModel)]="bodyText" /></p>
+        <button (click)="closeModal('modal-errorLogin');">Close</button>
+      </app-jw-modal>
 
     </div>
   </div>
