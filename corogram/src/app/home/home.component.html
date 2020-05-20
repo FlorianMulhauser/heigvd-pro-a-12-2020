@@ -4,7 +4,7 @@
 <!-- test pure  -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div id="layout" class="content pure-g">
+<div id="layout" class="content pure-g ">
   <div id="nav" class="pure-u">
 
     <div class="nav-inner">
@@ -36,19 +36,4 @@
     </div>
 
 
-    <script src="https://yui-s.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
-    <script>
-      YUI().use('node-base', 'node-event-delegate', function (Y) {
-
-        var menuButton = Y.one('.nav-menu-button'),
-          nav        = Y.one('#nav');
-
-        // Setting the active class name expands the menu vertically on small screens.
-        menuButton.on('click', function (e) {
-          nav.toggleClass('active');
-        });
-
-        // Your application code goes here...
-
-      });
-    </script>
+    
