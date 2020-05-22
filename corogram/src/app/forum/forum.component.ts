@@ -30,6 +30,8 @@ export class ForumComponent implements OnInit {
   }
 
   private updateMessage(){
+
+
     this.messages.sort( (a, b) =>{
       if ((a.upVote - a.downVote) > (b.upVote - b.downVote)) {
         return -1;
@@ -40,17 +42,19 @@ export class ForumComponent implements OnInit {
       return 0;
     });
 
+
+
   }
 
   public ngOnInit(): void {
-    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = data);
-    this.updateMessage();
-
+    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => {
+      this.messages = data;
+      this.updateMessage();
+    });
   }
 
   public ngOnChanges(changes: SimpleChanges) {
     this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = data);
-
     this.updateMessage();
   }
 
@@ -77,13 +81,17 @@ export class ForumComponent implements OnInit {
 
   public upVote(forumMessage: ForumMessage) {
     forumMessage.upVote++;
-    // this.forumService.upVote(forumMessage);
+    this.forumService.updateMessageVote(forumMessage).subscribe((data) => {
+      console.log(data);
+    });
     this.updateMessage();
   }
 
   public downVote(forumMessage: ForumMessage) {
     forumMessage.downVote++;
-    //  this.forumService.downVote(forumMessage);
+    this.forumService.updateMessageVote(forumMessage).subscribe((data) => {
+      console.log(data);
+    });
     this.updateMessage();
   }
 

@@ -33,6 +33,12 @@ export class ForumService {
     return this.http.post<ForumMessage>(this.forumUrl, fm, httpOptions).pipe(catchError(this.handleError('addForumMessage', fm)));
   }
 
+
+  public updateMessageVote(fm: ForumMessage): Observable<ForumMessage> {
+
+    return this.http.put<ForumMessage>(this.forumUrl + '/' + fm._id , fm, httpOptions).pipe(catchError(this.handleError('update_a_forum_message', fm)));
+  }
+
   public deleteMessage(msg: ForumMessage): Observable<any> {
 
     return this.http.delete(this.forumUrl + '/' + msg._id).pipe(catchError(this.handleError('deleteMsg', msg)));
