@@ -23,7 +23,13 @@ Pour stocker les user nous avons un username (unique) et nous stockons le hash d
 
 ### API
 
+### Gestion des droits
 
+Les utilisateurs peuvent avoir trois status
+
+* `superadmin` peuvent `read,write,update,delete` tout le contenu (cours/forumPost/message/user….) 
+* `admin` ont tous les droits sur les cours dont ils sont admin   (ajouter des gens à ce cours, promote admin/ message post)
+* `user`   `read`  tous les messages/post du cours , `write`  nouveau message/post du cours , `update` message envoyé par lui meme
 
 
 
