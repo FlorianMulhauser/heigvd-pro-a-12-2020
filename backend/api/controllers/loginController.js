@@ -51,6 +51,7 @@ exports.loginRoute = function(req, res)  {
 
 function hashPassword(password,salt) {
   //return crypto.pbkdf2Sync(password,new Buffer.from(salt, 'base64').toString('utf8'),100000,64,'sha512').toString('hex');
-  return crypto.pbkdf2Sync(password,'',100000,64,'sha512').toString('hex');
+  console.log(salt);
+  return crypto.pbkdf2Sync(password,salt,100000,64,'sha512').toString('hex');
 
 }
