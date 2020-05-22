@@ -29,13 +29,29 @@ export class ForumComponent implements OnInit {
     });
   }
 
+  private updateMessage(){
+    this.messages.sort( (a, b) =>{
+      if ((a.upVote - a.downVote) > (b.upVote - b.downVote)) {
+        return -1;
+      }
+      if ((a.upVote - a.downVote) < (b.upVote - b.downVote)) {
+        return 1;
+      }
+      return 0;
+    });
+
+  }
+
   public ngOnInit(): void {
     this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = data);
+    this.updateMessage();
 
   }
 
   public ngOnChanges(changes: SimpleChanges) {
     this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = data);
+
+    this.updateMessage();
   }
 
   public submitForm() {
@@ -62,11 +78,13 @@ export class ForumComponent implements OnInit {
   public upVote(forumMessage: ForumMessage) {
     forumMessage.upVote++;
     // this.forumService.upVote(forumMessage);
+    this.updateMessage();
   }
 
   public downVote(forumMessage: ForumMessage) {
     forumMessage.downVote++;
     //  this.forumService.downVote(forumMessage);
+    this.updateMessage();
   }
 
 }
