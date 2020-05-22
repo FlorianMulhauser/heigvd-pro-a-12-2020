@@ -31,7 +31,15 @@ Les utilisateurs peuvent avoir trois status
 * `admin` ont tous les droits sur les cours dont ils sont admin   (ajouter des gens à ce cours, promote admin/ message post)
 * `user`   `read`  tous les messages/post du cours , `write`  nouveau message/post du cours , `update` message envoyé par lui meme
 
+Ces droits sont verifié dans le backend selon le shéma suivant :
 
+Le backend reçoit une requête `http`  avec le `token` JWT (chaque requête contient le token, sauf celle pour s’authentifier, c’est le rôle de `http_interceptor` de l’app Angular de joindre ce token à chaque requête). 
+
+Après avoir verifié que le token est valid (c.f validation backend), le backend dispose déjà de l’user dont provient la requête, ainsi il la compute uniquement si l’user à les bons droits. 
+
+En cas de succès le résultat de la requête est retourné.
+
+En cas d’échec pour cause de mauvais droit l’erreur 401 est retourné. (`unauthorized`)
 
 ## Base de donnée
 
