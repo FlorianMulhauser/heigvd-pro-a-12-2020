@@ -6,8 +6,7 @@ import {ModalService} from './modal-service.service';
 @Component({
   selector: 'app-jw-modal',
   templateUrl: 'modal.component.html',
-  // tslint:disable-next-line:object-literal-sort-keys
-  styleUrls: ['modal.component.less'],
+  styleUrls: ['modal.component.css'],
   encapsulation: ViewEncapsulation.None,
 
 })
@@ -17,6 +16,7 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   constructor(private modalService: ModalService, private el: ElementRef) {
     this.element = el.nativeElement;
+    this.element.style.display = 'none';
   }
 
   ngOnInit(): void {

@@ -86,12 +86,7 @@ export class LoginComponent implements OnInit {
     this.modalService.close(id);
   }
 
-  public poste() {
-    console.log('try post');
-    this.http.get<any>('https://jsonplaceholder.typicode.com/posts').subscribe(data => {
-      console.log(data);
-    });
-  }
+
 
   public login() {
     const val = this.form.value;
@@ -106,6 +101,7 @@ export class LoginComponent implements OnInit {
           this.error = error; // to be displayed on template
           console.log(error);
           this.animation = false;
+          this.openModal('custom-modal-1');
         },
       );
 
