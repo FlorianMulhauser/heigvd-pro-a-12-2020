@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Course} from '../courses/course';
 
 @Component({
@@ -9,6 +9,7 @@ import {Course} from '../courses/course';
 export class HomeComponent {
 
   public selectedCourse: Course;
+
   public selectCourse(course: Course) {
     this.selectedCourse = course;
   }

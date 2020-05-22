@@ -1,46 +1,53 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { Observable, of , } from 'rxjs';
-import { tap, delay, shareReplay, map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders ,HttpClientModule } from '@angular/common/http'; // requete
-import { JwtHelperService } from "@auth0/angular-jwt";
+import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http'; // requete
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {Observable, of} from 'rxjs';
+import {delay, map, shareReplay, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  
-helper = new JwtHelperService();
+
+  public helper = new JwtHelperService();
   // store the URL so we can redirect after logging in
-  redirectUrl: string;
+  public redirectUrl: string;
+
   constructor(private http: HttpClient) {
- 
+
   }
 
-  login(userId:String, password: String)  {
-    
-    return this.http.post<any>('/api/login',{userId,password}).pipe(map(user => {
-      localStorage.setItem('currentUser',user);
-       
+  public login(userId: string, password: string) {
+
+    return this.http.post<any>('/api/login', {userId, password}).pipe(map((user) => {
+      localStorage.setItem('currentUser', user);
+
       return user;
     }));
-    
-     //share replay here
-    ;
-    // here we need to add .shareReplay or so to  prevent 
+
+    // share replay here
+
+    // here we need to add .shareReplay or so to  prevent
     // user from making mutliple request
   }
-   
- logout() {
-   localStorage.removeItem('currentUser');
- }
 
- islogged() {
-   var token = localStorage.getItem('currentUser');
-   return this.helper.isTokenExpired(token);
- }
- getToken() {
-   return localStorage.getItem('currentUser');
- }   
-  
+  public logout() {
+    localStorage.removeItem('currentUser');
+  }
+
+  public islogged() {
+    const token = localStorage.getItem('currentUser');
+    return this.helper.isTokenExpired(token);
+  }
+
+  public getToken() {
+
+    if (localStorage.getItem('currentUser') == null) {
+      return 'tmp_User?';
+    }
+
+    return localStorage.getItem('currentUser');
+  }
+
 }

@@ -28,11 +28,13 @@ a {
   box-shadow: none;
   border-radius: 20px;
 }
+
 .primary-button {
   color: #fff;
   background: #1b98f8;
   margin: 1em 0;
 }
+
 .secondary-button {
   background: #fff;
   border: 1px solid #ddd;
@@ -58,6 +60,7 @@ a {
   background: rgb(37, 42, 58);
   text-align: center;
 }
+
 /* Show the "Menu" button on phones */
 #nav .nav-menu-button {
   display: block;
@@ -70,6 +73,7 @@ a {
 #nav.active {
   height: 80%;
 }
+
 /* Don't show the navigation items... */
 .nav-inner {
   display: none;
@@ -91,17 +95,20 @@ a {
   border: none;
   text-align: left;
 }
+
 #nav .pure-menu-link:hover,
 #nav .pure-menu-link:focus {
   background: rgb(55, 60, 90);
 }
+
 #nav .pure-menu-link {
   color: #fff;
   margin-left: 0.5em;
 }
+
 #nav .pure-menu-heading {
   border-bottom: none;
-  font-size:110%;
+  font-size: 110%;
   color: rgb(75, 113, 151);
 }
 
@@ -123,12 +130,15 @@ a {
   margin-right: 0.5em;
   border-radius: 3px;
 }
+
 .email-label-personal {
   background: #ffc94c;
 }
+
 .email-label-work {
   background: #41ccb4;
 }
+
 .email-label-travel {
   background: #40c365;
 }
@@ -140,18 +150,22 @@ a {
   border-bottom: 1px solid #ddd;
   border-left: 6px solid transparent;
 }
+
 .email-avatar {
   border-radius: 3px;
   margin-right: 0.5em;
 }
+
 .email-name,
 .email-subject {
   margin: 0;
 }
+
 .email-name {
   text-transform: uppercase;
   color: #999;
 }
+
 .email-desc {
   font-size: 80%;
   margin: 0.4em 0;
@@ -160,6 +174,7 @@ a {
 .email-item-selected {
   background: #eee;
 }
+
 .email-item-unread {
   border-left: 6px solid #1b98f8;
 }
@@ -168,6 +183,7 @@ a {
 .email-content-header, .email-content-body, .email-content-footer {
   padding: 1em 2em;
 }
+
 .email-content-header {
   border-bottom: 1px solid #ddd;
 }
@@ -175,18 +191,22 @@ a {
 .email-content-title {
   margin: 0.5em 0 0;
 }
+
 .email-content-subtitle {
   font-size: 1em;
   margin: 0;
   font-weight: normal;
 }
+
 .email-content-subtitle span {
   color: #999;
 }
+
 .email-content-controls {
   margin-top: 2em;
   text-align: right;
 }
+
 .email-content-controls .secondary-button {
   margin-bottom: 0.3em;
 }
@@ -206,7 +226,7 @@ a {
 
   /* Move the layout over so we can fit the nav + list in on the left */
   #layout {
-    padding-left:650px; /* "left col (nav + list)" width */
+    padding-left: 650px; /* "left col (nav + list)" width */
     position: relative;
   }
 
@@ -217,9 +237,10 @@ a {
     bottom: 0;
     overflow: auto;
   }
+
   #nav {
-    margin-left:-650px; /* "left col (nav + list)" width */
-    width:150px;
+    margin-left: -650px; /* "left col (nav + list)" width */
+    width: 150px;
     height: 100%;
   }
 
@@ -263,7 +284,7 @@ a {
   /* This will take up the entire height, and be a little thinner */
   #list {
     margin-left: -500px;
-    width:500px;
+    width: 500px;
     height: 100%;
     border-right: 1px solid #ddd;
   }

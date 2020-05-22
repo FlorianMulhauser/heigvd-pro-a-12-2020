@@ -1,26 +1,27 @@
 <div class="container">
-    <form [formGroup]="form" (ngSubmit)="submitForm()">
-        <div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Name" formControlName="name">
-        </div>
-		<div class="form-group input-group-lg">
-            <input class="form-control" placeholder="Description" formControlName="description">
-        </div>
-        
-        <div class="form-group">
-            <button class="btn btn-danger btn-block btn-lg">Create</button>
-        </div>
-    </form>
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="form-group input-group-lg">
+      <input class="form-control" placeholder="Name" formControlName="name">
+    </div>
+    <div class="form-group input-group-lg">
+      <input class="form-control" placeholder="Description" formControlName="description">
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-danger btn-block btn-lg">Create</button>
+    </div>
+  </form>
 </div>
 
 
 <div class="pure-menu custom-restricted-width">
-<ul class="pure-menu-list">
-	<span class="pure-menu-heading">Remove/Edit course</span>
-  <li class="pure-menu-item" *ngFor="let course of courses" >
-    <span>{{course.name}} : {{course.description}} <button class="delete" title="delete hero"
-      (click)="deleteCourse(course)">X</button> </span> 
-    
-  </li>
-</ul>
+  <ul class="pure-menu-list">
+    <span class="pure-menu-heading">Remove/Edit course</span>
+    <li class="pure-menu-item" *ngFor="let course of courses">
+    <span>{{course.name}} : {{course.description}}
+      <button class="delete" title="delete hero"
+              (click)="deleteCourse(course)">X</button> </span>
+
+    </li>
+  </ul>
 </div>

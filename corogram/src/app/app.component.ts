@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Course } from './courses/course';
+import {Component} from '@angular/core';
+import {Course} from './courses/course';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,21 +9,17 @@ import { Course } from './courses/course';
 export class AppComponent {
   title = 'corogram';
 
-  public logged:boolean;
-
-
-
+  public logged: boolean;
 
   constructor() {
     this.logged = false;
   }
-
-
 
   setLog() {
     this.logged = true;
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

@@ -1,45 +1,41 @@
-
-
 <h3> Forum du cours de {{course.name}} </h3>
 
 <div *ngIf="messages.length > 0 ; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>
 
-<div class="row">
+  <div class="row">
 
-<div class="card {{message.color}}" *ngFor="let message of messages">
-  <div class="card-content"> 
-    <div class="card-title "> {{message.title}} 
-  par <b>{{message.author}}</b></div>
-   <p> {{message.content}}</p>
-   
-   <div class="score">
-  <b class="scorepositive">{{message.upVote}} </b><b class="scorenegative">{{message.downVote}} </b>
-</div>
+    <div class="card {{message.color}}" *ngFor="let message of messages">
+      <div class="card-content">
+        <div class="card-title "> {{message.title}}
+          par <b>{{message.author}}</b></div>
+        <p> {{message.content}}</p>
+
+        <div class="score">
+          <b class="scorepositive">{{message.upVote}} </b><b class="scorenegative">{{message.downVote}} </b>
+        </div>
 
 
+        <div class="card-action">
+          <span class="time-right ">{{message.timestamp}}</span>
+          <div class="command">
+            <i class="small material-icons mybutton" (click)="deleteMessage(message)">close</i>
+            <i class="small material-icons mybutton" (click)="upVote(message)">expand_less</i>
+            <i class="small material-icons mybutton" (click)="downVote(message)">expand_more</i>
+          </div>
 
-  <div class="card-action">
-  <span class="time-right ">{{message.timestamp}}</span>
-   <div class="command"> 
-    <i class="small material-icons mybutton" (click)="deleteMessage(message)">close</i>
-    <i class="small material-icons mybutton" (click)="upVote(message)">expand_less</i>
-    <i class="small material-icons mybutton" (click)="downVote(message)">expand_more</i>
-   </div>
-   
-</div>
-</div>
-</div>
-</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #elseBlock>Hmm... looks like there's nothing here. Yet</ng-template>
-	
 
 
 <div class="card #fafafa grey lighten-5">
   <div class="row">
-  	
+
     <form class="col s12" [formGroup]="form" (ngSubmit)="submitForm()">
 
       <div class="row">
@@ -50,7 +46,7 @@
         </div>
       </div>
 
-       <div class="row">
+      <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">mode_edit</i>
           <textarea id="icon_prefix2" class="materialize-textarea" formControlName="content"></textarea>
@@ -58,14 +54,14 @@
         </div>
       </div>
       <div class="row">
-         <div class="input-field col s3">
-        <button class="btn waves-effect waves-light"  name="action">Send
-    <i class="material-icons right">send</i>
-  </button>
-</div>
-</div>
+        <div class="input-field col s3">
+          <button class="btn waves-effect waves-light" name="action">Send
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
     </form>
-</div>
+  </div>
 
- 
+
 </div>
