@@ -55,9 +55,10 @@ exports.delete_a_user = function(req, res) {
 };
 
 function hashPassword(req) {
-  req.body.password_salt = 0;
-  //req.body.password_salt = crypto.randomBytes(16);
-  //req.body.password_hash = crypto.pbkdf2Sync(req.body.password_hash,req.body.password_salt,100000,64,'sha512').toString('hex');
-  req.body.password_hash = crypto.pbkdf2Sync(req.body.password_hash,'',100000,64,'sha512').toString('hex');
- // req.body.password_salt = new Buffer.from(req.body.password_salt,'utf8').toString('base64');
+  
+  req.body.password_salt = crypto.randomBytes(16);
+  req.body.password_salt = new Buffer.from(req.body.password_salt).toString('base64');
+  console.log(req.body.password_salt);
+  req.body.password_hash = crypto.pbkdf2Sync(req.body.password_hash,req.body.password_salt,100000,64,'sha512').toString('hex');
+  
 }
