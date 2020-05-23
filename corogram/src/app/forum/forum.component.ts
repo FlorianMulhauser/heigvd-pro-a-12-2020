@@ -29,10 +29,10 @@ export class ForumComponent implements OnInit {
     });
   }
 
-  private updateMessage(){
+  private updateMessage(data: ForumMessage[]) {
 
 
-    this.messages.sort( (a, b) =>{
+   data.sort( (a, b) =>{
       if ((a.upVote - a.downVote) > (b.upVote - b.downVote)) {
         return -1;
       }
@@ -42,31 +42,27 @@ export class ForumComponent implements OnInit {
       return 0;
     });
 
-
+   return data;
 
   }
 
   public ngOnInit(): void {
-    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => {
-      this.messages = data;
-      this.updateMessage();
-    });
+    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
   }
 
   public ngOnChanges(changes: SimpleChanges) {
-    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = data);
-    this.updateMessage();
+    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = this.updateMessage(data));
   }
 
   public submitForm() {
     console.log(this.messages);
     this.form.patchValue({course_id: this.course._id});
-    this.form.patchValue({author: 'to be changed serverside'});
+    this.form.patchValue({author: JSON.parse(localStorage.getItem('userInfo')).name});
     this.form.patchValue({color: this.randomColorService.getColor()});
     this.forumService.addMessage(this.form.value).subscribe((data) => {
       console.log(data);
       if (data._id != null) {
-        this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = data);
+        this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = this.updateMessage(data));
       }
     });
   }
@@ -81,18 +77,14 @@ export class ForumComponent implements OnInit {
 
   public upVote(forumMessage: ForumMessage) {
     forumMessage.upVote++;
-    this.forumService.updateMessageVote(forumMessage).subscribe((data) => {
-      console.log(data);
-    });
-    this.updateMessage();
+    this.forumService.updateMessageVote(forumMessage).subscribe((data) => this.updateMessage(this.messages));
+
   }
 
   public downVote(forumMessage: ForumMessage) {
     forumMessage.downVote++;
-    this.forumService.updateMessageVote(forumMessage).subscribe((data) => {
-      console.log(data);
-    });
-    this.updateMessage();
+    this.forumService.updateMessageVote(forumMessage).subscribe((data) => this.updateMessage(this.messages));
+
   }
 
 }

@@ -30,13 +30,13 @@ export class ForumService {
   // permets de créer un cours
   public addMessage(fm: ForumMessage): Observable<ForumMessage> {
 
-    return this.http.post<ForumMessage>(this.forumUrl, fm, httpOptions).pipe(catchError(this.handleError('addForumMessage', fm)));
+    return this.http.post<ForumMessage>(this.forumUrl, fm).pipe(catchError(this.handleError('addForumMessage', fm)));
   }
 
 
   public updateMessageVote(fm: ForumMessage): Observable<ForumMessage> {
 
-    return this.http.put<ForumMessage>(this.forumUrl + '/' + fm._id , fm, httpOptions).pipe(catchError(this.handleError('update_a_forum_message', fm)));
+    return this.http.put<ForumMessage>(this.forumUrl + '/' + fm._id , fm).pipe(catchError(this.handleError('update_a_forum_message', fm)));
   }
 
   public deleteMessage(msg: ForumMessage): Observable<any> {

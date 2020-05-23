@@ -20,8 +20,13 @@ export class AuthService {
 
   public login(userId: string, password: string) {
 
+
     return this.http.post<any>('/api/login', {userId, password}).pipe(map((user) => {
       localStorage.setItem('currentUser', user);
+
+
+      this.http.get('/api/user/' + userId).subscribe((userInfo) => localStorage.setItem('userInfo', JSON.stringify(userInfo)));
+
 
       return user;
     }));
