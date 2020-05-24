@@ -1,70 +1,46 @@
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 import {ChatMessage} from './chat.message';
-import {CHAT_MESSAGES} from '../mock-chat';
 
-import {ChatManager, TokenProvider, User} from '@pusher/chatkit-client';
-
-const chatManager = new ChatManager({
-  instanceLocator: 'v1:us1:95984d78-e43e-47d8-9605-0f4c53fde0ce',
-  userId: 'userPRO1',
-  tokenProvider: new TokenProvider({url: 'https://us1.pusherplatform.io/services/chatkit_token_provider/v1/95984d78-e43e-47d8-9605-0f4c53fde0ce/token'})
-});
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  messages: ChatMessage[] = [];
-  currentUser: User;
-
-  constructor() {
-    chatManager.connect()
-      .then(currentUser => {
-        console.log('Successful connection', currentUser);
-        this.currentUser = currentUser;
-        currentUser.fetchMultipartMessages({
-          roomId: currentUser.rooms[0].id,
-          direction: 'older',
-          limit: 100,
-        })
-          .then(messages => {
-
-            // transform into our type
-            for (let message of messages) {
-              this.messages.push(
-                {
-                  id: message.senderId,
-                  author: message.sender.name,
-                  content: message.parts[0].payload.content,
-                  timestamp: message.createdAt,
-                  tag: 'RES'
-                });
-            }
-
-          })
-          .catch(err => {
-            console.log(`Error fetching messages: ${err}`);
-          });
-
-      })
-      .catch(err => {
-        console.log('Error on connection', err);
-      });
+  constructor(private http: HttpClient) {
   }
 
-  // allow to get messages
-  getMessages(course: String) {
-    return this.messages;//CHAT_MESSAGES.filter(x => x.tag == course);
+  public chatUrl = '/api/chatMessage';
+
+  public getMessages(courseId: string): Observable<ChatMessage[]> {
+    return this.http.get<ChatMessage[]>(this.chatUrl + '/' + courseId).pipe(
+      catchError(this.handleError<ChatMessage[]>('getMessages', [])));
   }
 
-  sendMessage(message: ChatMessage) {
-    console.log(message);
-    this.currentUser.sendSimpleMessage({
-      text: message.content,
-      roomId: this.currentUser.rooms[0].id
+  // permets de créer un cours
+  public addMessage(fm: ChatMessage): Observable<ChatMessage> {
+    return this.http.post<ChatMessage>(this.chatUrl, fm).pipe(catchError(this.handleError('addChatMessage', fm)));
+  }
 
-    });
+  public deleteMessage(msg: ChatMessage): Observable<any> {
+    return this.http.delete(this.chatUrl + '/' + msg._id).pipe(catchError(this.handleError('deleteMsg', msg)));
+  }
 
+// todo export in different sevice /class (duplicate code)
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
   }
 
 }

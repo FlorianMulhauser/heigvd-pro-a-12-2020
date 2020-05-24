@@ -42,7 +42,7 @@ exports.loginRoute = function(req, res)  {
          // secure for : browser will only append cookie if made over https connection
 
             const resp = {jwtBearerToken,user};
-            
+
              res.json(JSON.stringify(resp));
 		}  else {
         // send status 401 Unauthorized

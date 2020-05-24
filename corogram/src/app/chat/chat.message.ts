@@ -1,5 +1,6 @@
 export interface ChatMessage {
-  id: number;
+  _id: number;
+  course_id: String;
   author: String;
   content: String;
   timestamp: String;

@@ -8,9 +8,13 @@
     <span class="time-right">{{message.timestamp}} {{message.tag}}</span>
   </div>
   <div>
-    <form class="pure-form fixed-to-bottom">
-      <input type="text" #box (keyup)="0" id="message" class="pure-input-rounded" style="width:85%">
-      <button type="submit" class="pure-button-rounded" style="width:15%" (click)="sendMessage(box.value) ">Send
+    <form class="pure-form fixed-to-bottom" [formGroup]="formchat" (ngSubmit)="submitForm()">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea id="icon_prefix2" class="materialize-textarea" formControlName="content"></textarea>
+        <label for="icon_prefix2">Content</label>
+      </div>
+      <button type="submit" class="pure-button-rounded" style="width:15%" name="action">Send
       </button>
     </form>
   </div>
