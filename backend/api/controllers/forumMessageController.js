@@ -3,6 +3,8 @@
 var mongoose = require('mongoose'),
 ForumMessage = mongoose.model('ForumMessage'); // pour les forum mesage
 
+var User = mongoose.model('User'); // pour les user
+
 exports.list_all_forum_message = function(req, res) {
   ForumMessage.find({course_id:req.params.courseId}, function(err, forum_message) {
     if (err)
@@ -16,11 +18,16 @@ exports.list_all_forum_message = function(req, res) {
 
 exports.create_a_forum_message = function(req, res) {
   console.log(req.body);
-  var new_forum_message = new ForumMessage(req.body);
-  new_forum_message.save(function(err, forum_message) {
+  var new_form_message = new ForumMessage(req.body)
+  User.findById(new_form_message.author,function (err,user) {
     if (err)
       res.send(err);
-    res.json(forum_message);
+    new_form_message.author = user.name;
+    new_form_message.save(function(err, form_message) {
+      if (err)
+        res.send(err);
+      res.json(form_message);
+    });
   });
 };
 

@@ -39,12 +39,12 @@ export class ChatComponent implements OnInit {
 
 
     this.formchat.patchValue({course_id: this.course._id});
-    this.formchat.patchValue({author: JSON.parse(localStorage.getItem('userInfo')).name});
+    this.formchat.patchValue({author: JSON.parse(localStorage.getItem('userInfo'))._id});
 
 
 
 
-       this.chatService.addMessage(this.formchat.value).subscribe((data) => {
+    this.chatService.addMessage(this.formchat.value).subscribe((data) => {
          console.log(data);
          if (data._id != null) {
            this.chatService.getMessages(this.course._id).subscribe((datas) => this.messages = datas);

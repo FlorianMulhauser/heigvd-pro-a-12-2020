@@ -57,7 +57,7 @@ export class ForumComponent implements OnInit {
   public submitForm() {
     console.log(this.messages);
     this.form.patchValue({course_id: this.course._id});
-    this.form.patchValue({author: JSON.parse(localStorage.getItem('userInfo')).name});
+    this.form.patchValue({author: JSON.parse(localStorage.getItem('userInfo'))._id});
     this.form.patchValue({color: this.randomColorService.getColor()});
     this.forumService.addMessage(this.form.value).subscribe((data) => {
       console.log(data);
