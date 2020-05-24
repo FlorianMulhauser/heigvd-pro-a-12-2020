@@ -21,14 +21,14 @@ export class AuthService {
   public login(userId: string, password: string) {
 
 
-    return this.http.post<any>('/api/login', {userId, password}).pipe(map((user) => {
-      localStorage.setItem('currentUser', user);
+    return this.http.post<any>('/api/login', {userId, password}).pipe(map((data) => {
 
+      console.log(data);
+      localStorage.setItem('currentUser', JSON.parse(data).jwtBearerToken);
 
-      this.http.get('/api/user/' + userId).subscribe((userInfo) => localStorage.setItem('userInfo', JSON.stringify(userInfo)));
+      localStorage.setItem('userInfo', JSON.stringify(JSON.parse(data).user));
 
-
-      return user;
+      return JSON.parse(data).jwtBearerToken;
     }));
 
     // share replay here

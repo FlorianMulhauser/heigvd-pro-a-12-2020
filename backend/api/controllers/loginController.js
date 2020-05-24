@@ -40,7 +40,10 @@ exports.loginRoute = function(req, res)  {
              // send the JWT back to the user need to add http option and secure
          //httpOnly for : not accessible by javascript code (prevent some sec issue (xss etc..))
          // secure for : browser will only append cookie if made over https connection
-             res.json(jwtBearerToken);          
+
+            const resp = {jwtBearerToken,user};
+
+             res.json(JSON.stringify(resp));
 		}  else {
         // send status 401 Unauthorized
         res.sendStatus(401); 
