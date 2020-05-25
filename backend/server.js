@@ -7,7 +7,7 @@ var express = require('express'),
   ForumMessage = require('./api/models/forumMessageModel')
   User = require('./api/models/userModel')
   chatMessage = require('./api/models/chatMessageModel')
-
+  jwtHelper = require('./api/jwtHelper')
 // suivi tutoriel : https://www.codementor.io/@olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
 
 // mongoose instance connection url connection
@@ -34,6 +34,8 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// application level middleware
+app.use(jwtHelper.authenticateJWT);
 
 
 var routes_course = require('./api/routes/courseRoutes'); //importing route
@@ -55,3 +57,6 @@ console.log('todo list RESTful API server started on: ' + port);
 app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})
 });
+
+
+
