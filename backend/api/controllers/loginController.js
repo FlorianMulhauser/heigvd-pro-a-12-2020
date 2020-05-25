@@ -26,7 +26,6 @@ exports.loginRoute = function(req, res)  {
 		if(err || user == null) {
 			res.sendStatus(401);
 		} else { 
-
 				console.log(user);
 				console.log(hashPassword(password,user.password_salt));
 		if(user.password_hash == hashPassword(password,user.password_salt)) {

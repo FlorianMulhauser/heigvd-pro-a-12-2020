@@ -29,6 +29,10 @@ var ForumMessageSchema = new Schema({
     type: Date,
     default: Date.now
   }, 
+  color: {
+    type:String,
+    default: "white"
+  }
 });
 
 

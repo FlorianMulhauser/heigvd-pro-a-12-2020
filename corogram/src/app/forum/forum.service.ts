@@ -27,7 +27,7 @@ export class ForumService {
       catchError(this.handleError<ForumMessage[]>('getMessages', [])));
   }
 
-  // permets de créer un cours
+  // permets de créer un message
   public addMessage(fm: ForumMessage): Observable<ForumMessage> {
 
     return this.http.post<ForumMessage>(this.forumUrl, fm).pipe(catchError(this.handleError('addForumMessage', fm)));
