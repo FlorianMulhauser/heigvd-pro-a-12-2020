@@ -32,11 +32,12 @@ exports.loginRoute = function(req, res)  {
 		if(user.password_hash == hashPassword(password,user.password_salt)) {
 			console.log("Successfull connection from ",user.name);
 
-			const jwtBearerToken = jwt.sign({}, {key:RSA_PRIVATE_KEY, passphrase:'projet20'},  {
+			/*const jwtBearerToken = jwt.sign({}, {key:RSA_PRIVATE_KEY, passphrase:'projet20'},  {
                 algorithm: 'RS256',
                 expiresIn: 120,
                 subject: userId
-            });
+            });*/
+            const jwtBearerToken = jwt.sign({},"super_secret_string",{expiresIn:120});
              // send the JWT back to the user need to add http option and secure
          //httpOnly for : not accessible by javascript code (prevent some sec issue (xss etc..))
          // secure for : browser will only append cookie if made over https connection
@@ -54,7 +55,6 @@ exports.loginRoute = function(req, res)  {
 
 function hashPassword(password,salt) {
   //return crypto.pbkdf2Sync(password,new Buffer.from(salt, 'base64').toString('utf8'),100000,64,'sha512').toString('hex');
-  console.log(salt);
   return crypto.pbkdf2Sync(password,salt,100000,64,'sha512').toString('hex');
 
 }
