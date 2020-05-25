@@ -7,7 +7,16 @@ exports.list_all_course = function(req, res) {
   Course.find({}, function(err, course) {
     if (err)
       res.send(err);
-    res.json(course);
+
+    if(req.user.status == "admin" || req.user.status == "superadmin") {
+      res.json(course);
+    } else {
+      // only sends course that user has
+      console.log(req.user.course);
+      console.log(course)
+      course = course.filter(value => -1 !== req.user.course.indexOf(value))
+      res.json(course);
+    }
   });
 };
 

@@ -5,7 +5,9 @@ next -> prochaine fonction à executer avec la requete
 
 C'est un middleware : https://expressjs.com/fr/guide/using-middleware.html
 **/
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+var mongoose = require('mongoose'),
+User = mongoose.model('User'); // pour les user
 module.exports = {
     authenticateJWT: (req, res, next) => {
     // Le seul endroit ou on ne verifie pas le token c'est lorsque on le fournit -> donc on test si c'est ce cas
@@ -17,7 +19,8 @@ module.exports = {
 
 
     const token = req.headers.authorization;
-
+    
+    
     if (token) {
 
         jwt.verify(token, "super_secret_string", (err, user) => {
@@ -25,9 +28,12 @@ module.exports = {
                 console.log(err);
                 return res.sendStatus(403);
             }
-            // si on arrive la on peut trust le user dans le token 
+            // si on arrive la on peut trust le userId dans le token 
+            userId = jwt.decode(token).id;
+            User.findById(userId,function (err,user) {
             req.user = user;
             next();
+        });
         });
     } else {
         res.sendStatus(401);
