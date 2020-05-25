@@ -15,6 +15,11 @@ Ensuite aller sur `http://localhost:4200/`
 
 Pour l’instant il faut utiliser les credentials `admin` et`admin` 
 
+## Comment installer ?
+
+Installer `npm` (https://www.npmjs.com/)
+
+Dans `heigvd-pro-a-12-2020/backend` et `heigvd-pro-a-12-2020/corogram` lancer `npm install` 
 
 
 ## API 
