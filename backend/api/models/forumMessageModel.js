@@ -32,7 +32,11 @@ var ForumMessageSchema = new Schema({
   color: {
     type:String,
     default: "white"
+  },
+  fileName:{
+      type: String
   }
+
 });
 
 
