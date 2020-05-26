@@ -25,6 +25,7 @@ import {CourseManagementComponent} from './admin/course-management/course-manage
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormsModule} from '@angular/forms';
 import {ModalComponent} from './modal/modal.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {ModalComponent} from './modal/modal.component';
     ForgotComponent,
     CourseManagementComponent,
     ModalComponent,
+    UserManagementComponent,
 
   ],
   imports: [
