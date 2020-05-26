@@ -70,7 +70,7 @@ exports.Download_all_files = function (req, res) {
 
     let filesData = [];
     let count = 0;
-    gfs.collection('ctFiles'); // set the collection to look up into
+    gfs.collection('fs'); // set the collection to look up into
 
     gfs.files.find({}).toArray((err, files) => {
         // Error checking
@@ -93,4 +93,14 @@ exports.Download_all_files = function (req, res) {
 
 }
 
+exports.Delete_a_file = function (req, res) {
 
+    var options = {filename:req.params.filename.replace(".", "_")};
+
+    gfs.collection('fs'); // set the collection to look up into
+    gfs.remove(options, function (err) {
+        if (err) return handleError(err);
+        console.log('success');
+    });
+
+}
