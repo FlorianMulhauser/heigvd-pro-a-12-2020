@@ -10,4 +10,6 @@ module.exports = function(app) {
     app.route('/api/file/upload')
         .post(file.upload_a_file );
 
+    app.route('/api/file')
+        .get(file.Download_all_files);
 };

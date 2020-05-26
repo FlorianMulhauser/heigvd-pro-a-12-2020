@@ -18,8 +18,8 @@ export class FilesService {
     return this.uploader;
   }
 
-  public downloadFile(filename, filetype): any {
-    return this.http.get('/api/file' + filename);
+  public downloadFile(filename): any {
+    return this.http.get('/api/file/' + filename, {responseType: 'blob' as 'json'});
   }
 
   public showFileNames() {

@@ -8,4 +8,5 @@ export interface ForumMessage {
   downVote: number;
   tag: String;
   color: String;
+  fileName: String;
 }

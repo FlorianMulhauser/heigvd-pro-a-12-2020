@@ -12,6 +12,9 @@
 
         <p> {{message.content}}</p>
 
+
+
+
         <div class="score">
           <b class="scorepositive">{{message.upVote}} </b><b class="scorenegative">{{message.downVote}} </b>
         </div>
@@ -23,6 +26,11 @@
             <i class="small material-icons mybutton" (click)="deleteMessage(message)">close</i>
             <i class="small material-icons mybutton" (click)="upVote(message)">expand_less</i>
             <i class="small material-icons mybutton" (click)="downVote(message)">expand_more</i>
+            <div *ngIf="message.fileName">
+              <i class="small material-icons mybutton" (click) =  downloadFile(message.fileName)>file_download</i>
+              <b>{{message.fileName}}</b>
+            </div>
+
           </div>
 
         </div>

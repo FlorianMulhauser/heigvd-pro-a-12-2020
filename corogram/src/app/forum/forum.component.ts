@@ -1,12 +1,13 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import { FileUploader } from 'ng2-file-upload';
 import {RandomColorService} from '../_service/random-color.service';
 import {Course} from '../courses/course';
+import {FilesService} from '../file/file.service';
 import {ForumMessage} from './forum.message';
 import {ForumService} from './forum.service';
-import{FilesService} from '../file/file.service';
-import { FileUploader } from 'ng2-file-upload';
+import {saveAs} from 'file-saver';
 
 @Component({
   selector: 'app-forum',
@@ -14,11 +15,6 @@ import { FileUploader } from 'ng2-file-upload';
   styleUrls: ['./forum.component.css'],
 })
 export class ForumComponent implements OnInit {
-  @Input() public course: Course;
-  public messages: ForumMessage[];
-  public form: FormGroup;
-  public helper = new JwtHelperService();
-  public uploader: FileUploader;
 
   constructor(public fb: FormBuilder, private forumService: ForumService, private randomColorService: RandomColorService, private fileService: FilesService ) {
     this.form = this.fb.group({
@@ -29,14 +25,20 @@ export class ForumComponent implements OnInit {
       upVote: 0,
       downVote: 0,
       color: [''],
+      fileName: [''],
     });
     this.uploader = fileService.uploadFile();
   }
+  @Input() public course: Course;
+  public messages: ForumMessage[];
+  public form: FormGroup;
+  public helper = new JwtHelperService();
+  public uploader: FileUploader;
 
+  public pubilc;
   private updateMessage(data: ForumMessage[]) {
 
-
-   data.sort( (a, b) =>{
+   data.sort( (a, b) => {
       if ((a.upVote - a.downVote) > (b.upVote - b.downVote)) {
         return -1;
       }
@@ -63,9 +65,11 @@ export class ForumComponent implements OnInit {
     this.form.patchValue({course_id: this.course._id});
     this.form.patchValue({author: JSON.parse(localStorage.getItem('userInfo'))._id});
     this.form.patchValue({color: this.randomColorService.getColor()});
-    console.log(this.uploader.queue[0]._file.name);
+    this.form.patchValue({fileName: this.uploader.queue[0]._file.name});
     this.uploader.authToken = localStorage.getItem('currentUser');
     this.uploader.uploadAll();
+
+    console.log(this.form.value);
     this.forumService.addMessage(this.form.value).subscribe((data) => {
       console.log(data);
       if (data._id != null) {
@@ -92,6 +96,13 @@ export class ForumComponent implements OnInit {
     forumMessage.downVote++;
     this.forumService.updateMessageVote(forumMessage).subscribe((data) => this.updateMessage(this.messages));
 
+  }
+  public downloadFile(filename) {
+    this.fileService.downloadFile(filename).subscribe(
+      (res) => {
+       saveAs(res, filename);
+      },
+    );
   }
 
 }

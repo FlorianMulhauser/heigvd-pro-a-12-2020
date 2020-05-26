@@ -33,8 +33,8 @@ var ForumMessageSchema = new Schema({
     type:String,
     default: "white"
   },
-  file:{
-      type: Array
+  fileName:{
+      type: String
   }
 
 });
