@@ -1,13 +1,13 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {saveAs} from 'file-saver';
 import { FileUploader } from 'ng2-file-upload';
 import {RandomColorService} from '../_service/random-color.service';
 import {Course} from '../courses/course';
 import {FilesService} from '../file/file.service';
 import {ForumMessage} from './forum.message';
 import {ForumService} from './forum.service';
-import {saveAs} from 'file-saver';
 
 @Component({
   selector: 'app-forum',
@@ -65,7 +65,9 @@ export class ForumComponent implements OnInit {
     this.form.patchValue({course_id: this.course._id});
     this.form.patchValue({author: JSON.parse(localStorage.getItem('userInfo'))._id});
     this.form.patchValue({color: this.randomColorService.getColor()});
-    this.form.patchValue({fileName: this.uploader.queue[0]._file.name});
+    if (this.uploader.queue.length !== 0) {
+      this.form.patchValue({fileName: this.uploader.queue[0]._file.name});
+    }
     this.uploader.authToken = localStorage.getItem('currentUser');
     this.uploader.uploadAll();
 
@@ -79,6 +81,11 @@ export class ForumComponent implements OnInit {
   }
 
   public deleteMessage(forumMessage: ForumMessage) {
+
+    if (forumMessage.fileName) {
+      this.fileService.deleteFile(forumMessage.fileName).subscribe((data) => console.log(data));
+    }
+
     this.forumService.deleteMessage(forumMessage).subscribe((data) => {
 
       this.messages = this.messages.filter((c) => c !== forumMessage);

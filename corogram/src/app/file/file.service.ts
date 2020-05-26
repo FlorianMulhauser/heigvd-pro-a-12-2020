@@ -19,10 +19,14 @@ export class FilesService {
   }
 
   public downloadFile(filename): any {
-    return this.http.get('/api/file/' + filename, {responseType: 'blob' as 'json'});
+    return this.http.get(this.fileUrl + '/' + filename, {responseType: 'blob' as 'json'});
   }
 
   public showFileNames() {
-    return this.http.get('/api/file');
+    return this.http.get(this.fileUrl);
+  }
+
+  public deleteFile(filename) {
+    return this.http.delete(this.fileUrl + '/' + filename);
   }
 }

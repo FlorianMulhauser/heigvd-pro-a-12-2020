@@ -51,6 +51,7 @@ exports.update_a_forum_message = function(req, res) {
 
 
 exports.delete_a_forum_message = function(req, res) {
+
   ForumMessage.remove({
     _id: req.params.forumMessageId
   }, function(err, forum_message) {
