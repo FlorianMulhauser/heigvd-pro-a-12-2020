@@ -12,9 +12,8 @@ exports.list_all_course = function(req, res) {
       res.json(course);
     } else {
       // only sends course that user has
-      console.log(req.user.course);
-      console.log(course)
-      course = course.filter(value => -1 !== req.user.course.indexOf(value))
+       // select intersection of user.course and course and return it
+      course = course.filter(field => -1 != req.user.course.indexOf(field._id) )
       res.json(course);
     }
   });
@@ -24,11 +23,16 @@ exports.list_all_course = function(req, res) {
 
 
 exports.create_a_course = function(req, res) {
+
   var new_course = new Course(req.body);
   new_course.save(function(err, course) {
     if (err)
       res.send(err);
+    if(req.user.status == "admin" || req.user.status == "superadmin") {
     res.json(course);
+  } else { // pas authorizé à le faire
+    res.sendStatus(403);
+  }
   });
 };
 
@@ -52,6 +56,7 @@ exports.update_a_course = function(req, res) {
 
 
 exports.delete_a_course = function(req, res) {
+  if(req.user.status == "admin" || req.user.status == "superadmin") {
   Course.remove({
     _id: req.params.courseId
   }, function(err, course) {
@@ -59,4 +64,7 @@ exports.delete_a_course = function(req, res) {
       res.send(err);
     res.json({ message: 'Course successfully deleted' });
   });
+} else {
+  res.sendStatus(403);
+}
 };
