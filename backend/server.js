@@ -43,11 +43,14 @@ var routes_forumMessage = require('./api/routes/forumMessageRoutes');
 var routes_user = require('./api/routes/userRoutes');
 var routes_login = require('./api/routes/loginRoutes');
 var routes_chatMessage = require('./api/routes/chatMessageRoutes');
+var routes_file = require('./api/routes/fileRoutes');
 routes_course(app); //register the route
 routes_forumMessage(app);
 routes_user(app);
 routes_login(app);
 routes_chatMessage(app);
+routes_file(app);
+
 app.listen(port);
 
 

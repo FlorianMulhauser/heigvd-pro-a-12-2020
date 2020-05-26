@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {FileUploadModule} from 'ng2-file-upload';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CourseListComponent} from './course-list/course-list.component';
@@ -13,6 +14,7 @@ import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthInterceptor} from './auth/auth.interceptor';
 import {HttpClientModule} from '@angular/common/http';
+
 // pour les animations
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -49,6 +51,7 @@ import {ModalComponent} from './modal/modal.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    FileUploadModule,
   ],
   providers: [
     {

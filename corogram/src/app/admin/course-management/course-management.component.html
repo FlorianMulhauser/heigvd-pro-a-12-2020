@@ -19,9 +19,7 @@
     <span class="pure-menu-heading">Remove/Edit course</span>
     <li class="pure-menu-item" *ngFor="let course of courses">
     <span>{{course.name}} : {{course.description}}
-      <button class="delete" title="delete hero"
-              (click)="deleteCourse(course)">X</button> </span>
-
+      <button class="delete" title="delete hero" (click)="deleteCourse(course)">X</button> </span>
     </li>
   </ul>
 </div>

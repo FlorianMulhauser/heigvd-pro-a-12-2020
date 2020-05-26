@@ -5,6 +5,8 @@ import {RandomColorService} from '../_service/random-color.service';
 import {Course} from '../courses/course';
 import {ForumMessage} from './forum.message';
 import {ForumService} from './forum.service';
+import{FilesService} from '../file/file.service';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-forum',
@@ -16,8 +18,9 @@ export class ForumComponent implements OnInit {
   public messages: ForumMessage[];
   public form: FormGroup;
   public helper = new JwtHelperService();
+  public uploader: FileUploader;
 
-  constructor(public fb: FormBuilder, private forumService: ForumService, private randomColorService: RandomColorService) {
+  constructor(public fb: FormBuilder, private forumService: ForumService, private randomColorService: RandomColorService, private fileService: FilesService ) {
     this.form = this.fb.group({
       title: [''],
       content: [''],
@@ -27,6 +30,7 @@ export class ForumComponent implements OnInit {
       downVote: 0,
       color: [''],
     });
+    this.uploader = fileService.uploadFile();
   }
 
   private updateMessage(data: ForumMessage[]) {
@@ -59,6 +63,9 @@ export class ForumComponent implements OnInit {
     this.form.patchValue({course_id: this.course._id});
     this.form.patchValue({author: JSON.parse(localStorage.getItem('userInfo'))._id});
     this.form.patchValue({color: this.randomColorService.getColor()});
+    console.log(this.uploader.queue[0]._file.name);
+    this.uploader.authToken = localStorage.getItem('currentUser');
+    this.uploader.uploadAll();
     this.forumService.addMessage(this.form.value).subscribe((data) => {
       console.log(data);
       if (data._id != null) {
