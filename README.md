@@ -11,6 +11,7 @@ Projet de semestre Alves, Cuénoud, Dupont, Mülhauser, Simonet
 
 ### 2. Lancer le projet 
 
+#### A) Marche a suivre
 * Dans `corogram` lancer la commande : `ng serve --proxy-config proxy.conf.json` 
 
 (sans le fichier proxy les requêtes ne sont pas fait au backend)
@@ -21,6 +22,12 @@ Projet de semestre Alves, Cuénoud, Dupont, Mülhauser, Simonet
 
 * Pour l’instant il faut utiliser les credentials `admin` et`admin` 
 
+#### B) Infos de connexions dev
+
+* login: testUser, password: admin
+
+#### C) Références utiles pour troubbleshoot le lancement d'angular
+* https://developer.ibm.com/recipes/tutorials/angular-2-set-up-and-other-quick-debugging-tips/
 
 ## API 
 
