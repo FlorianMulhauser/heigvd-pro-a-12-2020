@@ -51,6 +51,9 @@ export class ChatComponent implements OnInit {
     })
     this.chatService.getMessages(this.course._id).subscribe((messages) =>  this.messages = messages);
   }
+  public ngOnChanges(changes: SimpleChanges){
+    this.chatService.getMessages(this.course._id).subscribe((messages) =>  this.messages = messages);
+  }
 
   public transForum(message: ChatMessage) {
 

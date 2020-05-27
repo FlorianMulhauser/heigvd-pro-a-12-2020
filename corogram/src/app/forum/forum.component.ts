@@ -60,6 +60,9 @@ export class ForumComponent implements OnInit {
       this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
     });
   }
+  public ngOnChanges(changes: SimpleChanges){
+    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
+  }
 
   public submitForm() {
     console.log(this.messages);
