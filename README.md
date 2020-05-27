@@ -29,6 +29,26 @@ Projet de semestre Alves, Cuénoud, Dupont, Mülhauser, Simonet
 #### C) Références utiles pour troubbleshoot le lancement d'angular
 * https://developer.ibm.com/recipes/tutorials/angular-2-set-up-and-other-quick-debugging-tips/
 
+#### Erreur potentielles au lancement et solutions
+
+##### Erreur lors de commande avec ng serve/build/test 
+
+> You have to be inside an angular-cli project in order to use the serve command.
+
+Solution, sorte de mise à jour d'angular cli
+
+```
+sudo npm uninstall -g angular-cli @angular/cli
+
+sudo npm cache clean --force
+
+npm install npm@latest -g
+
+sudo npm install -g @angular/cli
+
+npm rebuild node-sass --force
+```
+
 ## API 
 
 #### Format des contenus échangé entre les différents services.
