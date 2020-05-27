@@ -13,7 +13,7 @@ module.exports = {
     authenticateJWT: (req, res, next) => {
     // Le seul endroit ou on ne verifie pas le token c'est lorsque on le fournit -> donc on test si c'est ce cas
     // en fonction de la requete
-    if(req.originalUrl == "/api/login") {
+    if(req.originalUrl == "/api/login" || req.originalUrl == "/api/event/chat" ||  req.originalUrl == "/api/event/forum") {
         next();
         return;
     }

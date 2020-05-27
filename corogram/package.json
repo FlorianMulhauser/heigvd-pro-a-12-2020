@@ -22,6 +22,7 @@
     "@angular/router": "~9.0.6",
     "@auth0/angular-jwt": "^4.1.2",
     "@pusher/chatkit-client": "^1.14.1",
+    "event-source": "git://github.com/AlexGalays/EventSource.git#923b9a0998fcfd7753040e09aa83764b3cc0230d",
     "file-saver": "^2.0.2",
     "moment": "^2.25.3",
     "rxjs": "~6.5.4",
@@ -49,5 +50,13 @@
     "tslint": "~5.18.0",
     "typescript": "~3.7.5",
     "ng2-file-upload": "1.4.0"
+  },
+  "browser": {
+    "http": false,
+    "https": false,
+    "net": false,
+    "path": false,
+    "stream": false,
+    "tls": false
   }
 }

@@ -17,4 +17,7 @@ module.exports = function(app) {
         .put(chatMessage.update_a_chat_message)
         .delete(chatMessage.delete_a_chat_message);
 
+    app.route('/api/event/chat')
+        .get(chatMessage.get_event);
+
 };

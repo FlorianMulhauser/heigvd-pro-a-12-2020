@@ -4,6 +4,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 import {saveAs} from 'file-saver';
 import { FileUploader } from 'ng2-file-upload';
 import {RandomColorService} from '../_service/random-color.service';
+import {SseService} from '../_service/sse.service';
 import {Course} from '../courses/course';
 import {FilesService} from '../file/file.service';
 import {ForumMessage} from './forum.message';
@@ -16,7 +17,7 @@ import {ForumService} from './forum.service';
 })
 export class ForumComponent implements OnInit {
 
-  constructor(public fb: FormBuilder, private forumService: ForumService, private randomColorService: RandomColorService, private fileService: FilesService ) {
+  constructor(public fb: FormBuilder, private forumService: ForumService, private randomColorService: RandomColorService, private fileService: FilesService, private sseService: SseService) {
     this.form = this.fb.group({
       title: [''],
       content: [''],
@@ -36,7 +37,7 @@ export class ForumComponent implements OnInit {
   public uploader: FileUploader;
 
   public pubilc;
-  hasBaseDropZoneOver: any;
+  public hasBaseDropZoneOver: any;
   private updateMessage(data: ForumMessage[]) {
 
    data.sort( (a, b) => {
@@ -55,10 +56,9 @@ export class ForumComponent implements OnInit {
 
   public ngOnInit(): void {
     this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
-  }
-
-  public ngOnChanges(changes: SimpleChanges) {
-    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = this.updateMessage(data));
+    this.sseService.getServerSentForumEvent().subscribe((datas) => {
+      this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
+    });
   }
 
   public submitForm() {
@@ -75,9 +75,6 @@ export class ForumComponent implements OnInit {
     console.log(this.form.value);
     this.forumService.addMessage(this.form.value).subscribe((data) => {
       console.log(data);
-      if (data._id != null) {
-        this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = this.updateMessage(data));
-      }
     });
   }
 
@@ -112,6 +109,5 @@ export class ForumComponent implements OnInit {
       },
     );
   }
-
 
 }

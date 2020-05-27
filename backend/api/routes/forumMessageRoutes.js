@@ -17,4 +17,7 @@ app.route('/api/forumMessage/')
     .put(forumMessage.update_a_forum_message)
     .delete(forumMessage.delete_a_forum_message);
 
+    app.route('/api/event/forum')
+        .get(forumMessage.get_event);
+
 };

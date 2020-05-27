@@ -2,6 +2,7 @@ import {CATCH_ERROR_VAR} from '@angular/compiler/src/output/output_ast';
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {RandomColorService} from '../_service/random-color.service';
+import {SseService} from '../_service/sse.service';
 
 import {Course} from '../courses/course';
 import {ForumMessage} from '../forum/forum.message';
@@ -21,21 +22,20 @@ export class ChatComponent implements OnInit {
   public formchat: FormGroup;
 
    public fMsg = new class implements ForumMessage {
-    _id: String;
-    author: String;
-    color: String;
-    content: String;
-    downVote: number;
-    fileName: String;
-    tag: String;
-    timestamp: String;
-    title: String;
-    upVote: number;
-    course_id : String;
+    public _id: String;
+    public author: String;
+    public color: String;
+    public content: String;
+    public downVote: number;
+    public fileName: String;
+    public tag: String;
+    public timestamp: String;
+    public title: String;
+    public upVote: number;
+    public course_id: String;
   };
 
-
-  constructor(public fb: FormBuilder, private chatService: ChatService, private forumService: ForumService, private randomColorService: RandomColorService) {
+  constructor(public fb: FormBuilder, private chatService: ChatService, private forumService: ForumService, private randomColorService: RandomColorService, private sseService: SseService) {
     this.formchat = this.fb.group({
       content: [''],
       course_id: [''],
@@ -45,15 +45,14 @@ export class ChatComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-   this.chatService.getMessages(this.course._id).subscribe((messages) =>  this.messages = messages);
-  }
 
-  public ngOnChanges(changes: SimpleChanges) {
+    this.sseService.getServerSentChatEvent().subscribe((data) => {
+      this.chatService.getMessages(this.course._id).subscribe((messages) =>  this.messages = messages);
+    })
     this.chatService.getMessages(this.course._id).subscribe((messages) =>  this.messages = messages);
   }
 
   public transForum(message: ChatMessage) {
-
 
     this.fMsg.author = message.author;
     this.fMsg.content = message.content;
@@ -70,13 +69,10 @@ export class ChatComponent implements OnInit {
   public submitForm() {
 
     this.formchat.patchValue({course_id: this.course._id});
-    this.formchat.patchValue({author: JSON.parse(localStorage.getItem('userInfo'))._id});
+    this.formchat.patchValue({author: JSON.parse(localStorage.getItem('userInfo')).name});
 
     this.chatService.addMessage(this.formchat.value).subscribe((data) => {
          console.log(data);
-         if (data._id != null) {
-           this.chatService.getMessages(this.course._id).subscribe((datas) => this.messages = datas);
-         }
        });
 
   }
