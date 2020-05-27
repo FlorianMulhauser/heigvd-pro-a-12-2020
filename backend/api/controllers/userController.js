@@ -4,10 +4,19 @@ var mongoose = require('mongoose'),
 User = mongoose.model('User'); // pour les user
 
 exports.list_all_user = function(req, res) {
-  User.find({}, function(err, user) {
+  User.find({}, function(err, users) {
     if (err)
       res.send(err);
-    res.json(user);
+
+    // for security issue (even tho we have salt but it's not good to display all 
+    // password hash to anyone that is an admin)
+    
+    users.forEach(user => {
+    user.password_hash = undefined;
+    user.password_salt = undefined;
+  });
+    
+    res.json(users);
   });
 };
 

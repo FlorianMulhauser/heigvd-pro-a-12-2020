@@ -1,4 +1,4 @@
-
+<div class="container">
 <h2> User Management </h2>
 <h4> User Creation </h4>
 <div class="row">
@@ -55,17 +55,24 @@
     </form>
 
   <h4> List of all user </h4>
-  <div class="container">
+  
     <li class="pure-menu-item" *ngFor="let user of users">
-      <div class="col s12 m7">
+      <div class="col s12 m10">
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
-              <b>{{user.name}}</b>
-              <p>{{user.mail}}</p>
+              <div class="row"> 
+              <div class="col s6"> username: {{user.name}}</div>
+               <div class="col s6"> email: {{user.mail}}</div>
+               
+                <div class="col s6"> full name : {{user.first_name}} {{user.last_name}}</div>
+               <div class="col s12"> Courses : {{user.course}}</div>
+           
+               </div>
+
             </div>
             <div class="card-action">
-              <button class="delete" title="delete" (click)="deleteUser(user)">X</button>
+              <i class="small material-icons mybutton" (click)="deleteUser(user)">close</i>
             </div>
           </div>
         </div>

@@ -1,26 +1,33 @@
 # PRO_2020
 Projet de semestre Alves, Cuénoud, Dupont, Mülhauser, Simonet
 
+## Guide d'installation et d'utilisation 
 
+### 1. Installer le projet
 
-## Comment lancer le projet 
+* Installer `npm` (https://www.npmjs.com/)
 
-Dans `corogram` lancer la commande : `ng serve --proxy-config proxy.conf.json` 
+* Dans `heigvd-pro-a-12-2020/backend` et `heigvd-pro-a-12-2020/corogram` lancer `npm install` 
+
+### 2. Lancer le projet 
+
+#### A) Marche a suivre
+* Dans `corogram` lancer la commande : `ng serve --proxy-config proxy.conf.json` 
 
 (sans le fichier proxy les requêtes ne sont pas fait au backend)
 
-Dans `backend` lancer `npm start` 
+* Dans `backend` lancer `npm start` 
 
-Ensuite aller sur `http://localhost:4200/` 
+* Ensuite avec votre navigateur aller sur `http://localhost:4200/` 
 
-Pour l’instant il faut utiliser les credentials `admin` et`admin` 
+* Pour l’instant il faut utiliser les credentials `admin` et`admin` 
 
-## Comment installer ?
+#### B) Infos de connexions dev
 
-Installer `npm` (https://www.npmjs.com/)
+* login: testUser, password: admin
 
-Dans `heigvd-pro-a-12-2020/backend` et `heigvd-pro-a-12-2020/corogram` lancer `npm install` 
-
+#### C) Références utiles pour troubbleshoot le lancement d'angular
+* https://developer.ibm.com/recipes/tutorials/angular-2-set-up-and-other-quick-debugging-tips/
 
 ## API 
 

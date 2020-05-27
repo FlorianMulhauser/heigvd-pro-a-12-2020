@@ -41,7 +41,7 @@ exports.read_a_course = function(req, res) {
   Course.findById(req.params.courseId, function(err, course) {
     if (err)
       res.send(err);
-    if(rH.isAdmin(req) || -1 != req.user.course.indexOf(req.params.courseId)) {
+    if(rH.isAdmin(req) || rH.participateToCourse(req.user.course,course._id)) {
       res.json(course);
     } else {
       res.sendStatus(403);
