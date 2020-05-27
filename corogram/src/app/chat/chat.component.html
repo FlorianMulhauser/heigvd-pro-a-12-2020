@@ -5,6 +5,9 @@
   <div #scrollable class="container" *ngFor="let message of messages">
     <b>{{message.author}}</b>
     <p>{{message.content}}</p>
+    <a class="btn-floating btn-small waves-effect waves-light green" (click)="transForum(message)">
+      <i class="material-icons">arrow_forward</i>
+    </a>
     <span class="time-right">{{message.timestamp}} {{message.tag}}</span>
   </div>
   <div>

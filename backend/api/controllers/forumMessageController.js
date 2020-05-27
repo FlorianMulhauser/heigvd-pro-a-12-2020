@@ -17,17 +17,13 @@ exports.list_all_forum_message = function(req, res) {
 
 
 exports.create_a_forum_message = function(req, res) {
-  var new_form_message = new ForumMessage(req.body)
-  User.findById(new_form_message.author,function (err,user) {
+  var new_form_message = new ForumMessage(req.body);
+
+  new_form_message.save(function(err, form_message) {
     if (err)
       res.send(err);
-    new_form_message.author = user.name;
-    new_form_message.save(function(err, form_message) {
-      if (err)
-        res.send(err);
       res.json(form_message);
     });
-  });
 };
 
 

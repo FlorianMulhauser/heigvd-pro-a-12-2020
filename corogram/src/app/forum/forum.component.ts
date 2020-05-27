@@ -36,6 +36,7 @@ export class ForumComponent implements OnInit {
   public uploader: FileUploader;
 
   public pubilc;
+  hasBaseDropZoneOver: any;
   private updateMessage(data: ForumMessage[]) {
 
    data.sort( (a, b) => {
@@ -63,7 +64,7 @@ export class ForumComponent implements OnInit {
   public submitForm() {
     console.log(this.messages);
     this.form.patchValue({course_id: this.course._id});
-    this.form.patchValue({author: JSON.parse(localStorage.getItem('userInfo'))._id});
+    this.form.patchValue({author: JSON.parse(localStorage.getItem('userInfo')).name});
     this.form.patchValue({color: this.randomColorService.getColor()});
     if (this.uploader.queue.length !== 0) {
       this.form.patchValue({fileName: this.uploader.queue[0]._file.name});
@@ -111,5 +112,6 @@ export class ForumComponent implements OnInit {
       },
     );
   }
+
 
 }

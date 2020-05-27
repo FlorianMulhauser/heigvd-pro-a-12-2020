@@ -9,6 +9,10 @@
 
 
 }
+.my-drop-zone { border: dotted 4px lightgray; }
+.nv-file-over { border: dotted 6px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green; }
+
 
 /* Darker chat container */
 .darker {

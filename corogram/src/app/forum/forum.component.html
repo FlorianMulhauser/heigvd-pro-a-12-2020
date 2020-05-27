@@ -61,7 +61,13 @@
 
       <div class="form-group">
         <label>Choose file(s)</label>
-        <input type="file" class="form-control" name="multiple" ng2FileSelect [uploader]="uploader" />
+        <div ng2FileDrop
+             [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+             [uploader]="uploader"
+             class="well my-drop-zone">
+          .<strong>{{ uploader.queue[0]?.file?.name }}</strong>.
+        </div>
+
       </div>
 
       <div class="row">
@@ -73,6 +79,4 @@
       </div>
     </form>
   </div>
-
-
 </div>

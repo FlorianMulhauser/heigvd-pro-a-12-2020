@@ -44,6 +44,11 @@
 }
 
 /* Style time text */
+.btn-floating {
+  float: right;
+}
+
+/* Style time text */
 .time-left {
   float: left;
   color: #999;
