@@ -62,7 +62,6 @@ exports.update_a_course = function(req, res) {
 }
 };
 
-
 exports.delete_a_course = function(req, res) {
   if(rH.isAdmin(req)) {
   Course.remove({
@@ -76,3 +75,5 @@ exports.delete_a_course = function(req, res) {
   res.sendStatus(403);
 }
 };
+
+

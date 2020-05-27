@@ -9,13 +9,12 @@
       <div class="card-content">
         <div class="card-title "> {{message.title}}
           par <b>{{message.author}}</b></div>
-       
+
         <p> {{message.content}}</p>
 
         <div class="score">
           <b class="scorepositive">{{message.upVote}} </b><b class="scorenegative">{{message.downVote}} </b>
         </div>
-
 
         <div class="card-action">
           <span class="time-right ">{{message.timestamp}}</span>
@@ -23,6 +22,11 @@
             <i class="small material-icons mybutton" (click)="deleteMessage(message)">close</i>
             <i class="small material-icons mybutton" (click)="upVote(message)">expand_less</i>
             <i class="small material-icons mybutton" (click)="downVote(message)">expand_more</i>
+            <div *ngIf="message.fileName">
+              <i class="small material-icons mybutton" (click) =  downloadFile(message.fileName)>file_download</i>
+              <b>{{message.fileName}}</b>
+            </div>
+
           </div>
 
         </div>
@@ -53,6 +57,11 @@
           <textarea id="icon_prefix2" class="materialize-textarea" formControlName="content"></textarea>
           <label for="icon_prefix2">Content</label>
         </div>
+      </div>
+
+      <div class="form-group">
+        <label>Choose file(s)</label>
+        <input type="file" class="form-control" name="multiple" ng2FileSelect [uploader]="uploader" />
       </div>
 
       <div class="row">
