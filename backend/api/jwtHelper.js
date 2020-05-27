@@ -8,6 +8,7 @@ C'est un middleware : https://expressjs.com/fr/guide/using-middleware.html
 const jwt = require('jsonwebtoken');
 var mongoose = require('mongoose'),
 User = mongoose.model('User'); // pour les user
+const config = require('../config');
 module.exports = {
     authenticateJWT: (req, res, next) => {
     // Le seul endroit ou on ne verifie pas le token c'est lorsque on le fournit -> donc on test si c'est ce cas
@@ -23,7 +24,7 @@ module.exports = {
     
     if (token) {
 
-        jwt.verify(token, "super_secret_string", (err, user) => {
+        jwt.verify(token, config.secret, (err, user) => {
             if (err) {
                 console.log(err);
                 return res.sendStatus(403);

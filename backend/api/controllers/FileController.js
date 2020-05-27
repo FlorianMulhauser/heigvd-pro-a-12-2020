@@ -15,7 +15,7 @@ conn.once("open", () => {
     gfs = Grid(conn.db,mongoose.mongo);
     // Storage
     storage = new GridFsStorage({
-        url:  "mongodb+srv://test_node_js:mZFhIBjco2JR7xqX@progroupa12-f3mld.gcp.mongodb.net/test?retryWrites=true&w=majority",
+        url: config.url_storage  ,
         options: {useUnifiedTopology: true},
         file: (req, file) => {
             return {filename: file.originalname.replace(".", "_")}

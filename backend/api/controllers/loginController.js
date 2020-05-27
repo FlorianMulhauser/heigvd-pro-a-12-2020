@@ -9,9 +9,7 @@ const jwt = require('jsonwebtoken')
 
 const fs   = require('fs');
 
-const RSA_PRIVATE_KEY = fs.readFileSync('jwtRS256.key', 'utf8');
-const RSA_PUBLIC_KEY = fs.readFileSync('jwtRS256.key.pub','utf8');
-
+const config = require('../../config');
 
 
 
@@ -31,14 +29,10 @@ exports.loginRoute = function(req, res)  {
 		if(user.password_hash == hashPassword(password,user.password_salt)) {
 			console.log("Successfull connection from ",user.name);
 
-			/*const jwtBearerToken = jwt.sign({}, {key:RSA_PRIVATE_KEY, passphrase:'projet20'},  {
-                algorithm: 'RS256',
-                expiresIn: 120,
-                subject: userId
-            });*/
+			
             // on stocke l'id de l'utilisateur dans le token, pour l'utiliser pour verifier les droits
             const id = user._id;
-            const jwtBearerToken = jwt.sign({id},"super_secret_string",{expiresIn:1200});
+            const jwtBearerToken = jwt.sign({id},config.secret,{expiresIn:1200});
              // send the JWT back to the user need to add http option and secure
          //httpOnly for : not accessible by javascript code (prevent some sec issue (xss etc..))
          // secure for : browser will only append cookie if made over https connection

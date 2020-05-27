@@ -8,6 +8,7 @@ var express = require('express'),
   User = require('./api/models/userModel')
   chatMessage = require('./api/models/chatMessageModel')
   jwtHelper = require('./api/jwtHelper')
+  config = require('./config')
 // suivi tutoriel : https://www.codementor.io/@olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
 
 // mongoose instance connection url connection
@@ -20,7 +21,7 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
 
-const uri = "mongodb+srv://test_node_js:mZFhIBjco2JR7xqX@progroupa12-f3mld.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const uri = config.url_db;
 const connectDB = async () => {
   await mongoose.connect(uri, {
     useUnifiedTopology: true,
