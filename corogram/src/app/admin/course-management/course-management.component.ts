@@ -26,7 +26,6 @@ export class CourseManagementComponent implements OnInit {
   }
 
   public submitForm() {
-    console.log(this.form.value);
     this.courseService.addCourse(this.form.value).subscribe((data) => {
       if (data._id != null) {
         this.courses.push(data);
@@ -35,7 +34,9 @@ export class CourseManagementComponent implements OnInit {
   }
 
   public deleteCourse(course: Course) {
-    this.courseService.deleteCourse(course).subscribe((data) => this.courses = this.courses.filter((c) => c !== course));
+    this.courseService.deleteCourse(course).subscribe((data) =>
+      { 
+     this.courses = this.courses.filter((c) => c !== course) });
 
   }
 }
