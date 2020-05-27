@@ -23,7 +23,7 @@ export class LoginGuardGuard implements CanActivate {
 
   public checkLogin(url: string): boolean {
     const token = localStorage.getItem('currentUser');
-
+    
     if (!this.helper.isTokenExpired(token)) {
       return true;
     }

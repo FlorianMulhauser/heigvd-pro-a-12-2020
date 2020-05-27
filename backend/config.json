@@ -1,5 +1,6 @@
 {
-    "secret": "super_secret",
+    "secret": "jAC2dLA9cLGOKEr_nbcu_zGELDqDiDGDVhKFPs30fkwPbg-Po3qs4qquTy4hnQJozaBIfUIg19bk3EZ2lauXoYw3glWSNrNJv_kks4ijIbWSRVPFi9gV_NhVa4j6tAU0CBpJil3BbT8sbn6wBvCs3nWEM6NxWuOc4dRIFk2WIGdFO9T1onia5Pjjjgi9wW2NEhxKLkAfdaKwAAnPnl-wdsqDPluWqjiy_Bl6kBj2_z-REFrXMjRmPu0eOX3O4jH8QDMJ6OcdGYelAQWd-QQr_Ub9_-YnQuMGawHTcThCJu8FShUm5ZUXalZPyMt8ECSrHu1HORCJOrwfSLN4QQ9vEQ",
     "url_storage":"mongodb+srv://test_node_js:mZFhIBjco2JR7xqX@progroupa12-f3mld.gcp.mongodb.net/test?retryWrites=true&w=majority",
-    "url_db":"mongodb+srv://test_node_js:mZFhIBjco2JR7xqX@progroupa12-f3mld.gcp.mongodb.net/test?retryWrites=true&w=majority"   
+    "url_db":"mongodb+srv://test_node_js:mZFhIBjco2JR7xqX@progroupa12-f3mld.gcp.mongodb.net/test?retryWrites=true&w=majority",
+    "token_expires":1200  
 }

@@ -32,7 +32,7 @@ exports.loginRoute = function(req, res)  {
 			
             // on stocke l'id de l'utilisateur dans le token, pour l'utiliser pour verifier les droits
             const id = user._id;
-            const jwtBearerToken = jwt.sign({id},config.secret,{expiresIn:1200});
+            const jwtBearerToken = jwt.sign({id},config.secret,{expiresIn:config.token_expires});
              // send the JWT back to the user need to add http option and secure
          //httpOnly for : not accessible by javascript code (prevent some sec issue (xss etc..))
          // secure for : browser will only append cookie if made over https connection
