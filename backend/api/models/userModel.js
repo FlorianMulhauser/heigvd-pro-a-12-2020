@@ -3,9 +3,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    name: {
+    name: { //username
       type:String, 
       required: 'username  required'
+    },
+    first_name: { //username
+        type:String,
+        required: 'username  required'
+    },
+    last_name: { //username
+        type:String,
+        required: 'username  required'
     },
     mail: {
       type:String, 
