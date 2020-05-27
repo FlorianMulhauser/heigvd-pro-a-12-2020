@@ -1,25 +1,25 @@
 # PRO_2020
 Projet de semestre Alves, Cuénoud, Dupont, Mülhauser, Simonet
 
+## Guide d'installation et d'utilisation 
 
+### 1. Installer le projet
 
-## Comment lancer le projet 
+* Installer `npm` (https://www.npmjs.com/)
 
-Dans `corogram` lancer la commande : `ng serve --proxy-config proxy.conf.json` 
+* Dans `heigvd-pro-a-12-2020/backend` et `heigvd-pro-a-12-2020/corogram` lancer `npm install` 
+
+### 2. Lancer le projet 
+
+* Dans `corogram` lancer la commande : `ng serve --proxy-config proxy.conf.json` 
 
 (sans le fichier proxy les requêtes ne sont pas fait au backend)
 
-Dans `backend` lancer `npm start` 
+* Dans `backend` lancer `npm start` 
 
-Ensuite aller sur `http://localhost:4200/` 
+* Ensuite avec votre navigateur aller sur `http://localhost:4200/` 
 
-Pour l’instant il faut utiliser les credentials `admin` et`admin` 
-
-## Comment installer ?
-
-Installer `npm` (https://www.npmjs.com/)
-
-Dans `heigvd-pro-a-12-2020/backend` et `heigvd-pro-a-12-2020/corogram` lancer `npm install` 
+* Pour l’instant il faut utiliser les credentials `admin` et`admin` 
 
 
 ## API 
