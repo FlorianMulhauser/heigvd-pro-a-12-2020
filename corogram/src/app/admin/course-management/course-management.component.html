@@ -6,7 +6,6 @@
     <div class="form-group input-group-lg">
       <input class="form-control" placeholder="Description" formControlName="description">
     </div>
-
     <div class="form-group">
       <button class="btn btn-danger btn-block btn-lg">Create</button>
     </div>
@@ -14,12 +13,20 @@
 </div>
 
 
-<div class="pure-menu custom-restricted-width">
-  <ul class="pure-menu-list">
-    <span class="pure-menu-heading">Remove/Edit course</span>
-    <li class="pure-menu-item" *ngFor="let course of courses">
-    <span>{{course.name}} : {{course.description}}
-      <button class="delete" title="delete hero" (click)="deleteCourse(course)">X</button> </span>
-    </li>
-  </ul>
+<div class="container">
+  <li class="pure-menu-item" *ngFor="let course of courses">
+    <div class="col s12 m7">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <b>{{course.name}}</b>
+            <p>{{course.description}}</p>
+          </div>
+          <div class="card-action">
+            <button class="delete" title="delete" (click)="deleteCourse(course)">X</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
 </div>
