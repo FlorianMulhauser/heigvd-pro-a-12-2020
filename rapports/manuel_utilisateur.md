@@ -12,12 +12,12 @@ TODO, faire des captures d'écran des différents menus et les expliquer
 
 TODO: menu accédés
 La bar verticale à gauche permet la navigation au travers les différents cours.
-![](https://imgur.com/jlcXkxh)
-![](https://imgur.com/HeeJ9T6)
-![](https://imgur.com/i8gsfuB)
-![](https://imgur.com/AVyqBm6)
-![](https://imgur.com/2SvYHCj)
-![](https://imgur.com/q5B10kn)
+![Login page](https://imgur.com/jlcXkxh)
+![home page](https://imgur.com/HeeJ9T6)
+![course without any message](https://imgur.com/i8gsfuB)
+![course with messages](https://imgur.com/AVyqBm6)
+![course management](https://imgur.com/2SvYHCj)
+![user management](https://imgur.com/q5B10kn)
 * tableau cours inscrit
 * chat
 * forum
