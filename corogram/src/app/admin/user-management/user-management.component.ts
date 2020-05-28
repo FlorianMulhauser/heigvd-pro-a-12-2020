@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 // pour créer des utilisateurs
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, FormControl } from '@angular/forms';
 // pour afficher les cours pour attribuer a l'utilisateur
 import {Course} from '../../courses/course';
 import {CourseService} from '../../courses/course.service';
@@ -17,6 +17,7 @@ export class UserManagementComponent implements OnInit {
   public form: FormGroup;
   public courses: Course[];
   public users: User[];
+  filterName:User;
   constructor(public fb: FormBuilder, private courseService: CourseService, private userService: UserService) {
   	this.form = this.fb.group({
   		first_name: [''],
@@ -27,6 +28,7 @@ export class UserManagementComponent implements OnInit {
       status: [''],
   	});
    }
+
 
   public ngOnInit(): void {
     this.courseService.getCourses().subscribe((data: Course[]) => { 
@@ -39,17 +41,19 @@ export class UserManagementComponent implements OnInit {
         }  catch(err) {} // si le cours existe pas c'est normal , cela peut arriver si cours supprimé
       });
     })
-      this.users = datas
+      this.users = datas;
+
     })
     });
-   
-    
+
     }
 
 	public submitForm() {
     this.userService.addUser(this.form.value).subscribe((data) => {
       if (data._id != null) {
-        this.userService.getAllUser().subscribe((datas) => this.users = datas);
+        this.userService.getAllUser().subscribe((datas) =>  {
+         this.users = datas;
+        });
       }
     });
   }
@@ -57,7 +61,7 @@ export class UserManagementComponent implements OnInit {
   public deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe((data) => {
       if (data._id != null) {
-        this.userService.getAllUser().subscribe((datas) => this.users = datas);
+        this.userService.getAllUser().subscribe((datas) => { this.users = datas});
       }
     });
   }
@@ -65,7 +69,6 @@ export class UserManagementComponent implements OnInit {
   private getReadableCourseName() {
     this.users.forEach(user => {
       user.course.forEach( function(course,i,arr) {
-       
       });
       });
       
@@ -76,4 +79,8 @@ export class UserManagementComponent implements OnInit {
       
     });
   }
+
 }
+
+
+

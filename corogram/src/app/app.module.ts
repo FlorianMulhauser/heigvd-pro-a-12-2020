@@ -29,6 +29,7 @@ import {FormsModule} from '@angular/forms';
 import {ModalComponent} from './modal/modal.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { UserManagementComponent } from './admin/user-management/user-management
     CourseManagementComponent,
     ModalComponent,
     UserManagementComponent,
+
 
   ],
   imports: [
