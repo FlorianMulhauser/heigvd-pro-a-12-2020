@@ -1,89 +1,85 @@
 <div class="container">
-<h2> User Management </h2>
-<h4> User Creation </h4>
-<div class="row">
-    <form class="col s12" [formGroup]="form" (ngSubmit)="submitForm()">
-      <div class="row">
+  <h2> User Management </h2>
+  <h4> User Creation </h4>
+  <div class="row">
+      <form class="col s12" [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="row">
 
-        <!-- User name -->
-        <div class="input-field col s6">
-          <input  id="user_name" type="text" class="validate" formControlName="name">
-          <label for="user_name">User Name</label>
+          <!-- User name -->
+          <div class="input-field col s6">
+            <input  id="user_name" type="text" class="validate" formControlName="name">
+            <label for="user_name">User Name</label>
+          </div>
+          <!-- First name -->
+          <div class="input-field col s6">
+            <input  id="first_name" type="text" class="validate"
+            formControlName="first_name">
+            <label for="first_name">First Name</label>
+          </div>
+
+          <!-- Last Name -->
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate"
+            formControlName="last_name">
+            <label for="last_name">Last Name</label>
+          </div>
+
+          <!-- Email-->
+          <div class="input-field col s6">
+            <input id="email" type="text" class="validate"
+            formControlName="mail">
+            <label for="email">Email</label>
+          </div>
+
+          <!-- status -->
+          <div class="input-field col s6">
+            <input id="status" type="text" class="validate"
+                   formControlName="status">
+            <label for="status">Status</label>
+          </div>
+
+          <!-- Password -->
+          <div class="input-field col s6">
+            <input id="password" type="password" class="validate"
+            formControlName="password_hash">
+            <label for="password">Password</label>
+          </div>
+
+
         </div>
-        <!-- First name -->
-        <div class="input-field col s6">
-          <input  id="first_name" type="text" class="validate"
-          formControlName="first_name">
-          <label for="first_name">First Name</label>
-        </div>
-
-        <!-- Last Name -->
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate"
-          formControlName="last_name">
-          <label for="last_name">Last Name</label>
-        </div>
-
-        <!-- Email-->
-        <div class="input-field col s6">
-          <input id="email" type="text" class="validate"
-          formControlName="mail">
-          <label for="email">Email</label>
-        </div>
-
-        <!-- status -->
-        <div class="input-field col s6">
-          <input id="status" type="text" class="validate"
-                 formControlName="status">
-          <label for="status">Status</label>
-        </div>
-
-        <!-- Password -->
-        <div class="input-field col s6">
-          <input id="password" type="password" class="validate"
-          formControlName="password_hash">
-          <label for="password">Password</label>
-        </div>
 
 
+       <div class="form-group">
+        <button class="btn btn-danger btn-block btn-lg">Create</button>
       </div>
+      </form>
 
-
-     <div class="form-group">
-      <button class="btn btn-danger btn-block btn-lg">Create</button>
-    </div>
-    </form>
-
-  <!-- User list -->
-  <div class="col s6">
-  <h4> List of all user </h4>
-  
-    <li class="pure-menu-item" *ngFor="let user of users">
-      <div class="col s12 m10">
-        <div class="card horizontal">
-          <div class="card-stacked">
-            <div class="card-content">
-              <div class="row"> 
-              <div class="col s6"> username: {{user.name}}</div>
-               <div class="col s6"> email: {{user.mail}}</div>
-               
-                <div class="col s6"> full name : {{user.first_name}} {{user.last_name}}</div>
-               <div class="col s12"> User Courses : {{user.course}}</div>
-              <div class="col s12"> Status : {{user.status}}</div>
-               </div> 
-            </div>
-            <div class="card-action">
-              <i class="small material-icons mybutton" (click)="deleteUser(user)">close</i>
+    <!-- User list -->
+    <div class="col s12">
+    <h4> List of all user </h4>
+      <li class="pure-menu-item" *ngFor="let user of users">
+        <div class="col s12 m10">
+          <div class="card horizontal">
+            <div class="card-stacked">
+              <div class="card-content">
+                
+                <div class="col s6"> username: {{user.name}}</div>
+                 <div class="col s6"> email: {{user.mail}}</div>
+                 
+                  <div class="col s6"> full name : {{user.first_name}} {{user.last_name}}</div>
+                 <div class="col s12"> User Courses : {{user.course}}</div>
+                <div class="col s12"> Status : {{user.status}}</div>
+                 
+              </div>
+              <div class="card-action">
+                <i class="small material-icons mybutton" (click)="deleteUser(user)">close</i>
+                <i class="small material-icons mybutton" >build</i>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </li>
+      </li>
+    </div>
   </div>
 </div>
-
-
-
-
-  </div>
 
