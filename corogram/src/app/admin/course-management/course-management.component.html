@@ -17,10 +17,11 @@
 
 
 <div class="container">
-  <h3> List of course (select one to add users) </h3>
+  <h3> List of courses </h3>
+  <p> select one to add users, users are at bottom of page click them to select them </p>
 
     <div class="col s12 m7" *ngFor="let course of courses" >
-      <div class="card horizontal">
+      <div class="card horizontal" [ngClass]="  !course.selected ? 'white' : '#eeeeee grey lighten-3'" >
         <div class="card-stacked" (click)="selectCoursToAdd(course)" >
           <div class="card-content">
             <b>{{course.name}}</b>
@@ -37,7 +38,7 @@
   </div>
 <div *ngIf="selectingUser">
 <div  class="collection" *ngFor="let user of users">
-<a  class="collection-item"   (click)="addToList(user)" [ngClass]="  !user.edit ? 'white' : 'grey'"> {{user.edit}} {{user.first_name}} {{user.last_name}} ({{user.name}})</a>
+<a  class="collection-item"   (click)="addToList(user)" [ngClass]="  !user.edit ? 'white' : '#eeeeee grey lighten-3'"> {{user.first_name}} {{user.last_name}} ({{user.name}})</a>
 </div>
     </div>
 
