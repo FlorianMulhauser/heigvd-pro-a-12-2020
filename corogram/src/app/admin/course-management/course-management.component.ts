@@ -14,6 +14,7 @@ export class CourseManagementComponent implements OnInit {
 
   public form: FormGroup;
   public courses: Course[];
+
   public users: User[];
 
   //pour choisir des users
@@ -49,6 +50,10 @@ export class CourseManagementComponent implements OnInit {
   }
 
   public deleteCourse(course: Course) {
+      if(!course.selected) {
+        course.selected = false;
+        this.selectingUser = false;
+      }
     this.courseService.deleteCourse(course).subscribe((data) =>
       { 
      this.courses = this.courses.filter((c) => c !== course) });
@@ -56,6 +61,7 @@ export class CourseManagementComponent implements OnInit {
   }
 
   public selectCoursToAdd(course) {
+    if(!this.selectingUser || course.selected) {
     course.selected = !course.selected;
     this.selectingUser = !this.selectingUser;
     if(!course.selected) {
@@ -63,6 +69,7 @@ export class CourseManagementComponent implements OnInit {
       this.usersToAdd = [];
       this.users.forEach(user => user.edit = false);
     }
+  }
   }
 
   public addToList(user) {
