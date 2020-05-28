@@ -1,4 +1,7 @@
+
 <div class="container">
+  <h2> Course management </h2>
+  <h3> Create a course </h3>
   <form [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="form-group input-group-lg">
       <input class="form-control" placeholder="Name" formControlName="name">
@@ -14,6 +17,7 @@
 
 
 <div class="container">
+  <h3> List of course </h3>
   <div class="pure-menu-item" *ngFor="let course of courses">
     <div class="col s12 m7">
       <div class="card horizontal">
