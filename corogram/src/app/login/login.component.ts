@@ -1,13 +1,3 @@
-// animation
-import {
-  animate,
-  keyframes,
-  state,
-  style,
-  transition,
-  trigger,
-  // ...
-} from '@angular/animations';
 import {HttpClient} from '@angular/common/http'; // requete
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
@@ -21,43 +11,7 @@ import {ModalService} from '../modal/modal-service.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  animations: [
-
-    trigger('animationLoadingBar', [
-      // ...
-      state('s1', style({
-
-        opacity: 1,
-
-      })),
-      state('s2', style({
-        opacity: 0,
-
-      })),
-
-      transition('s2 <=> s1', [
-        animate('5s', keyframes([
-          style({opacity: 0.8, offset: 0}),
-
-        ])),
-      ]),
-    ]),
-    trigger('animationButton', [
-      // ...
-      state('s1', style({
-
-        opacity: 0.6,
-
-      })),
-      state('s2', style({
-        opacity: 1,
-      })),
-
-      transition('s2 <=> s1', [
-        animate('1s'),
-      ]),
-    ]),
-  ],
+  
 })
 export class LoginComponent implements OnInit {
 

@@ -39,10 +39,15 @@
           </div>
         </form>
         <br/>
-        <div class="centered">
+        <div  class="centered">
           <div class='row'>
-            <button [@animationButton]="animation ? 's1' : 's2' " (click)="login()" style="margin-left:65px;"
-                    type='button' name='btn_login'
+
+             <div *ngIf="animation" class="progress">
+      <div class="indeterminate"></div>
+
+        </div>
+            <button  (click)="login()" style="margin-left:65px;"
+                    type='button' name='btn_login' 
                     class='col  s6 btn btn-small white black-text  waves-effect z-depth-1 y-depth-1'>Login
             </button>
           </div>
@@ -55,13 +60,7 @@
     <p>type: <input type="text" [(ngModel)]="bodyText" /></p>
     <button (click)="closeModal('custom-modal-1');">Close</button>
   </app-jw-modal>
-  <div class="centered">
-    <div [@animationLoadingBar]="animation ? 's1' : 's2'" class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
+  
+
 </div>
 
