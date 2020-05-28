@@ -18,8 +18,8 @@
 
 <div class="container">
   <h3> List of course </h3>
-  <div class="pure-menu-item" *ngFor="let course of courses">
-    <div class="col s12 m7">
+
+    <div class="col s12 m7" *ngFor="let course of courses">
       <div class="card horizontal">
         <div class="card-stacked">
           <div class="card-content">
@@ -30,7 +30,22 @@
              <i class="small material-icons mybutton" (click)="deleteCourse(course)">close</i>
           </div>
         </div>
-      </div>
+
     </div>
   </div>
+
+
+
+
+    <ul class="collection col 12">
+      <div  *ngFor="let user in users">
+
+      <li class="collection-item">Alvin</li>
+    </div>
+    </ul>
+
+
 </div>
+
+
+      

@@ -2,6 +2,8 @@ import {Component, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Course} from '../../courses/course';
 import {CourseService} from '../../courses/course.service';
+import {UserService} from '../../_service/user.service';
+import {User} from '../../_service/user';
 
 @Component({
   selector: 'app-course-management',
@@ -11,13 +13,13 @@ import {CourseService} from '../../courses/course.service';
 export class CourseManagementComponent implements OnInit {
   public form: FormGroup;
   public courses: Course[];
-
-  constructor(public fb: FormBuilder, private courseService: CourseService) {
+  public users: User[];
+  constructor(public fb: FormBuilder, private courseService: CourseService,private userService: UserService) {
     this.form = this.fb.group({
       name: [''],
       description: [''],
     });
-
+    this.userService.getAllUser().subscribe((data) => this.users = data);
     this.courseService.getCourses().subscribe((data: Course[]) => this.courses = data);
 
   }
