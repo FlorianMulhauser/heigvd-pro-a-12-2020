@@ -23,7 +23,7 @@ cette environnement a de nombreux avantage:
  3. Agular est un framwork qui permette au code de rester structuré et evite que le projet parte danstout les sens.
   
 
-## Étude détaillée des un points particulier
+## Étude détaillée des points particulier
 
 ### Spécification Backend
 
