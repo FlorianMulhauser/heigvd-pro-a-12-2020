@@ -37,8 +37,6 @@ var UserSchema = new Schema({
     },
     password_hashing_alg: {
       type: String,
-      required: 'hashing alg required'
-      
     }
     
 });
