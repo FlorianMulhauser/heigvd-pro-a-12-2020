@@ -3,6 +3,7 @@ var crypto = require('crypto');
 var mongoose = require('mongoose'),
 User = mongoose.model('User'); // pour les user
 
+
 exports.list_all_user = function(req, res) {
   User.find({}, function(err, users) {
     if (err)
@@ -21,6 +22,25 @@ exports.list_all_user = function(req, res) {
 };
 
 
+exports.add_course_to_user = function(req, res) {
+
+  User.findOne(req.params.userId, function(err, user) {
+
+    if (err)
+      res.send(err);
+
+    user.course.push(req.body);
+
+    User.findOneAndUpdate(user._id,user,{new: true},function(err, res) {
+      if (err)
+        res.send(err);
+      res.json(res);
+    });
+
+    res.json(user);
+  });
+
+};
 
 
 exports.create_a_user = function(req, res) {

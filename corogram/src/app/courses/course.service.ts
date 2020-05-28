@@ -34,6 +34,10 @@ export class CourseService {
     return this.http.post<Course>(this.courseUrl, course, httpOptions).pipe(catchError(this.handleError('addCourse', course)));
   }
 
+  public getCourse(id: String): Observable<any> {
+    return this.http.get<Course>(this.courseUrl + '/' + id).pipe(catchError(this.handleError('getName', id)));
+  }
+
   deleteCourse(course: Course): Observable<any> {
     console.log(course);
     console.log(this.courseUrl + '/' + course._id);

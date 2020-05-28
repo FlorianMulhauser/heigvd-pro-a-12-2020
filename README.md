@@ -1,17 +1,46 @@
-# PRO_2020
-Projet de semestre Alves, Cuénoud, Dupont, Mülhauser, Simonet
+# Outils de participation en cours
 
-## Guide d'installation et d'utilisation 
+Un système de cours participatif qui permet à une classe de chatter ensemble, puis de sélectionner des questions réponses pertinentes dans un forum, et enfin de partager des fichiers.   
 
-### 1. Installer le projet
+HEIG-VD  |  Dépt. TIC  |  Cours PRO  |  Année académique 2019/20 | groupe A-12
 
-* Installer `npm` (https://www.npmjs.com/)
+Development team:
 
-* Dans `heigvd-pro-a-12-2020/backend` et `heigvd-pro-a-12-2020/corogram` lancer `npm install` 
+| Name                                 | Email                              | Github       |
+|--------------------------------------|------------------------------------|--------------|
+| Claude-André Alves                   | claude-andre.inacioalves@heig-vd.ch| ClaudeAlves  |
+| Robin Cuénoud                        | robin.cuenoud@heig-vd.ch           | robincuenoud |
+| Maxime Dupont (deputy project lead)  | maxime.dupont@heig-vd.ch           | MaximeADupont|
+| Florian Mülhauser (project lead)     | florian.mulhauser@heig-vd.ch       | FlorianMulhauser & Florian |
+| Yoann Simonet  | yoann.simonet@heig-vd.ch    | yoannsim   |
 
-### 2. Lancer le projet 
+## Dependencies
 
-#### A) Marche a suivre
+Le logiciel à besoin de ces dépendances là, les autres seront automatiquement installés ultérieurement avec un `npm install`.
+
+* NodeJs 12.16.3
+* npm 6.14.4
+* Angular CLI 9.1.7 (normalement minimum 9.0.6 c'est bon)
+* Typescript 3.1
+
+## Build and install
+
+### 1. Download main dependencies
+
+* Node: il faut donc télécharger et installer `npm` (https://nodejs.org/en/download/) version min 12.16.3 ou +
+* Typescript: ouvrir un shell et taper `npm install -g typescript` (le `-g` est pour une installation globale)
+* Typescript compiler: `npm install -g typescript-compiler`
+* angular-cli: `npm install -g angular-cli`
+
+### 2. Download the software and auto-install it's dependencies
+
+* Git clone this project, or download the latest release 
+* Dans `heigvd-pro-a-12-2020/backend`, lancer un shell et taper `npm install`
+* Dans `heigvd-pro-a-12-2020/corogram`, lancer un shell et taper `npm install` 
+
+## Run
+
+### A) Marche a suivre
 * Dans `corogram` lancer la commande : `ng serve --proxy-config proxy.conf.json` 
 
 (sans le fichier proxy les requêtes ne sont pas fait au backend)
@@ -20,126 +49,20 @@ Projet de semestre Alves, Cuénoud, Dupont, Mülhauser, Simonet
 
 * Ensuite avec votre navigateur aller sur `http://localhost:4200/` 
 
-* Pour l’instant il faut utiliser les credentials `admin` et`admin` 
-
 #### B) Infos de connexions dev
 
 * login: testUser, password: admin
 
-#### C) Références utiles pour troubbleshoot le lancement d'angular
+#### C) Références utiles pour le lancement d'angular 
 * https://developer.ibm.com/recipes/tutorials/angular-2-set-up-and-other-quick-debugging-tips/
 
-#### Erreur potentielles au lancement et solutions
+#### D) Erreur potentielles au lancement et solutions
 
-##### Erreur lors de commande avec ng serve/build/test 
+in case of error with npm/ng in A), some are repertoried with their solutions, see file: rapports/guide_installation.md
 
-> You have to be inside an angular-cli project in order to use the serve command.
+## Documentation
 
-Solution, sorte de mise à jour d'angular cli
+User manual: see file rapports/manuel_utilisateur.md
 
-```
-sudo npm uninstall -g angular-cli @angular/cli
+API documentation: see file rapports/conception_technique.md
 
-sudo npm cache clean --force
-
-npm install npm@latest -g
-
-sudo npm install -g @angular/cli
-
-npm rebuild node-sass --force
-```
-
-## API 
-
-#### Format des contenus échangé entre les différents services.
-
-Toutes les vérification pour Read/Write/Update seront côté backend. 
-
-TODO: Décider comment on implémente les messages ensemble, par exemple est-ce que on peut envoyer des média dans le chat/forum. 
-
-* `ChatMessage`: Object JSON sous forme 
-
-  ```typescript
-  {
-  	id: number; # id unique du ChatMessage
-  	author: String; # id unique de l'auteur du message
-  	content: String; # contenu du message 
-  	timestamp: String; # heure exacte du message au format __ A DEFINIR __  
-      course_id: String; # Permet d'identifier a quel cours ce message appartient
-  }
-  ```
-
-  
-
-* `ForumMessage`: 
-
-  ```typescript
-  {
-  	id: number; # id unique du ForumMessage
-  	author: String; #id unique de l'auteur du message
-  	title: String; #titre du ForumMessage
-  	content: String;# contenu du post
-  	timestamp: String;# heure exacte du message au format __ A DEFINIR __  
-  	upVote: number; # nombre de votes positifs
-    downVote: number; # nombre de votes négatifs
-  	course_id: String; # Permet d'identifier a quel cours ce message appartient
-  }
-  ```
-
-  
-
-* `Course`: 
-
-  Sert à recevoir et échanger des information sur les cours auquel l’utilisateur est inscrit. 
-
-  ```typescript
-  {
-      id: number; # id unique qui permet d'identifier la classe (du cours donné)
-      name: String; # le nom complet p.ex "Programmation Concurrente 2020"
-      shortName: String; # Le nom court du cours (RES pour réseaux par exemple)
-  }
-  ```
-
-* `User`: 
-
-  Sert à définir le statut d’un utilisateur afin de déterminer ses droits. 
-
-  ```typescript
-  {
-  	id: number; #id unique de l'utilisateur
-      name: String; # nom complet de l'utilisateur
-      mail: String; # mail de l'utilisateur
-      status: String; #le status de l'utilisateur
-      course: id[]; #les cours auxquel participe l'étudiant 
-  }
-  ```
-
-  * `status` doit être soit : `PROF` soit `STUD`  soit `ADMIN` . 
-
-  * TODO : Définir comment un `User` peut déterminer si il est admin/prof d’un cours.
-
-    Par exemple un champs : `courseGiven: number[]`qui contiendrait les id des cours auxquels l’user est admin. 
-  
-    
-
-  #### Partie Authentification
-  
-  A definir: [bon lien sur l'authentification avec angular et JWT ](https://blog.angular-university.io/angular-jwt-authentication/)
-  
-  `api/login` `POST`  
-  
-  ```json
-  { userId, passWord }
-  ```
-  
-  Renvoie un token JWT si sucessfull
-  
-  Sinon renvoie `Unauthorized` (HTML erreur 401).
-  
-  
-
-### TODO : Definir comment le backend et la GUI interagissent (http etc.. )
-
-Lien utile : 
-
-Sur JWT mangodb et angular : https://developer.okta.com/blog/2019/09/11/angular-mongodb

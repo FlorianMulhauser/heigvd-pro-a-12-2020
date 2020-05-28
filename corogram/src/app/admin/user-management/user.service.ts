@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {Course} from '../../courses/course';
 import {User} from './user';
 
 
@@ -14,6 +15,7 @@ export class UserService {
   }
 
   public userURL = '/api/user';
+  public courseUrl = '/api/courses';
 
   public getUser(userId: string): Observable<User[]> {
     return this.http.get<User[]>(this.userURL + '/' + userId).pipe(
@@ -25,10 +27,16 @@ export class UserService {
       catchError(this.handleError<User[]>('getUser', [])));
   }
 
+  public addUserCourse(userId: String, coureId: String): Observable<User[]> {
+    return this.http.put(this.userURL + '/addCourse/' + userId, coureId).pipe(
+      catchError(this.handleError<any>('addUserCourse', [])));
+  }
+
   // permets de créer un user
   public addUser(us: User): Observable<User> {
     return this.http.post<User>(this.userURL, us).pipe(catchError(this.handleError('addUser', us)));
   }
+
 
   public deleteUser(us: User): Observable<any> {
     return this.http.delete(this.userURL + '/' + us._id).pipe(catchError(this.handleError('deleteUser', us)));
