@@ -1,21 +1,19 @@
-```
-# Collaborative annotation of historical images
 
-An application for collaboratively tagging and annotating historical
-images from the canton of Vaud.
+# Outils de participation en cours
 
-This software was developed as semester project (PRO) at HEIG-VD,
-academic year 2018/19.
+Un système de cours participatif qui permet à une classe de chatter ensemble, puis de sélectionner des questions réponses pertinentes dans un forum, et enfin de partager des fichiers.   
+
+HEIG-VD  |  Dépt. TIC  |  Cours PRO  |  Année académique 2019/20
 
 Development team:
 
-| Name                                 | Email                        | Github   |
-|--------------------------------------|------------------------------|----------|
-| James Gosling                        | james.gosling@heig-vd.ch     | liskbas  |
-| Brian Kernighan (project lead)       | brian.kernighan@heig-vd.ch   | perwol   |
-| Guido van Rossum                     | guido.vanrossum@heig-vd.ch   | chaunlep |
-| Bjarne Stroustrup                    | bjarne.stroustrup@heig-vd.ch | tomphan  |
-| Linus Torvalds (deputy project lead) | linus.torvalds@heig-vd.ch    | kwenaw   |
+| Name                                 | Email                              | Github       |
+|--------------------------------------|------------------------------------|--------------|
+| Claude-André Alves                   | claude-andre.inacioalves@heig-vd.ch| ClaudeAlves  |
+| Robin Cuénoud                        | robin.cuenoud@heig-vd.ch           | robincuenoud |
+| Maxime Dupont (deputy project lead)  | maxime.dupont@heig-vd.ch           | MaximeADupont|
+| Florian Mülhauser (project lead)     | florian.mulhauser@heig-vd.ch       | FlorianMulhauser & Florian |
+| Yoann Simonet  | yoann.simonet@heig-vd.ch    | yoannsim   |
 
 ## Dependencies
 
@@ -52,4 +50,3 @@ This software requires Java 8 or above and the following libraries:
 User manual: see file xxxxx.
 
 API documentation: see file yyyyy.
-```
