@@ -6,4 +6,5 @@ export interface User {
   password_hash: String,
   name: String,
   course: String[],
+  edit: boolean
 }

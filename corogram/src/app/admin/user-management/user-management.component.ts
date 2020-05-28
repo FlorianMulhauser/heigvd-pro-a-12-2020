@@ -15,8 +15,10 @@ import {UserService} from './user.service';
 })
 export class UserManagementComponent implements OnInit {
   public form: FormGroup;
+  
   public courses: Course[];
   public users: User[];
+ 
   filterName:User;
   constructor(public fb: FormBuilder, private courseService: CourseService, private userService: UserService) {
   	this.form = this.fb.group({
@@ -27,6 +29,7 @@ export class UserManagementComponent implements OnInit {
   		name: [''],
       status: [''],
   	});
+
    }
 
 
@@ -58,6 +61,17 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
+  public submitFormEdit() { /*
+    this.userService.addUser(this.formEdit.value).subscribe((data) => {
+      if (data._id != null) {
+        this.userService.getAllUser().subscribe((datas) =>  {
+         this.users = datas;
+        });
+      }
+    });
+    */
+  }
+
   public deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe((data) => {
       if (data._id != null) {
@@ -66,20 +80,15 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
-  private getReadableCourseName() {
-    this.users.forEach(user => {
-      user.course.forEach( function(course,i,arr) {
-      });
-      });
-      
-  }
 
   public addUserCourse(idUser: String, idCourse: String) {
     this.userService.addUserCourse(idUser, idCourse).subscribe((data) => {
       
     });
   }
-
+  public editUser(user: User) {
+   
+  }
 }
 
 

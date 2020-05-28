@@ -76,6 +76,7 @@ exports.update_a_user = function(req, res) {
 
 
 exports.delete_a_user = function(req, res) {
+  if(req.user.status == "superadmin") {
   User.remove({
     _id: req.params.userId
   }, function(err, user) {
@@ -83,6 +84,9 @@ exports.delete_a_user = function(req, res) {
       res.send(err);
     res.json({ message: 'User successfully deleted' });
   });
+} else {
+  res.sendStatus(403);
+}
 };
 
 function hashPassword(req) {
