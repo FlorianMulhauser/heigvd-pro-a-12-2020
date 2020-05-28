@@ -17,11 +17,12 @@ Development team:
 
 ## Dependencies
 
-This software requires Java 8 or above and the following libraries:
+Le logiciel à besoin de ces dépendances là, les autres seront automatiquement installés ultérieurement avec un `npm install`.
 
-* Lorem v. 4.3
-* Ipsum v. 48.3.p1
-* Dolor v. 22-3
+* NodeJs 12.16.3
+* npm 6.14.4
+* Angular CLI 9.1.7 (normalement minimum 9.0.6 c'est bon)
+* Typescript 3.1
 
 ## Build and install
 
