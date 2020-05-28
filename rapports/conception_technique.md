@@ -102,9 +102,15 @@ Sur JWT mangodb et angular : https://developer.okta.com/blog/2019/09/11/angular-
 
 
 
+# Backend 
 
 
+## Spécification
 
+Le backend va servir à connecter le frontend (corogram) fait en angular avec la database. 
 
-## Normes et guides de développement suivis
+Son rôle va être de garantir que l’utilisateur peut READ/WRITE seulement ce qu’il à le droit. 
 
+Les informations montrées à l’utilisateur seront amenée comme ceci : 
+
+![image-20200427163528833](images/first_spec)
