@@ -1,8 +1,8 @@
 # Organisation du code
 
-À partir de la racine heigvd-pro-a-12-2020, on a accès au README principal de présentation, puis 3 dossiers:
+À partir de la racine heigvd-pro-a-12-2020, on a accès au README principal de présentation, puis 3 dossiers. Chaque dossier contient un README qui explique comment utiliser cette partie du code, et donne divers références. Voilà ces trois répertoires:
 
-### rapports
+### 1) Rapports
 Ici nous avons nos markedown des différents rapports. C'est la documentation à lire pour donner les informations. On retrouve:
 
 ##### Le guide d'installation
@@ -21,6 +21,27 @@ Ce rapport sur la conception technique présente l'architecture technique du pro
 ##### Suivi qualité
 
 
-### coronagram
+## 2) Coronagram
 
-### backend
+### e2e
+Cela permet d'effectuer des test complets end-to-end du code avec Protractor.
+
+### src
+
+##### Karma
+Outil pour effectuer différents test unitaires du code, notament en utilisant réelement des browser.
+
+##### Config proxy
+Fichier de configuration pour le proxy
+
+##### Angular Json -> login page
+
+## 3) Backend
+
+### Node Module
+### API
+
+##### Image
+##### Server JS
+##### JWT token pour l'authentification
+
