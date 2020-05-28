@@ -63,16 +63,16 @@
     <h4> List of all user </h4>
 
      <div class="input-field col s5">
-     <input  type="text" id="userSearch" >
+     <input  type="text" id="userSearch" [(ngModel)]="searchText" >
      <label for="userSearch"> <i class="small material-icons">person_search</i></label>
    </div>
     <!-- Regarder pour faire avec un pipe (let user of users | filter:'name' -->
-      <div class="pure-menu-item" *ngFor="let user of users"  >
+      <div class="pure-menu-item" *ngFor="let user of users | filter : {name: searchText, first_name: searchText,last_name: searchText,mail: searchText} :false "  >
         <div class="col s12 m10" >
           <div class="card horizontal">
             <div class="card-stacked">
               <div class="card-content">
-                <div class="row"> 
+                <div class="row">
 
 
                    <form class="col s12" [formGroup]="form" >
@@ -84,7 +84,7 @@
           </div>
           <!-- First name -->
           <div class="input-field col s6">
-            <input [attr.disabled]="!user.edit ? '' : null"  id="{{user._id}}first_name" type="text" 
+            <input [attr.disabled]="!user.edit ? '' : null"  id="{{user._id}}first_name" type="text"
             formControlName="first_name" class="validate" placeholder="{{user.first_name}}">
             <label  class="active" for="{{user._id}}first_name">First Name</label>
           </div>
@@ -98,7 +98,7 @@
 
           <!-- Email-->
           <div class="input-field col s6">
-            <input [attr.disabled]="!user.edit ? '' : null" id="{{user._id}}email" type="text" class="validate" placeholder="{{user.mail}}" 
+            <input [attr.disabled]="!user.edit ? '' : null" id="{{user._id}}email" type="text" class="validate" placeholder="{{user.mail}}"
             formControlName="mail">
             <label  class="active" for="{{user._id}}email">Email</label>
           </div>
@@ -117,14 +117,14 @@
         </form>
       </div>
               <div class="card-action">
-               
+
                 <i class="small waves-effect material-icons mybutton"  title="edit" (click)="user.edit=!user.edit">build</i>
                  <i *ngIf="user.edit" title="send" class="small  waves-effect material-icons mybutton" (click)="submitFormEdit(user);user.edit=!user.edit">check</i>
                  <span *ngIf="user.edit" >  &nbsp; &nbsp; DELETE USER : </span>
                   <i *ngIf="user.edit" title="delete" class="small waves-effect material-icons mybutton" (click)="deleteUser(user)">close</i>
               </div>
             </div>
-          
+
         </div>
       </div>
 
