@@ -41,17 +41,28 @@ Le logiciel à besoin de ces dépendances là, les autres seront automatiquement
 
 ## Run
 
-1. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-   nisi ut aliquip ex ea commodo consequat.
+### A) Marche a suivre
+* Dans `corogram` lancer la commande : `ng serve --proxy-config proxy.conf.json` 
 
-2. Duis aute irure dolor in reprehenderit in voluptate velit esse
-   cillum dolore eu fugiat nulla pariatur.
+(sans le fichier proxy les requêtes ne sont pas fait au backend)
 
-3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-   officia deserunt mollit anim id est laborum.
+* Dans `backend` lancer `npm start` 
+
+* Ensuite avec votre navigateur aller sur `http://localhost:4200/` 
+
+#### B) Infos de connexions dev
+
+* login: testUser, password: admin
+
+#### C) Références utiles pour le lancement d'angular 
+* https://developer.ibm.com/recipes/tutorials/angular-2-set-up-and-other-quick-debugging-tips/
+
+#### D) Erreur potentielles au lancement et solutions
+
+in case of error with npm/ng in A), some are repertoried with their solutions, see file: rapports/guide_installation.md
 
 ## Documentation
 
-User manual: see file xxxxx.
+User manual: see file rapports/manuel_utilisateur.md
 
-API documentation: see file yyyyy.
+API documentation: see file rapports/conception_technique.md
