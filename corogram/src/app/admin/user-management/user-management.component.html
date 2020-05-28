@@ -5,26 +5,26 @@
     <form class="col s12" [formGroup]="form" (ngSubmit)="submitForm()">
       <div class="row">
 
-      	<!-- User name -->
+        <!-- User name -->
         <div class="input-field col s6">
           <input  id="user_name" type="text" class="validate" formControlName="name">
           <label for="user_name">User Name</label>
         </div>
-      	<!-- First name -->
+        <!-- First name -->
         <div class="input-field col s6">
           <input  id="first_name" type="text" class="validate"
           formControlName="first_name">
           <label for="first_name">First Name</label>
         </div>
 
-      	<!-- Last Name -->
+        <!-- Last Name -->
         <div class="input-field col s6">
           <input id="last_name" type="text" class="validate"
           formControlName="last_name">
           <label for="last_name">Last Name</label>
         </div>
 
-      	<!-- Email-->
+        <!-- Email-->
         <div class="input-field col s6">
           <input id="email" type="text" class="validate"
           formControlName="mail">
@@ -33,12 +33,12 @@
 
         <!-- status -->
         <div class="input-field col s6">
-          <input id="status" type="status" class="validate"
+          <input id="status" type="text" class="validate"
                  formControlName="status">
-          <label for="status">status</label>
+          <label for="status">Status</label>
         </div>
 
-      	<!-- Password -->
+        <!-- Password -->
         <div class="input-field col s6">
           <input id="password" type="password" class="validate"
           formControlName="password_hash">
@@ -54,6 +54,8 @@
     </div>
     </form>
 
+  <!-- User list -->
+  <div class="col s6">
   <h4> List of all user </h4>
   
     <li class="pure-menu-item" *ngFor="let user of users">
@@ -66,10 +68,9 @@
                <div class="col s6"> email: {{user.mail}}</div>
                
                 <div class="col s6"> full name : {{user.first_name}} {{user.last_name}}</div>
-               <div class="col s12"> Courses : {{user.course}}</div>
-           
-               </div>
-
+               <div class="col s12"> User Courses : {{user.course}}</div>
+              <div class="col s12"> Status : {{user.status}}</div>
+               </div> 
             </div>
             <div class="card-action">
               <i class="small material-icons mybutton" (click)="deleteUser(user)">close</i>
@@ -79,5 +80,10 @@
       </div>
     </li>
   </div>
+</div>
+
+
+
+
   </div>
 

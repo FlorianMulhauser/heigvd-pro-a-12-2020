@@ -29,11 +29,28 @@ export class UserManagementComponent implements OnInit {
    }
 
   public ngOnInit(): void {
-    this.userService.getAllUser().subscribe((datas) => this.users = datas);
-  }
+    this.courseService.getCourses().subscribe((data: Course[]) => { 
+      this.courses = data
+      this.userService.getAllUser().subscribe((datas) => { 
+       datas.forEach(user => {
+         console.log(data);
+      user.course.forEach(function(c,i,arr) {
+        try {
+          arr[i] = data.find(element => element._id == arr[i]).name;
+        }  catch(err) {
+          // si le cours existe pas c'est normal , cela peut arriver si cours supprimé
+        }      
+
+      });
+    })
+      this.users = datas
+    })
+    });
+   
+    
+    }
 
 	public submitForm() {
-   	console.log(this.form.value);
     this.userService.addUser(this.form.value).subscribe((data) => {
       if (data._id != null) {
         this.userService.getAllUser().subscribe((datas) => this.users = datas);
@@ -49,15 +66,18 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
-  public getCourseName(id: String) {
-    this.courseService.getCourse(id).subscribe((data) => {
-      console.log(data.name);
-    });
+  private getReadableCourseName() {
+    this.users.forEach(user => {
+      user.course.forEach( function(course,i,arr) {
+       
+      });
+      });
+      
   }
 
   public addUserCourse(idUser: String, idCourse: String) {
     this.userService.addUserCourse(idUser, idCourse).subscribe((data) => {
-      console.log(data);
+     console.log(data);
     });
   }
 }

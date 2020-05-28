@@ -11,10 +11,11 @@ exports.list_all_user = function(req, res) {
 
     // for security issue (even tho we have salt but it's not good to display all 
     // password hash to anyone that is an admin)
-    
+    // password hashing alg is useless also
     users.forEach(user => {
-    user.password_hash = undefined;
-    user.password_salt = undefined;
+      user.password_hash         = undefined;
+      user.password_salt         = undefined;
+      user.password_hashing_alg  = undefined;
   });
     
     res.json(users);
