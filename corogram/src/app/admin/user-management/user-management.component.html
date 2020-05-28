@@ -119,7 +119,7 @@
               <div class="card-action">
                
                 <i class="small material-icons mybutton"  title="edit" (click)="user.edit=!user.edit">build</i>
-                 <i *ngIf="user.edit" title="send" class="small material-icons mybutton" (click)="submitFormEdit();user.edit=!user.edit">check</i>
+                 <i *ngIf="user.edit" title="send" class="small material-icons mybutton" (click)="submitFormEdit(user);user.edit=!user.edit">check</i>
                  <span *ngIf="user.edit" >  &nbsp; &nbsp; DELETE USER : </span>
                   <i *ngIf="user.edit" title="delete" class="small material-icons mybutton" (click)="deleteUser(user)">close</i>
               </div>

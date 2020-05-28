@@ -45,12 +45,26 @@ exports.add_course_to_user = function(req, res) {
 
 
 exports.create_a_user = function(req, res) {
+   // ce switch  permet d'être sur que seulement un superadmin peut faire un superadmin
+   // un admin un admin , et un user ne peut creer que des users normaux
+  switch(req.body.status) {
+    case "superadmin":
+    if(req.user.status == "superadmin")
+      break;
+    req.body.status = "admin";
+    case "admin":
+    if(req.user.status == "admin" || req.user.status == "superadmin")
+      break;
+    req.user.status = "admin";
+    break;
+    default:
+    req.body.status = "user";
+  }
   hashPassword(req);
   var new_user = new User(req.body);
   new_user.save(function(err, user) {
     if (err)
-      res.send(err);
-   
+      res.send(err);   
     res.json(user);
   });
 };
@@ -67,11 +81,22 @@ exports.read_a_user = function(req, res) {
 
 
 exports.update_a_user = function(req, res) {
+  if(req.user.status == "superadmin"){ 
+    //on veut pas update les fields pas remplis
+    for(var key in req.body) {
+      if(req.body[key] == "")
+        delete req.body[key];
+  }
+  
+
   User.findOneAndUpdate({_id: req.params.userId}, req.body, {new: true}, function(err, user) {
     if (err)
       res.send(err);
     res.json(user);
   });
+} else {
+  res.sendStatus(403);
+}
 };
 
 
@@ -93,7 +118,6 @@ function hashPassword(req) {
   
   req.body.password_salt = crypto.randomBytes(16);
   req.body.password_salt = new Buffer.from(req.body.password_salt).toString('base64');
-  console.log(req.body.password_salt);
   req.body.password_hash = crypto.pbkdf2Sync(req.body.password_hash,req.body.password_salt,100000,64,'sha512').toString('hex');
   
 }

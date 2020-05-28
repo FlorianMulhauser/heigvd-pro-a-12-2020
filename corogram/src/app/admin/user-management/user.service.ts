@@ -42,6 +42,11 @@ export class UserService {
     return this.http.delete(this.userURL + '/' + us._id).pipe(catchError(this.handleError('deleteUser', us)));
   }
 
+  public updateUser(us: User,us_id: String) {
+    return this.http.put(this.userURL + '/' + us_id,us).pipe(
+      catchError(this.handleError<any>('updateUser', [])));
+  }
+
 // todo export in different sevice /class (duplicate code)
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

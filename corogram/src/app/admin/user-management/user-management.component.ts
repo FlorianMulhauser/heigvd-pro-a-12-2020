@@ -61,29 +61,28 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
-  public submitFormEdit() { /*
-    this.userService.addUser(this.formEdit.value).subscribe((data) => {
+  public submitFormEdit(user: User) { 
+    this.userService.updateUser(this.form.value,user._id).subscribe((data) => {
       if (data._id != null) {
         this.userService.getAllUser().subscribe((datas) =>  {
          this.users = datas;
         });
       }
     });
-    */
+    
   }
 
   public deleteUser(user: User) {
     this.userService.deleteUser(user).subscribe((data) => {
-      if (data._id != null) {
-        this.userService.getAllUser().subscribe((datas) => { this.users = datas});
-      }
-    });
+     this.users = this.users.filter(x => x != user);
+      });
+   
   }
 
 
   public addUserCourse(idUser: String, idCourse: String) {
     this.userService.addUserCourse(idUser, idCourse).subscribe((data) => {
-      
+      console.log(data);
     });
   }
   public editUser(user: User) {
