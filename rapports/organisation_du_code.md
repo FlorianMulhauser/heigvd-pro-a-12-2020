@@ -28,13 +28,8 @@ Cela permet d'effectuer des test complets end-to-end du code avec Protractor.
 
 ### src
 Ce dossier contient le principal de l'application
-#### A) environnement
-?
-#### B) assets
-?
 #### C) app
-Ici il y a le coeur de l'application. On retrouve tous les componnents de l'app, les modals. On a aussi la gestion de l'interface l'auth/les login
-
+Ici il y a le coeur de l'application. On retrouve tous les componnents de l'app, dans angular toute les sous partie sont organisé en componnent (login,Forum,chat ..)
 ##### Karma
 Outil pour effectuer différents test unitaires du code, notament en utilisant réelement des browser.
 
@@ -45,14 +40,21 @@ Fichier de configuration pour le proxy
 
 ## 3) Backend
 
-C'est ici qu'on va stocker nos données. Donc ce sera les users et leur authentification, les messages, les fichier partagés. Le but à terme est de faire tourner ça sur un serveur pour garantir l'uptime continu de l'application et d'héberger les donnés.
-
-### Node Module
+C'est ici que se trouve le sevrer qui va aller stocker les données dans la DB. 
+##### Server JS
+fichier de base qui lance  notre sevrer qui effectue la connexion avec la DB
+##### JWT token pour l'authentification
 
 ### API
-L'API qui permet de communiquer avec le frontend. Ça va nous permettre de récupérer les messages, les cours, les modifications d'user et les fichiers envoyés par les utilisateurs sur la webapp. Ça va également communiquer avec le système de login pour vérifier les inputs.
+contiens toute le sous partie du server 
 
-##### Image
-##### Server JS
-##### JWT token pour l'authentification
+#### controllers
+contiens le code qui effectue les requêtes sur la DB et les traitement 
+#### models
+contiens les modèle de donné qui serons dans la DB.
+#### route
+Fait le lien (via des routes) entre les différant service de l' API backend et le frontend
+
+
+
 
