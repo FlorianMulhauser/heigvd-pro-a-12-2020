@@ -4,10 +4,10 @@ import {FormBuilder, FormGroup, FormControl } from '@angular/forms';
 // pour afficher les cours pour attribuer a l'utilisateur
 import {Course} from '../../courses/course';
 import {CourseService} from '../../courses/course.service';
-import {User} from './user';
+import {User} from '../../_service/user';
 
 // pour la gestion des utilisateurs
-import {UserService} from './user.service';
+import {UserService} from '../../_service/user.service';
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',

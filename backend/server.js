@@ -55,7 +55,7 @@ routes_file(app);
 app.listen(port);
 
 
-console.log('todo list RESTful API server started on: ' + port);
+console.log('API server on listening on ' + port);
 
 // if wrong route entered 
 app.use(function(req, res) {
