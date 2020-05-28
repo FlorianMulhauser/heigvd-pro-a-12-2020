@@ -81,14 +81,5 @@ export class UserManagementComponent implements OnInit {
       });
 
   }
-
-  public addUserCourse(idUser: String, idCourse: String) {
-    this.userService.addUserCourse(idUser, idCourse).subscribe((data) => {
-      console.log(data);
-    });
-  }
-  public editUser(user: User) {
-
-  }
 }
 

@@ -55,12 +55,10 @@ exports.create_a_user = function(req, res) {
     if(req.user.status == "superadmin")
       req.body.status = "superadmin";
       break;
-
     case "admin":
     if(req.user.status == "admin" || req.user.status == "superadmin")
       req.body.status = "admin";
       break;
-
     default:
     req.body.status = "user";
   }
