@@ -24,24 +24,24 @@ export class CourseService {
   // permets d'obtenir tous les cours
   getCourses(): Observable<Course[]> {
     console.log('getting courses');
-    return this.http.get<Course[]>(this.courseUrl).pipe(
-      catchError(this.handleError<Course[]>('getCourses', [])));
+    return this.http.get<Course[]>(this.courseUrl);//.pipe(
+    //  catchError(this.handleError<Course[]>('getCourses', [])));
   }
 
   // permets de créer un cours
   addCourse(course: Course): Observable<Course> {
     console.log(course);
-    return this.http.post<Course>(this.courseUrl, course, httpOptions).pipe(catchError(this.handleError('addCourse', course)));
+    return this.http.post<Course>(this.courseUrl, course, httpOptions)//.pipe(catchError(this.handleError('addCourse', course)));
   }
 
   public getCourse(id: String): Observable<any> {
-    return this.http.get<Course>(this.courseUrl + '/' + id).pipe(catchError(this.handleError('getName', id)));
+    return this.http.get<Course>(this.courseUrl + '/' + id);//.pipe(catchError(this.handleError('getName', id)));
   }
 
   deleteCourse(course: Course): Observable<any> {
     console.log(course);
     console.log(this.courseUrl + '/' + course._id);
-    return this.http.delete(this.courseUrl + '/' + course._id).pipe(catchError(this.handleError('deleteCourse', course)));
+    return this.http.delete(this.courseUrl + '/' + course._id);//.pipe(catchError(this.handleError('deleteCourse', course)));
   }
 
 //todo export in different service /class (duplicate code)

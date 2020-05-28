@@ -18,28 +18,28 @@ export class UserService {
   public courseUrl = '/api/courses';
 
   public getUser(userId: string): Observable<User[]> {
-    return this.http.get<User[]>(this.userURL + '/' + userId).pipe(
-      catchError(this.handleError<User[]>('getUser', [])));
+    return this.http.get<User[]>(this.userURL + '/' + userId)//.pipe(
+     // catchError(this.handleError<User[]>('getUser', [])));
   }
 
   public getAllUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.userURL).pipe(
-      catchError(this.handleError<User[]>('getUser', [])));
+    return this.http.get<User[]>(this.userURL)//.pipe(
+      //catchError(this.handleError<User[]>('getUser', [])));
   }
 
-  public addUserCourse(userId: String, coureId: String): Observable<User[]> {
+  public addUserCourse(userId: String, coureId: String): Observable<User[]> { 
     return this.http.put(this.userURL + '/addCourse/' + userId, coureId).pipe(
       catchError(this.handleError<any>('addUserCourse', [])));
   }
 
   // permets de créer un user
   public addUser(us: User): Observable<User> {
-    return this.http.post<User>(this.userURL, us).pipe(catchError(this.handleError('addUser', us)));
+    return this.http.post<User>(this.userURL, us)//.pipe(catchError(this.handleError('addUser', us)));
   }
 
 
   public deleteUser(us: User): Observable<any> {
-    return this.http.delete(this.userURL + '/' + us._id).pipe(catchError(this.handleError('deleteUser', us)));
+    return this.http.delete(this.userURL + '/' + us._id)//.pipe(catchError(this.handleError('deleteUser', us)));
   }
 
   public updateUser(us: User,us_id: String) {

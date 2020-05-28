@@ -105,7 +105,6 @@ export class ForumComponent implements OnInit {
     }
 
     this.forumService.deleteMessage(forumMessage).subscribe((data) => {
-
       this.messages = this.messages.filter((c) => c !== forumMessage);
     });
 

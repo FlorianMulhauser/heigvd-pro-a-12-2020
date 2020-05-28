@@ -70,7 +70,7 @@ exports.update_a_forum_message = function(req, res) {
 
 
 exports.delete_a_forum_message = function(req, res) {
-
+  if(rH.isAdmin(req)) {
   ForumMessage.remove({
     _id: req.params.forumMessageId
   }, function(err, forum_message) {
@@ -78,4 +78,7 @@ exports.delete_a_forum_message = function(req, res) {
       res.send(err);
     res.json({ message: 'Forum message successfully deleted' });
   });
+} else  {
+  res.sendStatus(403);
+}
 };

@@ -30,18 +30,18 @@ export class ForumService {
   // permets de créer un message
   public addMessage(fm: ForumMessage): Observable<ForumMessage> {
 
-    return this.http.post<ForumMessage>(this.forumUrl, fm).pipe(catchError(this.handleError('addForumMessage', fm)));
+    return this.http.post<ForumMessage>(this.forumUrl, fm)//.pipe(catchError(this.handleError('addForumMessage', fm)));
   }
 
 
   public updateMessageVote(fm: ForumMessage): Observable<ForumMessage> {
 
-    return this.http.put<ForumMessage>(this.forumUrl + '/' + fm._id , fm).pipe(catchError(this.handleError('update_a_forum_message', fm)));
+    return this.http.put<ForumMessage>(this.forumUrl + '/' + fm._id , fm)//.pipe(catchError(this.handleError('update_a_forum_message', fm)));
   }
 
   public deleteMessage(msg: ForumMessage): Observable<any> {
 
-    return this.http.delete(this.forumUrl + '/' + msg._id).pipe(catchError(this.handleError('deleteMsg', msg)));
+    return this.http.delete(this.forumUrl + '/' + msg._id)//.pipe(catchError(this.handleError('deleteMsg', msg)));
   }
 
 // todo export in different sevice /class (duplicate code)
