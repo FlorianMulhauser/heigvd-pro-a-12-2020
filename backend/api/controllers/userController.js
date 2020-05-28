@@ -2,6 +2,7 @@
 var crypto = require('crypto'); 
 var mongoose = require('mongoose'),
 User = mongoose.model('User'); // pour les user
+var rH = require('./rightHelper');
 
 
 exports.list_all_user = function(req, res) {
@@ -24,7 +25,7 @@ exports.list_all_user = function(req, res) {
 
 
 exports.add_course_to_user = function(req, res) {
-
+  if(rH.isAdmin(req)) {
   User.findOne(req.params.userId, function(err, user) {
 
     if (err)
@@ -40,7 +41,9 @@ exports.add_course_to_user = function(req, res) {
 
     res.json(user);
   });
-
+} else {
+  res.sendStatus(403);
+}
 };
 
 
@@ -60,6 +63,7 @@ exports.create_a_user = function(req, res) {
     default:
     req.body.status = "user";
   }
+
   hashPassword(req);
   var new_user = new User(req.body);
   new_user.save(function(err, user) {
@@ -71,12 +75,15 @@ exports.create_a_user = function(req, res) {
 
 
 exports.read_a_user = function(req, res) {
-
+  if(rH.isAdmin(req)) {
   User.findOne(req.params.userId, function(err, user) {
     if (err)
       res.send(err);
     res.json(user);
   });
+} else {
+  res.sendStatus(403);
+}
 };
 
 

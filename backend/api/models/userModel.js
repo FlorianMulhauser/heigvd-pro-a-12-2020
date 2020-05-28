@@ -3,17 +3,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    name: { //username
+    name: { 
       type:String, 
       required: 'username  required'
     },
-    first_name: { //username
+    first_name: { 
         type:String,
-        required: 'username  required'
+        required: 'first name  required'
     },
-    last_name: { //username
+    last_name: { 
         type:String,
-        required: 'username  required'
+        required: 'last name  required'
     },
     mail: {
       type:String, 
@@ -21,6 +21,7 @@ var UserSchema = new Schema({
     },
     status: {
       type: String, 
+      required: 'status required'
     },
     course: {
       type:  [{ type : String, ref: 'Course' }],
@@ -31,10 +32,12 @@ var UserSchema = new Schema({
     },
     password_salt: {
       type: String,
+      required: 'salt required'
       
     },
     password_hashing_alg: {
       type: String,
+      required: 'hashing alg required'
       
     }
     

@@ -52,6 +52,7 @@ export class UserManagementComponent implements OnInit {
     }
 
 	public submitForm() {
+
     this.userService.addUser(this.form.value).subscribe((data) => {
       if (data._id != null) {
         this.userService.getAllUser().subscribe((datas) =>  {
