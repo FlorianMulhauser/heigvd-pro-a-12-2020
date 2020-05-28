@@ -15,4 +15,7 @@ app.route('/api/user/')
     .put(user.update_a_user)
     .delete(user.delete_a_user);
 
+  app.route('/api/user/addCourse/:userId')
+      .put(user.add_course_to_user)
+
 };
