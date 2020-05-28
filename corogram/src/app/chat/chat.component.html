@@ -8,7 +8,7 @@
     <a class="btn-floating btn-small waves-effect waves-light green" (click)="transForum(message)">
       <i class="material-icons">arrow_forward</i>
     </a>
-    <span class="time-right">{{message.timestamp}} {{message.tag}}</span>
+    <span class="time-right">{{message.timestamp | date: 'short'}} {{message.tag}}</span>
   </div>
   <div>
     <form class="pure-form fixed-to-bottom" [formGroup]="formchat" (ngSubmit)="submitForm()">
