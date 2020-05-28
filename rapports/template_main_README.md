@@ -26,14 +26,18 @@ Le logiciel à besoin de ces dépendances là, les autres seront automatiquement
 
 ## Build and install
 
-1. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-   nisi ut aliquip ex ea commodo consequat.
+### 1. Download main dependencies
 
-2. Duis aute irure dolor in reprehenderit in voluptate velit esse
-   cillum dolore eu fugiat nulla pariatur.
+* Node: il faut donc télécharger et installer `npm` (https://nodejs.org/en/download/) version min 12.16.3 ou +
+* Typescript: ouvrir un shell et taper `npm install -g typescript` (le `-g` est pour une installation globale)
+* Typescript compiler: `npm install -g typescript-compiler`
+* angular-cli: `npm install -g angular-cli`
 
-3. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-   officia deserunt mollit anim id est laborum.
+### 2. Download the software and auto-install it's dependencies
+
+* Git clone this project, or download the latest release 
+* Dans `heigvd-pro-a-12-2020/backend`, lancer un shell et taper `npm install`
+* Dans `heigvd-pro-a-12-2020/corogram`, lancer un shell et taper `npm install` 
 
 ## Run
 
