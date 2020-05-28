@@ -64,7 +64,7 @@ export class ChatComponent implements OnInit {
     this.fMsg.title = 'Bonne remarque ';
     this.fMsg.course_id = this.course._id;
 
-    console.log(this.fMsg);
+    
 
     this.forumService.addMessage(this.fMsg).subscribe((data) => console.log(data) );
   }
@@ -77,6 +77,7 @@ export class ChatComponent implements OnInit {
     this.chatService.addMessage(this.formchat.value).subscribe((data) => {
          console.log(data);
        });
+    this.formchat.patchValue({content:""});
 
   }
 
