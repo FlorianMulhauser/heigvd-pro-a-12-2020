@@ -7,6 +7,7 @@ import {RandomColorService} from '../_service/random-color.service';
 import {SseService} from '../_service/sse.service';
 import {Course} from '../courses/course';
 import {FilesService} from '../file/file.service';
+import {ModalService} from '../modal/modal-service.service';
 import {ForumMessage} from './forum.message';
 import {ForumService} from './forum.service';
 
@@ -17,7 +18,21 @@ import {ForumService} from './forum.service';
 })
 export class ForumComponent implements OnInit {
 
-  constructor(public fb: FormBuilder, private forumService: ForumService, private randomColorService: RandomColorService, private fileService: FilesService, private sseService: SseService) {
+  @Input() public course: Course;
+  public messages: ForumMessage[];
+  public form: FormGroup;
+  public helper = new JwtHelperService();
+  public uploader: FileUploader;
+
+  public pubilc;
+  public hasBaseDropZoneOver: any;
+  public bodyText: String;
+
+
+
+  constructor(public fb: FormBuilder, private forumService: ForumService,
+              private randomColorService: RandomColorService, private fileService: FilesService,
+              private sseService: SseService, private modalService: ModalService) {
     this.form = this.fb.group({
       title: [''],
       content: [''],
@@ -30,14 +45,8 @@ export class ForumComponent implements OnInit {
     });
     this.uploader = fileService.uploadFile();
   }
-  @Input() public course: Course;
-  public messages: ForumMessage[];
-  public form: FormGroup;
-  public helper = new JwtHelperService();
-  public uploader: FileUploader;
 
-  public pubilc;
-  public hasBaseDropZoneOver: any;
+
   private updateMessage(data: ForumMessage[]) {
 
    data.sort( (a, b) => {
@@ -60,7 +69,7 @@ export class ForumComponent implements OnInit {
       this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
     });
   }
-  public ngOnChanges(changes: SimpleChanges){
+  public ngOnChanges(changes: SimpleChanges) {
     this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
   }
 
@@ -70,10 +79,18 @@ export class ForumComponent implements OnInit {
     this.form.patchValue({author: JSON.parse(localStorage.getItem('userInfo')).name});
     this.form.patchValue({color: this.randomColorService.getColor()});
     if (this.uploader.queue.length !== 0) {
-      this.form.patchValue({fileName: this.uploader.queue[0]._file.name});
+
+      if (this.uploader.queue[0]._file.size < (20 * 1024 * 1024)) {
+        this.form.patchValue({fileName: this.uploader.queue[0]._file.name});
+        this.uploader.authToken = localStorage.getItem('currentUser');
+        this.uploader.uploadAll();
+      } else{
+        this.bodyText = 'file size:' + (this.uploader.queue[0]._file.size / 1048576) + 'MB  size max 16M ';
+        this.openModal('max-size');
+      }
+      this.uploader.queue[0].remove();
+
     }
-    this.uploader.authToken = localStorage.getItem('currentUser');
-    this.uploader.uploadAll();
 
     console.log(this.form.value);
     this.forumService.addMessage(this.form.value).subscribe((data) => {
@@ -113,4 +130,14 @@ export class ForumComponent implements OnInit {
     );
   }
 
+  public openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  public closeModal(id: string) {
+    this.modalService.close(id);
+  }
+
+
 }
+

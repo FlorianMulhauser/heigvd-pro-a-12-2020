@@ -36,7 +36,11 @@
 </ng-template>
 
 <ng-template #elseBlock>Hmm... looks like there's nothing here. Yet</ng-template>
-
+<app-jw-modal id="max-size">
+  <h1>Erreur !</h1>
+  <p>type: <input type="text" [(ngModel)]="bodyText" /></p>
+  <button (click)="closeModal('max-size');">Close</button>
+</app-jw-modal>
 
 <div class="card #fafafa grey lighten-5">
   <div class="row">
