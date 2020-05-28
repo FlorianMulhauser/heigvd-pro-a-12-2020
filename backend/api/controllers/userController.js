@@ -26,7 +26,9 @@ exports.list_all_user = function(req, res) {
 
 exports.add_course_to_user = function(req, res) {
   if(rH.isAdmin(req)) {
-  User.findOne(req.params.userId, function(err, user) {
+  User.findOne(
+    { _id: { $eq: req.params.userId } }
+    , function(err, user) {
 
     if (err)
       res.send(err);
