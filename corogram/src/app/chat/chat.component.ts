@@ -78,8 +78,12 @@ export class ChatComponent implements OnInit {
     this.chatService.addMessage(this.formchat.value).subscribe((data) => {
       console.log(data);
     });
-    this.formchat.patchValue({content: ""});
+    this.formchat.reset();
 
   }
-
+  public deleteMessage(message) {
+    this.chatService.deleteMessage(message).subscribe((data) => {
+      this.messages = this.messages.filter((c) => c !== message);
+    });
+  }
 }
