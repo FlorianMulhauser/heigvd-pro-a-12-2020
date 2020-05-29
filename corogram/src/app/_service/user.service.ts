@@ -27,8 +27,8 @@ export class UserService {
       //catchError(this.handleError<User[]>('getUser', [])));
   }
 
-  public addUserCourse(userId: String, coureId: String): Observable<User[]> { 
-    return this.http.put(this.userURL + '/addCourse/' + userId, coureId).pipe(
+  public addUserCourse(userId: String, courseId: String): Observable<User[]> { 
+    return this.http.put(this.userURL + '/addCourse/' + userId, courseId).pipe(
       catchError(this.handleError<any>('addUserCourse', [])));
   }
 
