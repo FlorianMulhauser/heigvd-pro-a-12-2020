@@ -21,7 +21,7 @@ cette environnement a de nombreux avantage:
  1. La plupart des outils sont open source et gratuit (exemple MongoDB propose un hébergent gratuit et de  bonne qualités).
  2. Relativement facile a prendre en main et il existe de nombreux exemple et librairie sur internet.
  3. Agular est un framwork qui permette au code de rester structuré et evite que le projet parte danstout les sens.
-  
+
 
 ## Étude détaillée des points particulier
 
@@ -32,7 +32,10 @@ Le backend va servir à connecter le frontend (corogram) fait en angular avec la
 Son rôle va être de garantir que l’utilisateur peut READ/WRITE seulement ce qu’il à le droit. 
 
 Les informations montrées à l’utilisateur seront amenée comme ceci : 
-![back](ImagesRapport/back.PNG)
+
+L’application angular (corogram) émets des requêtes sur l’API du backend en fournissant un token JWT comme paramètres. Si le token est valide (sauf pour le login ou l’utilisateur n’a pas encore de token), le backend va récuperer l’utilisateur (grâce a son id signé dans le token) et effectuer la requête en vérifiant au préalable si l’utilisateur à le droit de l’effectuer. Sinon il renvoie une erreur 403 (authorization). 
+
+ 
 
 la communication entre le backend et le frontend (corogram) s' effectue via de requête `http`
 
@@ -45,6 +48,12 @@ Avec angular et la librairie http on peut très facilement implémenter un requ�
           catchError(this.handleError<ChatMessage[]>('getMessages', [])));
       } 
 *exemple de le requête qui récupérer les message du chat.*
+
+Le `http-interceptor` permet à angular de lier le token  JWT à chaque requête.
+
+
+
+Le backend est nécessaire car sinon nous devrions stocker nos credentials en clair sur l’application angular pour les accès à la database. Deplus il nous permet de vérifier les droits des utilisateurs et de leur générer/verifier les token JWT.
 
 
 ### Format des contenus échangé entre les différents services.
@@ -138,7 +147,7 @@ Sur JWT mangodb et angular : https://developer.okta.com/blog/2019/09/11/angular-
 Pour upload un ficher il faut pour commencer l' envoyer sur le backend  pour réaliser cela nous utilisons une API faite pour Angular `ng2-file-upload`  voir: https://valor-software.com/ng2-file-upload/
 
 Nous avons choisis cette API car elle est très simple d' utilisation et permet d' implémenter par exemple une drag and drop zone:
- 
+
 
     <div class="form-group">
             <label>Choose file(s)</label>
