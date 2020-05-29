@@ -93,7 +93,7 @@ API documentation: voir fichier `rapports/conception_technique.md`
 
 ### 2. Installer le projet
 
-* clone le projet / la release sur github
+* clone le projet / la release sur github: https://github.com/FlorianMulhauser/heigvd-pro-a-12-2020
 
 * Dans `heigvd-pro-a-12-2020/backend`, lancer `npm install`
 
@@ -606,3 +606,4 @@ Un clique sur la clé à molette d'un utilisateur permet de pouvoir changer les 
 
 [videoPresentation](https://www.youtube.com/watch?v=3S_T5HaIT7E&feature=youtu.be)
 
+Lien du repo GitHub: https://github.com/FlorianMulhauser/heigvd-pro-a-12-2020
