@@ -1,4 +1,12 @@
-# Outils de participation en cours
+# Table des matières
+1.[Présentation](#presentation)
+2.[Guide d'installation](#guideInstallation)
+3.[Organisation du code](#organisationCode)
+4.[Conception technique](#conception)
+5.[Suivi qualité](#suiviQualite)
+6.[Manuel utilisateur](#guideUtilisateur)
+
+# Outils de participation en cours <a name="presentation"></a>
 
 Un système de cours participatif qui permet à une classe de chatter ensemble pour réagir au cours, puis de sélectionner des questions réponses pertinentes dans un forum, et enfin de partager des fichiers.   
 
@@ -73,11 +81,7 @@ Guide d'utilisateur: voir fichier `rapports/manuel_utilisateur.md`
 
 API documentation: voir fichier `rapports/conception_technique.md`
 
-
-
-
-
-# Guide d'installation
+# Guide d'installation <a name="guideInstallation"></a>
 
 
 ### 1. Dépendances à installer pour Angular
@@ -145,9 +149,7 @@ Vous pouvez nous contacter à tout moment via ce groupe Telegram crée pour l'oc
 
 https://t.me/joinchat/CsZHMBnR3oGc9_QiHqVA4g
 
-
-
-# Organisation du code
+# Organisation du code <a name="organisationCode"></a>
 
 À partir de la racine heigvd-pro-a-12-2020, on a accès au README principal de présentation, puis 3 dossiers. Chaque dossier contient un README qui explique comment utiliser cette partie du code, et donne divers références. Voilà ces trois répertoires:
 
@@ -267,7 +269,7 @@ Fait le lien (via des routes) entre les différant service de l' API backend et 
 
 
 
-# Conception Technique
+# Conception Technique <a name="conception"></a>
 
 ##### Projet de semestre Alves, Cuénoud, Dupont, Mülhauser, Simonet
 
@@ -434,9 +436,13 @@ Les tokens JWT stockent plusieurs informations, une date d’expiration (pour pa
 
 Les token sont stocké dans le `localStorage` pour éviter des failles XSS ou autres qui permettent assez facilement de voler les cookies. 
 
+### Gestion des droits
 
+Les utilisateurs peuvent avoir trois status
 
-
+* superadmin peuvent read,write,update,delete tout le contenu (cours/forumPost/message/user….) 
+* admin ont tous les droits sur les cours dont ils sont admin   (ajouter des gens à ce cours, promote admin/ message post)
+* user   read  tous les messages/post du cours , write  nouveau message/post du cours , update message envoyé par lui meme
 
 ### Upload de fichers sur MangoDB
 
@@ -515,7 +521,7 @@ Il faut ensuite que le frontend s' abonne a l' event
         });
       }
 
-# Suivi qualité
+# Suivi qualité <a name="suiviQualite"></a>
 
 ### Beta-test d'installation
 
@@ -534,4 +540,69 @@ Ce test était dans l'ensemble un succès, car l'installation a pu être fonctio
 De plus, le fait de tester avec une autre personne que celle qui a écrit la procédure, a permis de tester et d'améliorer la clarté de cette dernière.
 
 On s'est heurté à une erreur au cours du test, cela nous a permis de chercher son fix et de documenter tout ça dans une nouvelle section troubbleshoot. Ceci permettra d'éviter des ennuis à l'utilisateur final, qui trouveras directement un fix, si par malchance ce même problème de config lui arrive.
+
+# Manuel utilisateur <a name="guideUtilisateur"></a>
+
+### Utilisateur simple, élève
+
+#### Page de Login
+
+A la page de login il faut entrer son username et son mot de passe. Le bouton forget my password permettra une fois implémenté d'envoyer un mail à l'addresse du user pour le reset.
+* superadmin: login: admin, password: admin
+* admin: login: test, password: admin
+* normal user: login: flo, password: 1234
+
+![PageDeLogin](ImagesRapport/PageDeLogin.png)
+
+#### Page d'accueil de l'application
+
+La barre verticale à gauche permet la navigation au travers des différents cours ainsi que l'accès aux deux menus gestion des cours et gestion des users pour les personnes habilitées.
+
+![PageAccueilUser](ImagesRapport/PageAccueilUser.png)
+
+#### Page d'un cours sans message
+
+On peut écrire un message de type chat ou bien un message de type forum. Lors de l'édition d'un message de type forum on peut drag and drope un fichier pour l'attacher à notre poste.
+
+![PageCoursSansMessage](ImagesRapport/PageCoursSansMessage.png)
+
+#### Page d'un cours avec des messages dans le chat et le forum
+
+Les messages du forum peuvent être upvote/downvote à l'aide des flêches ^/v par tous les utilisateurs.
+
+![PageCoursAvecMessageChatForum](ImagesRapport/PageCoursAvecMessageChatForum.png)
+
+### Utilisateur admin, professeur ou assistant
+
+#### Page d'un cours
+
+On peut voir que les admins peuvent intervenir sur les messages en les effaçants ou en les promotant dans le forum à l'aide des boutons "poubelle" ou bien "flêche verte".
+
+![PageCoursAdmin](ImagesRapport/PageCoursAdmin.png)
+
+#### Page de gestion de cours
+
+Un cours peut être créé avec la partie supérieure de l'interface. Dans la partie inférieure on peut voir les cours disponibles, une recherche est possible via la barre prévu à cet effet. Le clique sur un cours permet d'accèder à ses options. La croix quant à elle permet la suppression du cours.
+
+![PageGestionDeCours](ImagesRapport/PageGestionDeCours.png)
+
+Une fois un clique effectué sur un cours on peut séléctionner des participants (en cliquant dessus ou en les recherchant avec l'outil) pour celui-ci et ensuite valider pour les y ajouter.
+
+![ManagementUser](ImagesRapport/ManagementCourse.png)
+
+### Super Admin
+
+#### Page de gestion des users
+
+Sur cette page comme pour celle des cours on peut procèder à la création d'un utilisateur ainsi que voir la liste de tous ceux-ci. Une barre de recherche permet de retrouver un utilisateur.
+
+![PageGestionUsers](ImagesRapport/PageGestionUsers.png)
+
+Un clique sur la clé à molette d'un utilisateur permet de pouvoir changer les champs de son compte.
+
+![ModificationUser](ImagesRapport/ModificationUser.png)
+
+### Lien présentation vidéo
+
+![videoPresentation](https://www.youtube.com/watch?v=3S_T5HaIT7E&feature=youtu.be)
 
