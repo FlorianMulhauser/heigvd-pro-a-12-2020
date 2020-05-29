@@ -6,8 +6,9 @@
   <div class="pure-u" id="nav">
 
     <div class="nav-inner">
-      <a href="/management"> Gestion des cours </a>
-      <a href="/user-management"> Gestion des users </a>
+
+      <a *ngIf="statu" href="/management"> Gestion des cours </a>
+      <a *ngIf="statu" href="/user-management"> Gestion des users </a>
       <app-courses (selectedCourseChanged)="selectCourse($event)"></app-courses>
 
     </div>
