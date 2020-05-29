@@ -22,6 +22,10 @@ export class FilesService {
     return this.http.get(this.fileUrl + '/' + filename, {responseType: 'blob' as 'json'});
   }
 
+  public showFileNames() {
+    return this.http.get(this.fileUrl);
+  }
+
   public deleteFile(filename) {
     return this.http.delete(this.fileUrl + '/' + filename);
   }
