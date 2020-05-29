@@ -68,7 +68,7 @@ export class ForumComponent implements OnInit {
         this.bodyText = 'file size:' + (this.uploader.queue[0]._file.size / 1048576) + 'MB  size max 16M ';
         this.openModal('max-size');
       }
-      this.uploader.queue[0].remove();
+      //this.uploader.queue[0].remove();
 
     }
 
@@ -105,7 +105,7 @@ export class ForumComponent implements OnInit {
   public downloadFile(filename) {
     this.fileService.downloadFile(filename).subscribe(
       (res) => {
-        saveAs(res, filename);
+       saveAs(res, filename);
       },
     );
   }
