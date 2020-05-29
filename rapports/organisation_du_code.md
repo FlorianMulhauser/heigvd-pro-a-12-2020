@@ -28,8 +28,7 @@ Cela permet d'effectuer des test complets end-to-end du code avec Protractor.
 
 ### src
 Ce dossier contient le principal de l'application
-#### C) app
-Ici il y a le coeur de l'application. On retrouve tous les componnents de l'app, dans angular toute les sous partie sont organisé en componnent (login,Forum,chat ..)
+
 ##### Karma
 Outil pour effectuer différents test unitaires du code, notament en utilisant réelement des browser.
 
@@ -38,15 +37,53 @@ Fichier de configuration pour le proxy
 
 ##### Angular Json -> login page
 
-## 3) Backend
+#### C) app
+Ici il y a le coeur de l'application. On retrouve tous les componnents de l'app, dans angular toute les sous partie sont organisé en componnent (login,Forum,chat ..)
 
-C'est ici que se trouve le sevrer qui va aller stocker les données dans la DB. 
+├───app
+│   ├───admin
+│   │   ├───course-management
+│   │   └───user-management
+│   ├───auth
+│   ├───chat
+│   ├───course-detail
+│   ├───course-list
+│   ├───courses
+│   ├───forgot
+│   ├───forum
+│   ├───home
+│   ├───login
+│   ├───modal
+│   ├───page-not-found
+│   ├───pip
+│   └───_service
+│       ├───auth
+│       ├───chat
+│       ├───course
+│       ├───file
+│       ├───forum
+│       ├───modal
+│       ├───random-color
+│       ├───sse
+│       └───user
+├───assets
+└───environments
+
+## 3) Backend
+C'est ici que se trouve le sevrer qui va aller stocker les données dans la DB.
+
 ##### Server JS
 fichier de base qui lance  notre sevrer qui effectue la connexion avec la DB
 ##### JWT token pour l'authentification
 
 ### API
-contiens toute le sous partie du server 
+contiens toute le sous partie du server
+├───api
+│   ├───controllers
+│   ├───models
+│   └───routes
+├───images
+└───node_modules
 
 #### controllers
 contiens le code qui effectue les requêtes sur la DB et les traitement 
