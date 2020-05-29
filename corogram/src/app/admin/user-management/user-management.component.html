@@ -67,7 +67,7 @@
         <label for="userSearch"> <i class="small material-icons">person_search</i></label>
       </div>
       <!-- Regarder pour faire avec un pipe (let user of users | filter:'name' -->
-      <div *ngFor="let user of users | filter : {name: searchText, first_name: searchText,last_name: searchText,mail: searchText} :false "
+      <div *ngFor="let user of users | filter : {name: searchText, first_name: searchText,last_name: searchText,mail: searchText, course: searchText} :false "
            class="pure-menu-item">
 
         <div class="col s12 m10">

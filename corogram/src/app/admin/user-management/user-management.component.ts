@@ -52,7 +52,7 @@ export class UserManagementComponent implements OnInit {
           });
         });
         this.users = datas;
-        this.users.forEach(user => { 
+        this.users.forEach(user => {
           user.course = user.course.filter(x => x != null);
         });
       });
