@@ -27,6 +27,10 @@ export class ForumComponent implements OnInit {
   public bodyText: String;
 
 
+
+
+
+
   constructor(public fb: FormBuilder, private forumService: ForumService,
               private randomColorService: RandomColorService, private fileService: FilesService,
               private sseService: SseService, private modalService: ModalService) {
@@ -67,14 +71,14 @@ export class ForumComponent implements OnInit {
       } else {
         this.bodyText = 'file size:' + (this.uploader.queue[0]._file.size / 1048576) + 'MB  size max 16M ';
         this.openModal('max-size');
+        this.uploader.queue[0].remove();
       }
-      //this.uploader.queue[0].remove();
-
     }
 
     console.log(this.form.value);
     this.forumService.addMessage(this.form.value).subscribe((data) => {
       console.log(data);
+      this.uploader.queue[0].remove();
     });
   }
 
