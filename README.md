@@ -52,8 +52,8 @@ Dans un cas final ou le produit serait utilisé par plusieurs personnes, il sera
 
 #### B) Infos de connexions dev
 
-* login: testUser, password: admin
-* login: admin, password: admin
+* login user : testUser, password: admin
+* login administrateur: admin, password: admin
 
 #### C) Références utiles pour le lancement d'angular 
 En cas de besoin, plus d'explications pour lancer l'environement, notament pour mettre en place un IDE, sont disponible avec ce lien.
