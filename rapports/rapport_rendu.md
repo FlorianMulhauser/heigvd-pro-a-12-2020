@@ -607,3 +607,9 @@ Un clique sur la clé à molette d'un utilisateur permet de pouvoir changer les 
 [videoPresentation](https://www.youtube.com/watch?v=3S_T5HaIT7E&feature=youtu.be)
 
 Lien du repo GitHub: https://github.com/FlorianMulhauser/heigvd-pro-a-12-2020
+
+Contacts en cas de problèmes non répertoriés (Support) :
+
+Vous pouvez nous contacter à tout moment via ce groupe Telegram crée pour l'occasion.
+
+https://t.me/joinchat/CsZHMBnR3oGc9_QiHqVA4g
