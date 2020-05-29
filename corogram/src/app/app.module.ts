@@ -28,6 +28,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FormsModule} from '@angular/forms';
 import {ModalComponent} from './modal/modal.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { FilterPipe } from './pip/filter-pipe.pipe';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { UserManagementComponent } from './admin/user-management/user-management
     CourseManagementComponent,
     ModalComponent,
     UserManagementComponent,
+    FilterPipe,
 
 
   ],

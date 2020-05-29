@@ -63,8 +63,10 @@ export class ChatComponent implements OnInit {
     this.fMsg.color = this.randomColorService.getColor();
     this.fMsg.title = 'Bonne remarque ';
     this.fMsg.course_id = this.course._id;
+    this.fMsg.downVote = 0;
+    this.fMsg.upVote = 0;
 
-    
+
 
     this.forumService.addMessage(this.fMsg).subscribe((data) => console.log(data) );
   }

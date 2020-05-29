@@ -14,7 +14,7 @@ TODO, faire des captures d'écran des différents menus et les expliquer
 
 ![PageDeLogin](ImagesRapport/PageDeLogin.png)
 
-La bar verticale à gauche permet la navigation au travers les différents cours.
+La barre verticale à gauche permet la navigation au travers des différents cours.
 
 #### Page d'accueil de l'application
 
@@ -30,8 +30,10 @@ La bar verticale à gauche permet la navigation au travers les différents cours
 
 
 * tableau cours inscrit
-* chat
+* chat:
+Les admins peuvent cliquer sur le bouton du message, jugé utile à mettre en avant, afin de le sélectionner pour le basculer dans le forum.
 * forum
+Nous pouvons upvote/downvote les messages du forum afin de juger de la pertinence. Les posts les plus upvotés apparaitrons directement en haut.
 
 ### Utilisateur admin, professeur ou assistant
 

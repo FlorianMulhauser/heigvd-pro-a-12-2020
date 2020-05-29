@@ -17,32 +17,31 @@
 
 
 <div class="container">
-  <h3> List of course </h3>
-
-    <div class="col s12 m7" *ngFor="let course of courses">
-      <div class="card horizontal">
-        <div class="card-stacked">
+  <h3> List of courses </h3>
+  <p> select one to add users, users will appear below this click them to select them </p>
+  <div *ngIf="selectingUser">
+    <div  class="collection" *ngFor="let user of users">
+      <a  class="collection-item"   (click)="addToList(user)" [ngClass]="  !user.edit ? 'white' : '#eeeeee grey lighten-3'"> {{user.first_name}} {{user.last_name}} ({{user.name}})</a>
+    </div>
+  </div>
+  
+    <div class="col s12 m7" *ngFor="let course of courses" >
+      <div class="card horizontal" [ngClass]="  !course.selected ? 'white' : '#eeeeee grey lighten-3'" >
+        <div class="card-stacked" (click)="selectCoursToAdd(course)" >
           <div class="card-content">
             <b>{{course.name}}</b>
             <p>{{course.description}}</p>
           </div>
           <div class="card-action">
              <i class="small material-icons mybutton" (click)="deleteCourse(course)">close</i>
+             <i class="small material-icons mybutton" *ngIf="course.selected" (click)="addCourseToSelectedUser(course)">check</i>
+
           </div>
         </div>
 
     </div>
   </div>
 
-
-
-
-    <ul class="collection col 12">
-      <div  *ngFor="let user in users">
-
-      <li class="collection-item">Alvin</li>
-    </div>
-    </ul>
 
 
 </div>
