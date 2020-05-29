@@ -21,7 +21,7 @@ Ce rapport sur la conception technique présente l'architecture technique du pro
 ##### Suivi qualité
 Ici on explique nos procédures de vérifications de qualité, comme par exemple notre test de la procédures d'installation etc.
 
-## 2) Coronagram
+## 2) Corogram
 
 ### e2e
 Cela permet d'effectuer des test complets end-to-end du code avec Protractor.
