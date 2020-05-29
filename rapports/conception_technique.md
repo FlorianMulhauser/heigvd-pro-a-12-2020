@@ -43,10 +43,12 @@ Avec angular et la librairie http on peut très facilement implémenter un requ�
 
  
 
-     public getMessages(courseId: string): Observable<ChatMessage[]> {
-        return this.http.get<ChatMessage[]>(this.chatUrl + '/' + courseId).pipe(
-          catchError(this.handleError<ChatMessage[]>('getMessages', [])));
-      } 
+```typescript
+ public getMessages(courseId: string): Observable<ChatMessage[]> {
+    return this.http.get<ChatMessage[]>(this.chatUrl + '/' + courseId).pipe(
+      catchError(this.handleError<ChatMessage[]>('getMessages', [])));
+  } 
+```
 *exemple de le requête qui récupérer les message du chat.*
 
 Le `http-interceptor` permet à angular de lier le token  JWT à chaque requête.
