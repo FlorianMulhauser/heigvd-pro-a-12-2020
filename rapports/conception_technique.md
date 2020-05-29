@@ -126,7 +126,7 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
   `api/login` `POST`
 
   ```
-  { userId, passWord }
+  { userId, password }
   ```
 
   Renvoie un token JWT si sucessfull
@@ -137,6 +137,30 @@ TODO: Décider comment on implémente les messages ensemble, par exemple est-ce 
 Lien utile :
 
 Sur JWT mangodb et angular : https://developer.okta.com/blog/2019/09/11/angular-mongodb
+
+
+
+Le shéma utilisé est le suivant : 
+
+L’utilisateur envoie en requête http son userId et son password. Cet envoi se fait sans chiffrement car on suppose que notre application sera en https et ainsi n’est pas responsable du chiffrement de ses requêtes. 
+
+Le backend reçoit cela et vérifie en comparant le userId avec ceux stocké sur la database puis le hash du password. Actuellement c’est l’algorithme `sha512` qui est utilisée et la librairie crypto. 
+
+(voila le retour de la fonction de hashage)
+
+```typescript
+return crypto.pbkdf2Sync(password,salt,100000,64,'sha512').toString('hex');
+```
+
+Néamoins dans un souçis de dévellopement futur nous avons prévu de stocker l’algorithme utilisé dans la database pour que si nous changons d’algorithme nous puissions quand même authentifier des users qui n’auraient pas mis à jour leur mot de passe. 
+
+Nous stockons le hash du mot de passe (salé) sur notre database afin qu’en cas de fuite/dump les hash ne soient pas comparable entre eux et qu’il faille recommencer le processus de crack (bruteforce ou autre) sur chaque utilisateur. 
+
+Une fois que l’utilisateur est authentifié, le backend génère un token JWT signé avec le secret contenu dans `backend/config.json`, plus tard nous pourrions migrer à une cryptographie à clef publique/privée pour que l’utilisateur puisse authentifier nos message de son côté mais nous n’avons pas jugé prioritaire de le faire.
+
+Les tokens JWT stockent plusieurs informations, une date d’expiration (pour pas qu’un vol de token soit grave), et l’id de l’utilisateur. Ces informations sont signées par nous, on peut donc être sur que cet utilisateur est bien authentifié. 
+
+Les token sont stocké dans le `localStorage` pour éviter des failles XSS ou autres qui permettent assez facilement de voler les cookies. 
 
 
 
