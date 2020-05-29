@@ -604,5 +604,5 @@ Un clique sur la clé à molette d'un utilisateur permet de pouvoir changer les 
 
 ### Lien présentation vidéo
 
-![videoPresentation](https://www.youtube.com/watch?v=3S_T5HaIT7E&feature=youtu.be)
+[videoPresentation](https://www.youtube.com/watch?v=3S_T5HaIT7E&feature=youtu.be)
 
