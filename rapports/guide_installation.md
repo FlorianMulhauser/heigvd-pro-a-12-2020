@@ -1,15 +1,14 @@
 # Guide d'installation
 
-### 
 
-### 0. Dépendances à installer pour Angular
+### 1. Dépendances à installer pour Angular
 
 * Node: il faut donc installer `npm` (https://nodejs.org/en/download/) versionX
 * Typescript: ouvrir un shell et taper `npm install -g typescript` (le `-g` est pour une installation globale)
 * Typescript compiler: `npm install -g typescript-compiler`
 * angular-cli: `npm install -g angular-cli`
 
-### 1. Installer le projet
+### 2. Installer le projet
 
 * clone le projet / la release sur github
 
@@ -17,9 +16,9 @@
 
 * Dans `heigvd-pro-a-12-2020/corogram` lancer `npm install` 
 
-### 2. Lancer le projet 
+### 3. Lancer le projet 
 
-#### A) Marche a suivre
+#### A) Marche à suivre
 * Dans `corogram` lancer la commande : `ng serve --proxy-config proxy.conf.json` 
 
 (sans le fichier proxy les requêtes ne sont pas fait au backend)
@@ -32,7 +31,9 @@
 
 #### B) Infos de connexions dev
 
-* login: testUser, password: admin
+* superadmin: login: admin, password: admin
+* admin: login: test, password: admin
+* normal user: login: flo, password: 1234
 
 #### C) Références utiles pour le lancement d'angular 
 * https://developer.ibm.com/recipes/tutorials/angular-2-set-up-and-other-quick-debugging-tips/
