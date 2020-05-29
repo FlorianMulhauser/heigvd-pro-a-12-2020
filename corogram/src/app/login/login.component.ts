@@ -4,14 +4,14 @@ import {FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {delay, tap} from 'rxjs/operators';
-import {AuthService} from '../auth/auth.service';
-import {ModalService} from '../modal/modal-service.service';
+import {AuthService} from '../_service/auth/auth.service';
+import {ModalService} from '../_service/modal/modal-service.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  
+
 })
 export class LoginComponent implements OnInit {
 

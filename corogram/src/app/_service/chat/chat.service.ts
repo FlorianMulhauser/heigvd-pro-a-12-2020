@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {ChatMessage} from './chat.message';
+import {ChatMessage} from '../../chat/chat.message';
 
 
 @Injectable({

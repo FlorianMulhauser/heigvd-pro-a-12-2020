@@ -1,14 +1,14 @@
 import {CATCH_ERROR_VAR} from '@angular/compiler/src/output/output_ast';
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {RandomColorService} from '../_service/random-color.service';
-import {SseService} from '../_service/sse.service';
+import {RandomColorService} from '../_service/random-color/random-color.service';
+import {SseService} from '../_service/sse/sse.service';
 
-import {Course} from '../courses/course';
-import {ForumMessage} from '../forum/forum.message';
-import {ForumService} from '../forum/forum.service';
+import {Course} from '../_service/course/course';
+import {ForumMessage} from '../_service/forum/forum.message';
+import {ForumService} from '../_service/forum/forum.service';
 import {ChatMessage} from './chat.message';
-import {ChatService} from './chat.service';
+import {ChatService} from '../_service/chat/chat.service';
 
 @Component({
   selector: 'app-chat',

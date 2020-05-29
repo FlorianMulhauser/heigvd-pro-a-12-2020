@@ -1,4 +1,4 @@
-import {ForumMessage} from './forum/forum.message';
+import {ForumMessage} from './_service/forum/forum.message';
 
 export const FORUM_MESSAGES: ForumMessage[] = [
   {

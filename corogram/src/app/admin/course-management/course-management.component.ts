@@ -1,9 +1,9 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {Course} from '../../courses/course';
-import {CourseService} from '../../courses/course.service';
-import {UserService} from '../../_service/user.service';
-import {User} from '../../_service/user';
+import {Course} from '../../_service/course/course';
+import {CourseService} from '../../_service/course/course.service';
+import {UserService} from '../../_service/user/user.service';
+import {User} from '../../_service/user/user';
 
 @Component({
   selector: 'app-course-management',
@@ -26,13 +26,13 @@ export class CourseManagementComponent implements OnInit {
     this.form = this.fb.group({
       name: [''],
       description: [''],
-    });    
+    });
     this.usersToAdd = [];
   }
 
   public ngOnInit(): void {
-    this.userService.getAllUser().subscribe((data) => { 
-      
+    this.userService.getAllUser().subscribe((data) => {
+
       this.users = data
       this.users.forEach(user => user.edit = false); });
     this.courseService.getCourses().subscribe((data: Course[]) => {
@@ -57,7 +57,7 @@ export class CourseManagementComponent implements OnInit {
         this.selectingUser = false;
       }
     this.courseService.deleteCourse(course).subscribe((data) =>
-      { 
+      {
      this.courses = this.courses.filter((c) => c !== course) });
 
   }
@@ -76,7 +76,7 @@ export class CourseManagementComponent implements OnInit {
 
   public addToList(user) {
     // todo add check if user alrdy in list
-    if(!user.edit) { 
+    if(!user.edit) {
     user.edit = !user.edit;
     this.usersToAdd.push(user);
   } else {
@@ -93,11 +93,11 @@ export class CourseManagementComponent implements OnInit {
     this.usersToAdd.forEach(user => this.userService.addUserCourse(user._id, course._id).subscribe((data) => {
       console.log(data);
      })
-    ); 
+    );
 
-    // reset table to add 
+    // reset table to add
     this.usersToAdd = [];
   }
 
-  
+
 }

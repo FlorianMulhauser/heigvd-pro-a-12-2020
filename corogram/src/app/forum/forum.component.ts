@@ -3,13 +3,13 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {saveAs} from 'file-saver';
 import { FileUploader } from 'ng2-file-upload';
-import {RandomColorService} from '../_service/random-color.service';
-import {SseService} from '../_service/sse.service';
-import {Course} from '../courses/course';
-import {FilesService} from '../file/file.service';
-import {ModalService} from '../modal/modal-service.service';
-import {ForumMessage} from './forum.message';
-import {ForumService} from './forum.service';
+import {RandomColorService} from '../_service/random-color/random-color.service';
+import {SseService} from '../_service/sse/sse.service';
+import {Course} from '../_service/course/course';
+import {FilesService} from '../_service/file/file.service';
+import {ModalService} from '../_service/modal/modal-service.service';
+import {ForumMessage} from '../_service/forum/forum.message';
+import {ForumService} from '../_service/forum/forum.service';
 
 @Component({
   selector: 'app-forum',

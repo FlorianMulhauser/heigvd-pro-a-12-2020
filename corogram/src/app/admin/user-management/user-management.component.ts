@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 // pour créer des utilisateurs
 import {FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import {User} from '../../_service/user';
+import {User} from '../../_service/user/user';
 // pour afficher les cours pour attribuer a l'utilisateur
-import {Course} from '../../courses/course';
-import {CourseService} from '../../courses/course.service';
+import {Course} from '../../_service/course/course';
+import {CourseService} from '../../_service/course/course.service';
 import {FilterPipe} from '../../pip/filter-pipe.pipe';
 
 // pour la gestion des utilisateurs
-import {UserService} from '../../_service/user.service';
+import {UserService} from '../../_service/user/user.service';
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',

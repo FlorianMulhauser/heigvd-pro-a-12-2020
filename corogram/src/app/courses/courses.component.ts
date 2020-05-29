@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {CourseService} from './course.service';
-import {Course} from './course';
+import {CourseService} from '../_service/course/course.service';
+import {Course} from '../_service/course/course';
 
 @Component({
   selector: 'app-courses',

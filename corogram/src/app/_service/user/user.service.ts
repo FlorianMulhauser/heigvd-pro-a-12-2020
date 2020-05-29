@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {Course} from '../courses/course';
+import {Course} from '../course/course';
 import {User} from './user';
 
 
@@ -27,7 +27,7 @@ export class UserService {
       //catchError(this.handleError<User[]>('getUser', [])));
   }
 
-  public addUserCourse(userId: String, courseId: String): Observable<User[]> { 
+  public addUserCourse(userId: String, courseId: String): Observable<User[]> {
     return this.http.put(this.userURL + '/addCourse/' + userId, courseId).pipe(
       catchError(this.handleError<any>('addUserCourse', [])));
   }
