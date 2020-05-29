@@ -1,10 +1,10 @@
 # Table des matières
-1.[Présentation](#presentation)
-2.[Guide d'installation](#guideInstallation)
-3.[Organisation du code](#organisationCode)
-4.[Conception technique](#conception)
-5.[Suivi qualité](#suiviQualite)
-6.[Manuel utilisateur](#guideUtilisateur)
+1. [Présentation](#presentation)
+2. [Guide d'installation](#guideInstallation)
+3. [Organisation du code](#organisationCode)
+4. [Conception technique](#conception)
+5. [Suivi qualité](#suiviQualite)
+6. [Manuel utilisateur](#guideUtilisateur)
 
 # Outils de participation en cours <a name="presentation"></a>
 
