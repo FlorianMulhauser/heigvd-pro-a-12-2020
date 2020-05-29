@@ -20,7 +20,8 @@ export class CourseManagementComponent implements OnInit {
   //pour choisir des users
   public selectingUser: boolean;
   public usersToAdd: User[];
-
+  public searchTextUser: string;
+  public searchTextCourse: string;
   constructor(public fb: FormBuilder, private courseService: CourseService, private userService: UserService) {
     this.form = this.fb.group({
       name: [''],
@@ -45,6 +46,7 @@ export class CourseManagementComponent implements OnInit {
     this.courseService.addCourse(this.form.value).subscribe((data) => {
       if (data._id != null) {
         this.courses.push(data);
+        this.form.patchValue({name:"",description:""})
       }
     });
   }
@@ -86,9 +88,9 @@ export class CourseManagementComponent implements OnInit {
 
   public addCourseToSelectedUser(course) {
     // revert property
-    this.selectingUser = false;
-    
-     this.usersToAdd.forEach(user => this.userService.addUserCourse(user._id, course._id).subscribe((data) => {
+    this.selectingUser = true;
+    course.selected = true;
+    this.usersToAdd.forEach(user => this.userService.addUserCourse(user._id, course._id).subscribe((data) => {
       console.log(data);
      })
     ); 

@@ -20,12 +20,21 @@
   <h3> List of courses </h3>
   <p> select one to add users, users will appear below this click them to select them </p>
   <div *ngIf="selectingUser">
-    <div  class="collection" *ngFor="let user of users">
+    <div class="input-field col s5">
+     <input  type="text" id="userSearch" [(ngModel)]="searchTextUser" >
+     <label for="userSearch"> <i class="small material-icons">person_search</i></label>
+   </div>
+    <div  class="collection" *ngFor="let user of users | filter : {name: searchTextUser, first_name: searchTextUser,last_name: searchTextUser,mail: searchTextUser} :false ">
       <a  class="collection-item"   (click)="addToList(user)" [ngClass]="  !user.edit ? 'white' : '#eeeeee grey lighten-3'"> {{user.first_name}} {{user.last_name}} ({{user.name}})</a>
     </div>
   </div>
-  
-    <div class="col s12 m7" *ngFor="let course of courses" >
+    
+
+    <div class="input-field col s5">
+     <input  type="text" id="userSearch" [(ngModel)]="searchTextCourse" >
+     <label for="userSearch"> <i class="small material-icons">library_books</i></label>
+   </div>
+    <div class="col s12 m7" *ngFor="let course of courses | filter : {name: searchTextCourse, first_name: searchTextCourse,last_name: searchTextCourse,mail: searchTextCourse} :false" >
       <div class="card horizontal" [ngClass]="  !course.selected ? 'white' : '#eeeeee grey lighten-3'" >
         <div class="card-stacked" (click)="selectCoursToAdd(course)" >
           <div class="card-content">
