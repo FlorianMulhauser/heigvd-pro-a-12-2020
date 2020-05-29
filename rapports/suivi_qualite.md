@@ -19,6 +19,3 @@ De plus, le fait de tester avec une autre personne que celle qui a écrit la pro
 On s'est heurté à une erreur au cours du test, cela nous a permis de chercher son fix et de documenter tout ça dans une nouvelle section troubbleshoot. Ceci permettra d'éviter des ennuis à l'utilisateur final, qui trouveras directement un fix, si par malchance ce même problème de config lui arrive.
 
 
-
-### Tests unitaires/CI
-
