@@ -33,6 +33,7 @@ export class ChatComponent implements OnInit {
     public upVote: number;
     public course_id: String;
   };
+  public statu: boolean;
 
   constructor(public fb: FormBuilder, private chatService: ChatService, private forumService: ForumService, private randomColorService: RandomColorService, private sseService: SseService) {
     this.formchat = this.fb.group({
@@ -49,6 +50,7 @@ export class ChatComponent implements OnInit {
       this.chatService.getMessages(this.course._id).subscribe((messages) =>  this.messages = messages);
     })
     this.chatService.getMessages(this.course._id).subscribe((messages) =>  this.messages = messages);
+    this.statu = JSON.parse(localStorage.getItem('userInfo')).status  !== 'user';
   }
   public ngOnChanges(changes: SimpleChanges){
     this.chatService.getMessages(this.course._id).subscribe((messages) =>  this.messages = messages);

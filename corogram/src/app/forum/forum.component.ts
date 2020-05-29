@@ -25,6 +25,7 @@ export class ForumComponent implements OnInit {
 
   public hasBaseDropZoneOver: any;
   public bodyText: String;
+  public  statu: boolean;
 
 
 
@@ -52,6 +53,8 @@ export class ForumComponent implements OnInit {
     this.sseService.getServerSentForumEvent().subscribe((datas) => {
       this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = this.updateMessage(data));
     });
+
+    this.statu = JSON.parse(localStorage.getItem('userInfo')).status  !== 'user';
   }
   public ngOnChanges(changes: SimpleChanges) {
     this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
