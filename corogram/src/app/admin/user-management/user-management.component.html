@@ -2,137 +2,145 @@
   <h2> User Management </h2>
   <h4> User Creation </h4>
   <div class="row">
-      <form class="col s12" [formGroup]="form" (ngSubmit)="submitForm()">
-        <div class="row">
+    <form (ngSubmit)="submitForm()" [formGroup]="form" class="col s12">
+      <div class="row">
 
-          <!-- User name -->
-          <div class="input-field col s6">
-            <input  id="user_name" type="text" class="validate" formControlName="name">
-            <label for="user_name">User Name</label>
-          </div>
-          <!-- First name -->
-          <div class="input-field col s6">
-            <input  id="first_name" type="text" class="validate"
-            formControlName="first_name">
-            <label for="first_name">First Name</label>
-          </div>
+        <!-- User name -->
+        <div class="input-field col s6">
+          <input class="validate" formControlName="name" id="user_name" type="text">
+          <label for="user_name">User Name</label>
+        </div>
+        <!-- First name -->
+        <div class="input-field col s6">
+          <input class="validate" formControlName="first_name" id="first_name"
+                 type="text">
+          <label for="first_name">First Name</label>
+        </div>
 
-          <!-- Last Name -->
-          <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate"
-            formControlName="last_name">
-            <label for="last_name">Last Name</label>
-          </div>
+        <!-- Last Name -->
+        <div class="input-field col s6">
+          <input class="validate" formControlName="last_name" id="last_name"
+                 type="text">
+          <label for="last_name">Last Name</label>
+        </div>
 
-          <!-- Email-->
-          <div class="input-field col s6">
-            <input id="email" type="text" class="validate"
-            formControlName="mail">
-            <label for="email">Email</label>
-          </div>
+        <!-- Email-->
+        <div class="input-field col s6">
+          <input class="validate" formControlName="mail" id="email"
+                 type="text">
+          <label for="email">Email</label>
+        </div>
 
-          <!-- status -->
-          <div class="input-field col s6">
-            <input id="status" type="text" class="validate"
-                   formControlName="status">
-            <label for="status">Status</label>
-          </div>
+        <!-- status -->
+        <div class="input-field col s6">
+          <input class="validate" formControlName="status" id="status"
+                 type="text">
+          <label for="status">Status</label>
+        </div>
 
-          <!-- Password -->
-          <div class="input-field col s6">
-            <input id="password" type="password" class="validate"
-            formControlName="password_hash">
-            <label for="password">Password</label>
-          </div>
-
-
+        <!-- Password -->
+        <div class="input-field col s6">
+          <input class="validate" formControlName="password_hash" id="password"
+                 type="password">
+          <label for="password">Password</label>
         </div>
 
 
-       <div class="form-group">
+      </div>
+
+
+      <div class="form-group">
         <button class="btn btn-danger btn-block btn-lg">Create</button>
       </div>
-      </form>
-</div>
+    </form>
+  </div>
 </div>
 
 <div class="container">
   <div class="row">
     <!-- User list -->
-    <div class="col s12" >
-    <h4> List of all user </h4>
+    <div class="col s12">
+      <h4> List of all user </h4>
 
-     <div class="input-field col s5">
-     <input  type="text" id="userSearch" [(ngModel)]="searchText" >
-     <label for="userSearch"> <i class="small material-icons">person_search</i></label>
-   </div>
-    <!-- Regarder pour faire avec un pipe (let user of users | filter:'name' -->
-      <div class="pure-menu-item" *ngFor="let user of users | filter : {name: searchText, first_name: searchText,last_name: searchText,mail: searchText} :false "  >
+      <div class="input-field col s5">
+        <input [(ngModel)]="searchText" id="userSearch" type="text">
+        <label for="userSearch"> <i class="small material-icons">person_search</i></label>
+      </div>
+      <!-- Regarder pour faire avec un pipe (let user of users | filter:'name' -->
+      <div *ngFor="let user of users | filter : {name: searchText, first_name: searchText,last_name: searchText,mail: searchText} :false "
+           class="pure-menu-item">
 
-        <div class="col s12 m10" >
+        <div class="col s12 m10">
           <div class="card horizontal">
             <div class="card-stacked">
               <div class="card-content">
                 <div class="row">
 
 
-                   <form class="col s12" [formGroup]="form" >
-                     <div class="row">
-                   <!-- User name -->
-          <div class="input-field col s6">
-            <input [attr.disabled]="!user.edit ? '' : null" id="{{user._id}}user_name" type="text" class="validate" formControlName="name" placeholder="{{user.name}}">
-            <label  class="active" for="{{user._id}}user_name">User Name</label>
-          </div>
-          <!-- First name -->
-          <div class="input-field col s6">
-            <input [attr.disabled]="!user.edit ? '' : null"  id="{{user._id}}first_name" type="text"
-            formControlName="first_name" class="validate" placeholder="{{user.first_name}}">
-            <label  class="active" for="{{user._id}}first_name">First Name</label>
-          </div>
+                  <form [formGroup]="form" class="col s12">
+                    <div class="row">
+                      <!-- User name -->
+                      <div class="input-field col s6">
+                        <input [attr.disabled]="!user.edit ? '' : null" class="validate" formControlName="name"
+                               id="{{user._id}}user_name" placeholder="{{user.name}}" type="text">
+                        <label class="active" for="{{user._id}}user_name">User Name</label>
+                      </div>
+                      <!-- First name -->
+                      <div class="input-field col s6">
+                        <input [attr.disabled]="!user.edit ? '' : null" class="validate" formControlName="first_name"
+                               id="{{user._id}}first_name" placeholder="{{user.first_name}}" type="text">
+                        <label class="active" for="{{user._id}}first_name">First Name</label>
+                      </div>
 
-          <!-- Last Name -->
-          <div class="input-field col s6">
-            <input [attr.disabled]="!user.edit ? '' : null" id="{{user._id}}last_name" type="text" class="validate" placeholder="{{user.last_name}}"
-            formControlName="last_name">
-            <label  class="active" for="{{user._id}}last_name">Last Name</label>
-          </div>
+                      <!-- Last Name -->
+                      <div class="input-field col s6">
+                        <input [attr.disabled]="!user.edit ? '' : null" class="validate" formControlName="last_name"
+                               id="{{user._id}}last_name" placeholder="{{user.last_name}}"
+                               type="text">
+                        <label class="active" for="{{user._id}}last_name">Last Name</label>
+                      </div>
 
-          <!-- Email-->
-          <div class="input-field col s6">
-            <input [attr.disabled]="!user.edit ? '' : null" id="{{user._id}}email" type="text" class="validate" placeholder="{{user.mail}}"
-            formControlName="mail">
-            <label  class="active" for="{{user._id}}email">Email</label>
-          </div>
+                      <!-- Email-->
+                      <div class="input-field col s6">
+                        <input [attr.disabled]="!user.edit ? '' : null" class="validate" formControlName="mail"
+                               id="{{user._id}}email" placeholder="{{user.mail}}"
+                               type="text">
+                        <label class="active" for="{{user._id}}email">Email</label>
+                      </div>
 
-          <!-- status -->
-          <div class="input-field col s6">
-            <input  [attr.disabled]="!user.edit ? '' : null" id="{{user._id}}status" type="text" class="validate"
-                   formControlName="status"  placeholder="{{user.status}}"  >
-            <label  class="active" for="{{user._id}}status">Status</label>
-          </div>
+                      <!-- status -->
+                      <div class="input-field col s6">
+                        <input [attr.disabled]="!user.edit ? '' : null" class="validate" formControlName="status"
+                               id="{{user._id}}status"
+                               placeholder="{{user.status}}" type="text">
+                        <label class="active" for="{{user._id}}status">Status</label>
+                      </div>
 
-          <div class="input-field col s6"> {{user.course}} (for update go to <a href="/management" >course management</a>) </div>
+                      <div class="input-field col s6"> {{user.course}} (for update go to <a href="/management">course
+                        management</a>)
+                      </div>
 
 
+                    </div>
 
-        </div>
+                  </form>
+                </div>
+                <div class="card-action">
 
-        </form>
-      </div>
-              <div class="card-action">
-
-                <i class="small waves-effect material-icons mybutton"  title="edit" (click)="user.edit=!user.edit">build</i>
-                 <i *ngIf="user.edit" title="send" class="small  waves-effect material-icons mybutton" (click)="submitFormEdit(user);user.edit=!user.edit">check</i>
-                 <span *ngIf="user.edit" >  &nbsp; &nbsp; DELETE USER : </span>
-                  <i *ngIf="user.edit" title="delete" class="small waves-effect material-icons mybutton" (click)="deleteUser(user)">close</i>
+                  <i (click)="user.edit=!user.edit" class="small waves-effect material-icons mybutton" title="edit">build</i>
+                  <i (click)="submitFormEdit(user);user.edit=!user.edit" *ngIf="user.edit" class="small  waves-effect material-icons mybutton"
+                     title="send">check</i>
+                  <span *ngIf="user.edit">  &nbsp; &nbsp; DELETE USER : </span>
+                  <i (click)="deleteUser(user)" *ngIf="user.edit" class="small waves-effect material-icons mybutton"
+                     title="delete">close</i>
+                </div>
               </div>
+
             </div>
+          </div>
 
         </div>
       </div>
-
     </div>
   </div>
-</div>
-</div>
 </div>

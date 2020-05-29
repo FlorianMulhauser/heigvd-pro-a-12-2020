@@ -1,10 +1,9 @@
-<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
-      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+<link crossorigin="anonymous" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" rel="stylesheet">
 
 
-
-<div id="layout" class="content pure-g ">
-  <div id="nav" class="pure-u">
+<div class="content pure-g " id="layout">
+  <div class="pure-u" id="nav">
 
     <div class="nav-inner">
       <a href="/management"> Gestion des cours </a>
@@ -15,7 +14,7 @@
   </div>
 
 
-  <div id="list" class="pure-u-1">
+  <div class="pure-u-1" id="list">
     <div *ngIf="selectedCourse" class="centered">
       <app-course-detail [course]=selectedCourse></app-course-detail>
     </div>
@@ -25,7 +24,7 @@
 
   </div>
 
-  <div id="main" class="pure-u-1">
+  <div class="pure-u-1" id="main">
     <div class="email-content-body">
 
 
@@ -34,5 +33,5 @@
       </div>
 
     </div>
-
+  </div>
 

@@ -1,50 +1,45 @@
-import {Injectable} from '@angular/core';
-import {Course} from './course';
 import {HttpClient, HttpHeaders} from '@angular/common/http'; // requete
-import {Observable, throwError, of} from 'rxjs'; // observable
-import {catchError, retry} from 'rxjs/operators'; // gerer les probleme http
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs'; // observable
+import {Course} from './course';
 
-//header pour gerer les tokens plus tard todo a mettre dans request interceptor
+// header pour gerer les tokens plus tard todo a mettre dans request interceptor
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'my-auth-token'
-  })
+    Authorization: 'my-auth-token',
+  }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CourseService {
   constructor(private http: HttpClient) {
   }
 
-  courseUrl = '/api/courses';
+  public courseUrl = '/api/courses';
 
   // permets d'obtenir tous les cours
-  getCourses(): Observable<Course[]> {
+  public getCourses(): Observable<Course[]> {
     console.log('getting courses');
-    return this.http.get<Course[]>(this.courseUrl);//.pipe(
-    //  catchError(this.handleError<Course[]>('getCourses', [])));
+    return this.http.get<Course[]>(this.courseUrl);
+
   }
 
   // permets de créer un cours
-  addCourse(course: Course): Observable<Course> {
+  public addCourse(course: Course): Observable<Course> {
     console.log(course);
-    return this.http.post<Course>(this.courseUrl, course, httpOptions)//.pipe(catchError(this.handleError('addCourse', course)));
+    return this.http.post<Course>(this.courseUrl, course, httpOptions);
   }
 
-  public getCourse(id: String): Observable<any> {
-    return this.http.get<Course>(this.courseUrl + '/' + id);//.pipe(catchError(this.handleError('getName', id)));
-  }
-
-  deleteCourse(course: Course): Observable<any> {
+  public deleteCourse(course: Course): Observable<any> {
     console.log(course);
     console.log(this.courseUrl + '/' + course._id);
-    return this.http.delete(this.courseUrl + '/' + course._id);//.pipe(catchError(this.handleError('deleteCourse', course)));
+    return this.http.delete(this.courseUrl + '/' + course._id);
   }
 
-//todo export in different service /class (duplicate code)
+// todo export in different service /class (duplicate code)
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

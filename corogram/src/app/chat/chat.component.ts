@@ -1,5 +1,4 @@
-import {CATCH_ERROR_VAR} from '@angular/compiler/src/output/output_ast';
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges, OnChanges} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {RandomColorService} from '../_service/random-color/random-color.service';
 import {SseService} from '../_service/sse/sse.service';
@@ -21,7 +20,7 @@ export class ChatComponent implements OnInit {
   public messages: ChatMessage[];
   public formchat: FormGroup;
 
-   public fMsg = new class implements ForumMessage {
+  public fMsg = new class implements ForumMessage {
     public _id: String;
     public author: String;
     public color: String;
@@ -55,6 +54,7 @@ export class ChatComponent implements OnInit {
     this.chatService.getMessages(this.course._id).subscribe((messages) =>  this.messages = messages);
   }
 
+
   public transForum(message: ChatMessage) {
 
     this.fMsg.author = message.author;
@@ -67,8 +67,7 @@ export class ChatComponent implements OnInit {
     this.fMsg.upVote = 0;
 
 
-
-    this.forumService.addMessage(this.fMsg).subscribe((data) => console.log(data) );
+    this.forumService.addMessage(this.fMsg).subscribe((data) => console.log(data));
   }
 
   public submitForm() {
@@ -77,9 +76,9 @@ export class ChatComponent implements OnInit {
     this.formchat.patchValue({author: JSON.parse(localStorage.getItem('userInfo')).name});
 
     this.chatService.addMessage(this.formchat.value).subscribe((data) => {
-         console.log(data);
-       });
-    this.formchat.patchValue({content:""});
+      console.log(data);
+    });
+    this.formchat.patchValue({content: ""});
 
   }
 

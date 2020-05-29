@@ -1,8 +1,7 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {JwtHelperService} from '@auth0/angular-jwt';
 import {saveAs} from 'file-saver';
-import { FileUploader } from 'ng2-file-upload';
+import {FileUploader} from 'ng2-file-upload';
 import {RandomColorService} from '../_service/random-color/random-color.service';
 import {SseService} from '../_service/sse/sse.service';
 import {Course} from '../_service/course/course';
@@ -21,13 +20,11 @@ export class ForumComponent implements OnInit {
   @Input() public course: Course;
   public messages: ForumMessage[];
   public form: FormGroup;
-  public helper = new JwtHelperService();
+
   public uploader: FileUploader;
 
-  public pubilc;
   public hasBaseDropZoneOver: any;
   public bodyText: String;
-
 
 
   constructor(public fb: FormBuilder, private forumService: ForumService,
@@ -46,27 +43,10 @@ export class ForumComponent implements OnInit {
     this.uploader = fileService.uploadFile();
   }
 
-
-  private updateMessage(data: ForumMessage[]) {
-
-   data.sort( (a, b) => {
-      if ((a.upVote - a.downVote) > (b.upVote - b.downVote)) {
-        return -1;
-      }
-      if ((a.upVote - a.downVote) < (b.upVote - b.downVote)) {
-        return 1;
-      }
-      return 0;
-    });
-
-   return data;
-
-  }
-
   public ngOnInit(): void {
-    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
+    this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = this.updateMessage(data));
     this.sseService.getServerSentForumEvent().subscribe((datas) => {
-      this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages =  this.updateMessage(data));
+      this.forumService.getMessages(this.course._id).subscribe((data: ForumMessage[]) => this.messages = this.updateMessage(data));
     });
   }
   public ngOnChanges(changes: SimpleChanges) {
@@ -84,7 +64,7 @@ export class ForumComponent implements OnInit {
         this.form.patchValue({fileName: this.uploader.queue[0]._file.name});
         this.uploader.authToken = localStorage.getItem('currentUser');
         this.uploader.uploadAll();
-      } else{
+      } else {
         this.bodyText = 'file size:' + (this.uploader.queue[0]._file.size / 1048576) + 'MB  size max 16M ';
         this.openModal('max-size');
       }
@@ -121,10 +101,11 @@ export class ForumComponent implements OnInit {
     this.forumService.updateMessageVote(forumMessage).subscribe((data) => this.updateMessage(this.messages));
 
   }
+
   public downloadFile(filename) {
     this.fileService.downloadFile(filename).subscribe(
       (res) => {
-       saveAs(res, filename);
+        saveAs(res, filename);
       },
     );
   }
@@ -135,6 +116,22 @@ export class ForumComponent implements OnInit {
 
   public closeModal(id: string) {
     this.modalService.close(id);
+  }
+
+  private updateMessage(data: ForumMessage[]) {
+
+    data.sort((a, b) => {
+      if ((a.upVote - a.downVote) > (b.upVote - b.downVote)) {
+        return -1;
+      }
+      if ((a.upVote - a.downVote) < (b.upVote - b.downVote)) {
+        return 1;
+      }
+      return 0;
+    });
+
+    return data;
+
   }
 
 

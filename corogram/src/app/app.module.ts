@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FileUploadModule} from 'ng2-file-upload';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -13,22 +13,18 @@ import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthInterceptor} from './auth/auth.interceptor';
-import {HttpClientModule} from '@angular/common/http';
-
-// pour les animations
-
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ForgotComponent} from './forgot/forgot.component';
 import {CourseManagementComponent} from './admin/course-management/course-management.component';
+// pour les formulaire reactif..formulaire
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ModalComponent} from './modal/modal.component';
+import {UserManagementComponent} from './admin/user-management/user-management.component';
+import {FilterPipe} from './pip/filter-pipe.pipe';
+
+// pour les animations
 
 // pour les requetes http
-
-// pour les formulaire reactif..formulaire
-import {ReactiveFormsModule} from '@angular/forms';
-import {FormsModule} from '@angular/forms';
-import {ModalComponent} from './modal/modal.component';
-import { UserManagementComponent } from './admin/user-management/user-management.component';
-import { FilterPipe } from './pip/filter-pipe.pipe';
 
 
 @NgModule({

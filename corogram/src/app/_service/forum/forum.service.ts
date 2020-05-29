@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http'; // requete
 import {Injectable} from '@angular/core';
-import {Observable, of, throwError} from 'rxjs'; // observable
-import {catchError, retry} from 'rxjs/operators'; // gerer les probleme http
+import {Observable, of} from 'rxjs'; // observable
+import {catchError} from 'rxjs/operators'; // gerer les probleme http
 import {ForumMessage} from './forum.message';
 
 // header pour gerer les tokens plus tard todo a mettre dans request interceptor

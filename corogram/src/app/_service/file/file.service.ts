@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http'; // requete
-import { FileUploader } from 'ng2-file-upload';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http'; // requete
+import {FileUploader} from 'ng2-file-upload';
 
 @Injectable({
   providedIn: 'root',
@@ -20,10 +20,6 @@ export class FilesService {
 
   public downloadFile(filename): any {
     return this.http.get(this.fileUrl + '/' + filename, {responseType: 'blob' as 'json'});
-  }
-
-  public showFileNames() {
-    return this.http.get(this.fileUrl);
   }
 
   public deleteFile(filename) {

@@ -1,5 +1,6 @@
-import { Injectable, NgZone } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Injectable, NgZone} from '@angular/core';
+import {Observable} from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })

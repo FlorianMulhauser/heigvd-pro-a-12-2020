@@ -2,48 +2,38 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {Course} from '../course/course';
 import {User} from './user';
 
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   constructor(private http: HttpClient) {
   }
 
   public userURL = '/api/user';
-  public courseUrl = '/api/courses';
-
-  public getUser(userId: string): Observable<User[]> {
-    return this.http.get<User[]>(this.userURL + '/' + userId)//.pipe(
-     // catchError(this.handleError<User[]>('getUser', [])));
-  }
 
   public getAllUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.userURL)//.pipe(
-      //catchError(this.handleError<User[]>('getUser', [])));
+    return this.http.get<User[]>(this.userURL); // .pipe(
+      // catchError(this.handleError<User[]>('getUser', [])));
   }
 
-  public addUserCourse(userId: String, courseId: String): Observable<User[]> {
+  public addUserCourse(userId, courseId): Observable<User[]> {
     return this.http.put(this.userURL + '/addCourse/' + userId, courseId).pipe(
       catchError(this.handleError<any>('addUserCourse', [])));
   }
 
   // permets de créer un user
   public addUser(us: User): Observable<User> {
-    return this.http.post<User>(this.userURL, us)//.pipe(catchError(this.handleError('addUser', us)));
+    return this.http.post<User>(this.userURL, us); // .pipe(catchError(this.handleError('addUser', us)));
   }
-
 
   public deleteUser(us: User): Observable<any> {
-    return this.http.delete(this.userURL + '/' + us._id)//.pipe(catchError(this.handleError('deleteUser', us)));
+    return this.http.delete(this.userURL + '/' + us._id); // .pipe(catchError(this.handleError('deleteUser', us)));
   }
 
-  public updateUser(us: User,us_id: String) {
-    return this.http.put(this.userURL + '/' + us_id,us).pipe(
+  public updateUser(us: User, us_id: String) {
+    return this.http.put(this.userURL + '/' + us_id, us).pipe(
       catchError(this.handleError<any>('updateUser', [])));
   }
 

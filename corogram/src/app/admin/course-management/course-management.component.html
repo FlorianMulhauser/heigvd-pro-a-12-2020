@@ -1,13 +1,14 @@
-
 <div class="container">
   <h2> Course management </h2>
   <h3> Create a course </h3>
-  <form [formGroup]="form" (ngSubmit)="submitForm()">
+  <form (ngSubmit)="submitForm()" [formGroup]="form">
     <div class="form-group input-group-lg">
-      <input class="form-control" placeholder="Name" formControlName="name">
+      <label for="name">Course name </label>
+      <input class="form-control" formControlName="name" id="name" placeholder="Name">
     </div>
     <div class="form-group input-group-lg">
-      <input class="form-control" placeholder="Description" formControlName="description">
+      <label for="description">description</label>
+      <input class="form-control" formControlName="description" id="description" placeholder="Description">
     </div>
     <div class="form-group">
       <button class="btn btn-danger btn-block btn-lg">Create</button>
@@ -21,39 +22,42 @@
   <p> select one to add users, users will appear below this click them to select them </p>
   <div *ngIf="selectingUser">
     <div class="input-field col s5">
-     <input  type="text" id="userSearch" [(ngModel)]="searchTextUser" >
-     <label for="userSearch"> <i class="small material-icons">person_search</i></label>
-   </div>
-    <div  class="collection" *ngFor="let user of users | filter : {name: searchTextUser, first_name: searchTextUser,last_name: searchTextUser,mail: searchTextUser} :false ">
-      <a  class="collection-item"   (click)="addToList(user)" [ngClass]="  !user.edit ? 'white' : '#eeeeee grey lighten-3'"> {{user.first_name}} {{user.last_name}} ({{user.name}})</a>
+      <input [(ngModel)]="searchTextUser" id="userSearch" type="text">
+      <label for="userSearch"> <i class="small material-icons">person_search</i></label>
+    </div>
+    <div *ngFor="let user of users | filter : {name: searchTextUser, first_name: searchTextUser,last_name: searchTextUser,mail: searchTextUser} :false "
+         class="collection">
+      <a (click)="addToList(user)" [ngClass]="  !user.edit ? 'white' : '#eeeeee grey lighten-3'"
+         class="collection-item"> {{user.first_name}} {{user.last_name}}
+        ({{user.name}})</a>
     </div>
   </div>
-    
 
-    <div class="input-field col s5">
-     <input  type="text" id="userSearch" [(ngModel)]="searchTextCourse" >
-     <label for="userSearch"> <i class="small material-icons">library_books</i></label>
-   </div>
-    <div class="col s12 m7" *ngFor="let course of courses | filter : {name: searchTextCourse, first_name: searchTextCourse,last_name: searchTextCourse,mail: searchTextCourse} :false" >
-      <div class="card horizontal" [ngClass]="  !course.selected ? 'white' : '#eeeeee grey lighten-3'" >
-        <div class="card-stacked" (click)="selectCoursToAdd(course)" >
-          <div class="card-content">
-            <b>{{course.name}}</b>
-            <p>{{course.description}}</p>
-          </div>
-          <div class="card-action">
-             <i class="small material-icons mybutton" (click)="deleteCourse(course)">close</i>
-             <i class="small material-icons mybutton" *ngIf="course.selected" (click)="addCourseToSelectedUser(course)">check</i>
 
-          </div>
+  <div class="input-field col s5">
+    <input [(ngModel)]="searchTextCourse" id="userSearch" type="text">
+    <label for="userSearch"> <i class="small material-icons">library_books</i></label>
+  </div>
+  <div *ngFor="let course of courses | filter : {name: searchTextCourse, first_name: searchTextCourse,last_name: searchTextCourse,mail: searchTextCourse} :false"
+       class="col s12 m7">
+    <div [ngClass]="  !course.selected ? 'white' : '#eeeeee grey lighten-3'" class="card horizontal">
+      <div (click)="selectCoursToAdd(course)" class="card-stacked">
+        <div class="card-content">
+          <b>{{course.name}}</b>
+          <p>{{course.description}}</p>
         </div>
+        <div class="card-action">
+          <i (click)="deleteCourse(course)" class="small material-icons mybutton">close</i>
+          <i (click)="addCourseToSelectedUser(course)" *ngIf="course.selected" class="small material-icons mybutton">check</i>
+
+        </div>
+      </div>
 
     </div>
   </div>
-
 
 
 </div>
 
 
-      
+

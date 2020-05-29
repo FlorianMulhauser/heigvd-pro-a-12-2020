@@ -1,7 +1,7 @@
 /* Chat containers */
 .container {
   border: 2px solid #dedede;
-  background-color: #d3d3d 3;
+  background-color: #d3d3d3;
   border-radius: 15px;
   padding: 20px;
   margin: 10px auto;
@@ -9,9 +9,19 @@
 
 
 }
-.my-drop-zone { border: dotted 4px lightgray; }
-.nv-file-over { border: dotted 6px red; } /* Default class applied to drop zones on over */
-.another-file-over-class { border: dotted 3px green; }
+
+.my-drop-zone {
+  border: dotted 4px lightgray;
+}
+
+.nv-file-over {
+  border: dotted 6px red;
+}
+
+/* Default class applied to drop zones on over */
+.another-file-over-class {
+  border: dotted 3px green;
+}
 
 
 /* Darker chat container */

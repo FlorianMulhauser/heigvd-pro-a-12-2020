@@ -5,7 +5,7 @@
 
   <div class="row">
 
-    <div class="card {{message.color}}" *ngFor="let message of messages">
+    <div *ngFor="let message of messages" class="card {{message.color}}">
       <div class="card-content">
         <div class="card-title "> {{message.title}}
           par <b>{{message.author}}</b></div>
@@ -19,11 +19,12 @@
         <div class="card-action">
           <span class="time-right ">{{message.timestamp | date: 'short'}}</span>
           <div class="command">
-            <i class="small material-icons waves-effect mybutton" (click)="deleteMessage(message)">close</i>
-            <i class="small material-icons  waves-effect mybutton" (click)="upVote(message)">expand_less</i>
-            <i class="small material-icons waves-effect mybutton" (click)="downVote(message)">expand_more</i>
+            <i (click)="deleteMessage(message)" class="small material-icons waves-effect mybutton">close</i>
+            <i (click)="upVote(message)" class="small material-icons  waves-effect mybutton">expand_less</i>
+            <i (click)="downVote(message)" class="small material-icons waves-effect mybutton">expand_more</i>
             <div *ngIf="message.fileName">
-              <i class="small material-icons waves-effect mybutton" (click) =  downloadFile(message.fileName)>file_download</i>
+              <i (click)=downloadFile(message.fileName)
+                 class="small material-icons waves-effect mybutton">file_download</i>
               <b>{{message.fileName}}</b>
             </div>
 
@@ -38,19 +39,19 @@
 <ng-template #elseBlock>Hmm... looks like there's nothing here. Yet</ng-template>
 <app-jw-modal id="max-size">
   <h1>Erreur !</h1>
-  <p>type: <input type="text" [(ngModel)]="bodyText" /></p>
+  <p>type: <input [(ngModel)]="bodyText" type="text"/></p>
   <button (click)="closeModal('max-size');">Close</button>
 </app-jw-modal>
 
 <div class="card #fafafa grey lighten-5">
   <div class="row">
 
-    <form class="col s12" [formGroup]="form" (ngSubmit)="submitForm()">
+    <form (ngSubmit)="submitForm()" [formGroup]="form" class="col s12">
 
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">mode_edit</i>
-          <textarea id="icon_prefix2" class="materialize-textarea" formControlName="title"></textarea>
+          <textarea class="materialize-textarea" formControlName="title" id="icon_prefix2"></textarea>
           <label for="icon_prefix2">Subject</label>
         </div>
       </div>
@@ -58,17 +59,17 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">mode_edit</i>
-          <textarea id="icon_prefix2" class="materialize-textarea" formControlName="content"></textarea>
+          <textarea class="materialize-textarea" formControlName="content" id="icon_prefix2"></textarea>
           <label for="icon_prefix2">Content</label>
         </div>
       </div>
 
       <div class="form-group">
         <label>Choose file(s)</label>
-        <div ng2FileDrop
-             [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+        <div [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
              [uploader]="uploader"
-             class="well my-drop-zone">
+             class="well my-drop-zone"
+             ng2FileDrop>
           .<strong>{{ uploader.queue[0]?.file?.name }}</strong>.
         </div>
 

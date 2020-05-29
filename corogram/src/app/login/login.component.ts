@@ -1,9 +1,7 @@
 import {HttpClient} from '@angular/common/http'; // requete
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {first} from 'rxjs/operators';
-import {delay, tap} from 'rxjs/operators';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import {AuthService} from '../_service/auth/auth.service';
 import {ModalService} from '../_service/modal/modal-service.service';
 
@@ -15,18 +13,18 @@ import {ModalService} from '../_service/modal/modal-service.service';
 })
 export class LoginComponent implements OnInit {
 
+  public form: FormGroup;
+  public error = '';
+  public bodyText: string;
+  public animation = false;
+  private redirectUrl = '/home';
+
   constructor(private authService: AuthService, private router: Router, private fb: FormBuilder, private modalService: ModalService, private http: HttpClient) {
     this.form = this.fb.group({
       userId: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
-
-  public form: FormGroup;
-  public error = '';
-  public bodyText: string;
-  private redirectUrl = '/home';
-  public animation = false;
 
   public ngOnInit() {
     this.bodyText = 'erreur de login';
@@ -39,7 +37,6 @@ export class LoginComponent implements OnInit {
   closeModal(id: string) {
     this.modalService.close(id);
   }
-
 
 
   public login() {
