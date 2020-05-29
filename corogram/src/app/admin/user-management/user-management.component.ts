@@ -47,7 +47,11 @@ export class UserManagementComponent implements OnInit {
           user.course.forEach(function (c, i, arr) {
             try {
               arr[i] = data.find((element) => element._id == arr[i]).name;
+              if(arr[i].length == 0) {
+              arr.splice(i, 1);
+              }
             } catch (err) {
+              arr.splice(i, 1);
             } // si le cours existe pas c'est normal , cela peut arriver si cours supprimé
           });
         });
