@@ -27,7 +27,7 @@ On peut écrire un message de type chat ou bien un message de type forum. Lors d
 
 #### Page d'un cours avec des messages dans le chat et le forum
 
-Un message de type chat peut être transféré, par une personne ayant droit, dans le forum à l'aide de la flêche verte qui est attachée à celui-ci. Les messages du forum peuvent être upvote/downvote à l'aide des flêches ^/v par tous les utilisateurs. La suppression des messages du forum peut être faite avec la croix en bas à gauche du poste.
+Un message de type chat peut être transféré, par une personne ayant droit, dans le forum à l'aide de la flêche verte qui est attachée à celui-ci. Les messages du forum peuvent être upvote/downvote à l'aide des flêches ^/v par tous les utilisateurs. La suppression des messages du forum peut être faite avec la croix en bas à gauche du poste. La suppression de messages de chat peut être faite en cliquant sur l'icone de corbeille sur fond rouge.
 
 ![PageCoursAvecMessageChatForum](ImagesRapport/PageCoursAvecMessageChatForum.png)
 
