@@ -92,8 +92,9 @@ export class CourseManagementComponent implements OnInit {
     // revert property
     this.selectingUser = true;
     course.selected = true;
+
     this.usersToAdd.forEach((user) => this.userService.addUserCourse(user._id, course._id).subscribe((data) => {
-        console.log(data);
+      console.log(data);
       }),
     );
 

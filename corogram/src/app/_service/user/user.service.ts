@@ -19,7 +19,7 @@ export class UserService {
   }
 
   public addUserCourse(userId, courseId): Observable<User[]> {
-    return this.http.put(this.userURL + '/addCourse/' + userId, courseId).pipe(
+    return this.http.put(this.userURL + '/addCourse/' + userId, {"courseId":courseId}).pipe(
       catchError(this.handleError<any>('addUserCourse', [])));
   }
 

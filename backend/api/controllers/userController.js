@@ -27,7 +27,7 @@ exports.list_all_user = function(req, res) {
 exports.add_course_to_user = function(req, res) {
   if(rH.isAdmin(req)) {
     User.findOne({_id: {$eq: req.params.userId}}, function (err, user) {
-      user.course.push(req.body.coureId);
+      user.course.push(req.body.courseId);
       User.findByIdAndUpdate(user._id, user, {new: true}, function (err, rest) {
         if (err)
           res.send(err);
