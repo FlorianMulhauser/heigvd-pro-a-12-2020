@@ -39,7 +39,7 @@ Un cours peut être créé avec la partie supérieure de l'interface. Dans la pa
 
 ![PageGestionDeCours](ImagesRapport/PageGestionDeCours.png)
 
-Une fois un clique effectué sur un cours on peut séléctionner des participants pour celui-ci et ensuite valider pour les y ajouter.
+Une fois un clique effectué sur un cours on peut séléctionner des participants (en cliquant dessus ou en les recherchant avec l'outil) pour celui-ci et ensuite valider pour les y ajouter.
 
 ![ManagementUser](ImagesRapport/ManagementCourse.png)
 
