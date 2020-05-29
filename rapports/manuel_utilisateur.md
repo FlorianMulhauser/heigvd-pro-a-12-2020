@@ -5,7 +5,7 @@
 
 
 TODO, faire des captures d'écran des différents menus et les expliquer
-![finDePage](#finDePage)
+1. [finDePage](#finDePage)
 
 
 ### Utilisateur simple, élève
