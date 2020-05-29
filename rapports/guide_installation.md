@@ -56,3 +56,9 @@ sudo npm install -g @angular/cli
 
 npm rebuild node-sass --force
 ```
+
+#### Contacts en cas de problèmes non répertoriés (Support)  
+
+Vous pouvez nous contacter à tout moment via ce groupe Telegram crée pour l'occasion.
+
+https://t.me/joinchat/CsZHMBnR3oGc9_QiHqVA4g
