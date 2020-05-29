@@ -28,7 +28,7 @@
     <div *ngFor="let user of users | filter : {name: searchTextUser, first_name: searchTextUser,last_name: searchTextUser,mail: searchTextUser} :false "
          class="collection">
       <a (click)="addToList(user)" [ngClass]="  !user.edit ? 'white' : '#eeeeee grey lighten-3'"
-         class="collection-item"> {{user.first_name}} {{user.last_name}}
+         class="collection-item waves-effect waves-light"> {{user.first_name}} {{user.last_name}}
         ({{user.name}})</a>
     </div>
   </div>
@@ -47,7 +47,7 @@
           <p>{{course.description}}</p>
         </div>
         <div class="card-action">
-          <i (click)="deleteCourse(course)" class="small material-icons mybutton">close</i>
+          <i (click)="deleteCourse(course)" class="small material-icons waves-effect waves-light mybutton">close</i>
           <i (click)="addCourseToSelectedUser(course)" *ngIf="course.selected" class="small material-icons mybutton">check</i>
 
         </div>
