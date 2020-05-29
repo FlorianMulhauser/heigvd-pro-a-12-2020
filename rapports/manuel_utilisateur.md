@@ -6,6 +6,11 @@
 
 #### Page de Login
 
+A la page de login il faut entrer son username et son mot de passe. Le bouton forget my password permettra une fois implémenté d'envoyer un mail à l'addresse du user pour le reset.
+* superadmin: login: admin, password: admin
+* admin: login: test, password: admin
+* normal user: login: flo, password: 1234
+
 ![PageDeLogin](ImagesRapport/PageDeLogin.png)
 
 #### Page d'accueil de l'application
