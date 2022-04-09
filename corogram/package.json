@@ -24,7 +24,7 @@
     "@pusher/chatkit-client": "^1.14.1",
     "event-source": "git://github.com/AlexGalays/EventSource.git#923b9a0998fcfd7753040e09aa83764b3cc0230d",
     "file-saver": "^2.0.2",
-    "moment": "^2.25.3",
+    "moment": "^2.29.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
